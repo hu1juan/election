@@ -2,11 +2,6 @@
 <html>
 	<head>
 		<title>Admin</title>
-		<style type="text/css">
-		html {
-		
-		}
-		</style>
 	</head>
 	<body>
 		<nav class="navbars navbar-defaults" role="navigation">
@@ -25,23 +20,25 @@
 					<form name="outerForm" class="tab-form-demo">
 						<uib-tabset active="activeForm">
 						<uib-tab index="0" heading="Registration">
-						<ng-form name="nestedForm">
-						<div class="form-group">
-							<label>Fullname</label>
-							<input type="text" class="form-control" required/>
-							<label>Name</label>
-							<input type="text" class="form-control" required/>
-							<label>Name</label>
-							<select class="form-control" required>
-								<option>President</option>
-								<option>Vice President</option>
-								<option>Secretary</option>
-							</select>
-							<div class="button-login">
-								<button type="button" class="form-control">Log in account</button>
+						<div class="form1">
+							<ng-form name="nestedForm">
+							<div class="form-group">
+								<label>Candidate #</label>
+								<input type="text" class="form-control" required readonly />
+								<label>Fullname</label>
+								<input type="text" class="form-control" required/>
+								<label>Position</label>
+								<select class="form-control" required>
+									<option>President</option>
+									<option>Vice President</option>
+									<option>Secretary</option>
+								</select>
 							</div>
+							<div class="form-group">
+								<button class="btn btn-default">Register</button>
+							</div>
+							</ng-form>
 						</div>
-						</ng-form>
 						</uib-tab>
 						<uib-tab index="1" heading="Ongoin">
 						Some Tab Content
