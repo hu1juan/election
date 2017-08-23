@@ -1,0 +1,49 @@
+.horizontal-collapse {
+    height: 70px;
+  }
+  .navbar-collapse.in {
+    overflow-y: hidden;
+  }
+  .img-logo{
+  	width: 85px;
+  	height: 80px;
+  }
+  .panel-title{
+  	font-weight: bold;
+    font-family: serif;
+  }
+
+  .body-container{
+  	background-image: url(../image/holycrosslogo.png);
+  	height: 500px;
+	width: auto;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+  }
+  .button-login{
+  	text-align: center;
+    width: 30em;
+    margin: auto;
+    font-weight: bold;
+  }
+  .app-modal-window {
+      margin: auto;
+  }
+  .modal-dialog{
+    width: 40%;
+  }
+  .forms{
+    width: 50%;
+    height: auto;
+    display: block;
+    border-radius: 5px;
+    background-color:#f8f8f8;
+    border: 1px solid #ccc;
+    margin: auto;
+    padding: 2em;
+  }
+  .forms-contain{
+    margin: auto;
+    padding: 1em;
+  }

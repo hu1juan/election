@@ -8,4 +8,8 @@ app.config(function($routeProvider){
 		templateUrl: 'html/login.html',
 		controller: 'loginCtrl'
 	})
+	.when('/admin',{
+		templateUrl: 'html/adminview.html',
+		controller: 'adminCtrl'
+	})
 });
