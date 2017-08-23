@@ -12,26 +12,68 @@
 		}
 		body{
        		background-color:transparent !important;
+       		color: #fff;
     	}
+    	p{
+    		font-style: italic;
+    	}
+    	input.login{
+    		border-radius: 25px;
+    		background-color: transparent;
+    		color: #fff;
+    		border-color: #fff;
+    	}
+    	button.login{
+    		border-radius: 5px;
+    		color: purple;
+    		border-color: purple;
+    	}
+    	input::-webkit-input-placeholder {
+		color: #d1fffe !important;
+		}
+		 
+		input:-moz-placeholder { /* Firefox 18- */
+		color: #d1fffe !important;  
+		}
+		 
+		input::-moz-placeholder {  /* Firefox 19+ */
+		color: #d1fffe !important;  
+		}
+		 
+		input:-ms-input-placeholder {  
+		color: #d1fffe !important;  
+		}
 	</style>
 </head>
 <body>
-	<h1>hohoho</h1>
 <<<<<<< HEAD
 	<a href="#!admin">admin</a>
-=======
-	<h1>hohoho</h1>
-	<h1>hohoho</h1>
-	<h1>hohoho</h1>
-	<h1>hohoho</h1>
-	<h1>hohoho</h1>
-	<h1>hohoho</h1>
-	<h1>hohoho</h1>
-	<h1>hohoho</h1>
-	<h1>hohoho</h1>
-	<h1>hohoho</h1>
-	<h1>hohoho</h1>
-	<button>okk</button>
->>>>>>> 157046e78f7e3e43d36b7afc5ee35849b97490f6
+
+<div class="pull-right">
+<form class="form-inline">
+    <div class="form-group">
+      <label for="sID">Student ID #:</label>
+      <input type="text" class="form-control login" id="sID" placeholder="Enter id number" name="email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control login" id="pwd" placeholder="Enter password" name="pwd">
+    </div>
+    <button type="submit" class="btn btn-default btn-xs login">Log In</button>
+    <button type="button" class="btn btn-default btn-xs login">Sign up</button>
+  </form>
+</div>
+
+	<div class="container">
+		<div class="pull-left">
+			<h3 style="font-size: 100px">E V E R Y</h3>
+			<h1 style="font-size: 200px"><strong>VOTE</strong></h1>
+			<h3 style="font-size: 100px">C O U N T S</h3>
+
+			<p>"Bad officials are</p>
+			<p>elected by good citizens</p>
+			<p>who do not vote." - <strong>George Jean Nathan</strong></p>
+		</div>
+	</div>
 </body>
 </html>
