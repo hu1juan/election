@@ -5,21 +5,23 @@
     overflow-y: hidden;
   }
   .img-logo{
-  	width: 85px;
-  	height: 80px;
+  	width: 50px;
+  	height: 50px;
+    margin-top: -5px;
+    margin-left: 36px;
   }
-  .panel-title{
+  .panel-titles{
   	font-weight: bold;
     font-family: serif;
+    margin-top: 23px;
+    margin-left: 10px;
+    margin-bottom: 0;
+    font-size: 24px;
+    color: inherit;
   }
 
   .body-container{
-  	background-image: url(../image/holycrosslogo.png);
-  	height: 500px;
-	width: auto;
-	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: center;
+ 
   }
   .button-login{
   	text-align: center;
@@ -46,4 +48,38 @@
   .forms-contain{
     margin: auto;
     padding: 1em;
+  }
+  .navbars{
+    position: relative;
+    min-height: 77px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+  }
+  .navbar-defaults{
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+  }
+  .forms-body{
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+    width: 60%;
+    margin: auto;
+    border-radius: 5px;
+    padding: 1em;
+    margin-top: 80px;
+  }
+  form.tab-form-demo .tab-pane {
+    margin: 20px 20px;
+
+  }
+  form.tab-form-demo{
+    width: 80%;
+    margin: auto;
+  }
+  .title-admin{
+    text-align: center;
+    font-weight: bold;
+    font-family: serif;
+    margin-top: 15px;
+    font-size: 29px;
   }

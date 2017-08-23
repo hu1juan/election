@@ -3,11 +3,9 @@
 	<head>
 		<title>Admin</title>
 		<style type="text/css">
-			.navbars{
-				position: relative;
-				min-height: 50px;
-				margin-bottom: 20px;
-			}
+		html {
+		
+		}
 		</style>
 	</head>
 	<body>
@@ -16,13 +14,50 @@
 				<a class="navbar-brand" href=""><img class="img-logo" src="image/holycrosslogo.png"></a>
 			</div>
 			<div class="navbar-header">
-				<h4 class="panel-title">Student Supreme Government Election</h4>
+				<h4 class="panel-titles">Student Supreme Government Election</h4>
 			</div>
 		</nav>
-		<div class="body-container">
+		<div class="contain-body">
+			<div class="forms-body">
+				<h3 class="title-admin">SSG election</h3>
+				<hr/>
+				<div class="record-info">
+					<form name="outerForm" class="tab-form-demo">
+						<uib-tabset active="activeForm">
+						<uib-tab index="0" heading="Registration">
+						<ng-form name="nestedForm">
+						<div class="form-group">
+							<label>Fullname</label>
+							<input type="text" class="form-control" required/>
+							<label>Name</label>
+							<input type="text" class="form-control" required/>
+							<label>Name</label>
+							<select class="form-control" required>
+								<option>President</option>
+								<option>Vice President</option>
+								<option>Secretary</option>
+							</select>
+							<div class="button-login">
+								<button type="button" class="form-control">Log in account</button>
+							</div>
+						</div>
+						</ng-form>
+						</uib-tab>
+						<uib-tab index="1" heading="Ongoin">
+						Some Tab Content
+						</uib-tab>
+						<uib-tab index="2" heading="Candidates list">
+						More Tab Content
+						</uib-tab>
+						<uib-tab index="3" heading="Result">
+						More Tab Content
+						</uib-tab>
+						</uib-tabset>
+					</form>
+				</div>
+				
+			</div>
 		</div>
-		<div class="button-login">
-			<button type="button" class="form-control" ng-click="open()">Log in account</button>
-		</div>
+		
 	</body>
 </html>
