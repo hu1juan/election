@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Election</title>
-</head>
+	<head>
+		<title>Admin</title>
+		<style type="text/css">
+			.pagerContainer{
+				width: 50%;
+				margin-left: 25%;
+			}
+			.pageContain{
+				height: 30vh;
+			}
+		</style>
+	</head>
 <body>
-	<h1>Hello</h1>
-    <h1>WORLD!</h1>
+	<nav class="navbars navbar-defaults" role="navigation">
+		<div class="navbar-header">
+			<a class="navbar-brand" href=""><img class="img-logo" src="image/holycrosslogo.png"></a>
+		</div>
+		<div class="navbar-header">
+			<h4 class="panel-titles">Information Technology Society</h4>
+		</div>
+	</nav>
+<div class="pagerContainer">
+<div ng-controller="voteHomeCtrl">
+  <h4>Vote Wisely!</h4>
+  <pre>Current Page: {{currentPage}} / 10
+  	<div class="pageContain">
+  	</div>
+  </pre>
+  <ul uib-pager total-items="totalItems" ng-model="currentPage"></ul>
+  
+</div>
+</div>
 </body>
 </html>

@@ -12,4 +12,8 @@ app.config(function($routeProvider){
 		templateUrl: 'html/adminview.html',
 		controller: 'adminCtrl'
 	})
+	.when('/votehome',{
+		templateUrl: 'html/voteHome.html',
+		controller: 'voteHomeCtrl'
+	})
 });
