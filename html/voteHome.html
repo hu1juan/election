@@ -10,6 +10,20 @@
 			.pageContain{
 				height: 30vh;
 			}
+			.btnSubmit{
+				margin: -6% 0 0 28%;
+			}
+			.icon-size{
+				font-size: 20px;
+				color: black;
+				
+			}
+			.logoutIcon{
+				margin: -8% 0 0 480%;
+			}
+			button{
+				width: 60%;
+			}
 		</style>
 	</head>
 <body>
@@ -19,6 +33,9 @@
 		</div>
 		<div class="navbar-header">
 			<h4 class="panel-titles">Information Technology Society</h4>
+			<div class="logoutIcon">
+			<a href="#!"><span class="glyphicon glyphicon-log-out icon-size" aria-hidden="true">Logout</span></a>
+			</div>
 		</div>
 	</nav>
 <div class="pagerContainer">
@@ -30,6 +47,10 @@
   </pre>
   <ul uib-pager total-items="totalItems" ng-model="currentPage"></ul>
   
+  <div class="btnSubmit">
+  	<button class="btn btn-primary" type="submit">Submit</button>
+  	</div>
+
 </div>
 </div>
 </body>
