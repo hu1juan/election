@@ -10,6 +10,12 @@
     margin-top: -5px;
     margin-left: 36px;
   }
+  .img-logos{
+    width: 50px;
+    height: 50px;
+    margin-top: -14px;
+    margin-left: 2px;
+  }
   .panel-titles{
   	font-weight: bold;
     font-family: serif;
@@ -83,8 +89,49 @@
     margin-top: 15px;
     font-size: 29px;
   }
+  .title-admin1{
+    text-align: center;
+    font-weight: bold;
+    font-family: serif;
+    margin-top: 15px;
+    font-size: 29px;
+    margin-right: 34em;
+    width: 8em;
+  }
   .form1{
     background-color: white;
     padding: 1em;
     border-radius: 5px;
   }
+  table{
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background-color: transparent;
+    font-size: 15px;
+  }
+
+  thead{
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+  }
+  tr{
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+    padding: 1em;s
+  }
+  tbody{
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+    background-color: #f8f8f8;
+  }
+  th{
+    text-align: left;
+    width: auto;
+
+ }
