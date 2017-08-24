@@ -4,7 +4,7 @@
 	<title>Log in</title>
 	<style type="text/css">
 		html { 
-		  background: url(../image/bg2.jpg) no-repeat center center fixed; 
+		  background: url(../image/bg.jpg) no-repeat center center fixed; 
 		  -webkit-background-size: cover;
 		  -moz-background-size: cover;
 		  -o-background-size: cover;
@@ -12,7 +12,7 @@
 		}
 		body{
        		background-color:transparent !important;
-       		color: #fcd576;
+       		color: #fff;
     	}
     	p{
     		font-style: italic;
@@ -20,18 +20,17 @@
     	input.login{
     		border-radius: 25px;
     		background-color: transparent;
-    		color: #fcd576;
-    		border-color: #fcd576;
+    		color: black;
+    		border-color: white;
     	}
     	button.login{
     		border-radius: 5px;
-    		color: black;
-    		border: solid;
-    		border-color: #fcd576;
-    		background-color: #ffe6ba;
+    		background-color: black;
+    		color: white;
+    		border-color: white;
     	}
     	input::-webkit-input-placeholder {
-		color: #ffe6ba !important;
+		color: gray !important;
 		}
 		 
 		input:-moz-placeholder { /* Firefox 18- */
@@ -44,6 +43,15 @@
 		 
 		input:-ms-input-placeholder {  
 		color: #ffe6ba !important;  
+		}
+		p{
+			font-size: 16px;
+			border-color: black;
+			color: white;
+			text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+		}
+		label{
+			text-shadow:0 0 5px black;
 		}
 	</style>
 </head>
@@ -68,12 +76,13 @@
 
 	<div class="container">
 		<div class="pull-left">
-			<h3 style="font-size: 100px">E V E R Y</h3>
-			<h1 style="font-size: 200px"><strong>VOTE</strong></h1>
-			<h3 style="font-size: 100px">C O U N T S</h3>
-
-			<p>"Bad officials are</p>
-			<p>elected by good citizens</p>
+			<center>
+			<h3 style="font-size: 100px;background-color: black;border-radius: 25px;">E V E R Y</h3>
+			<h1 style="font-size: 200px;color: cyan;"><strong>VOTE</strong></h1>
+			<h3 style="font-size: 100px;background-color: black;border-radius: 25px;">C O U N T S</h3>
+			</center>
+			<p>" Bad officials are elected by good citizens</p>
+			<p></p>
 			<p>who do not vote." - <strong>George Jean Nathan</strong></p>
 		</div>
 	</div>
