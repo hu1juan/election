@@ -14,7 +14,7 @@
     width: 50px;
     height: 50px;
     margin-top: -27px;
-    margin-left: 2px;
+    margin-left: 25px;
   }
   .panel-titles{
   	font-weight: bold;
@@ -26,13 +26,6 @@
     color: inherit;
   }
 
-  .contain-body{
-  background: url(../image/ITS.jpg);
-     width: auto;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-  }
   .button-login{
   	text-align: center;
     width: 30em;
@@ -106,8 +99,8 @@
     font-family: serif;
     margin-top: 15px;
     font-size: 29px;
-    margin-right: 34em;
-    width: 1em;
+    margin-right: 29em;
+    width: auto;
   }
   .form1{
     background-color: white;
