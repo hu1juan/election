@@ -13,7 +13,7 @@
   .img-logos{
     width: 50px;
     height: 50px;
-    margin-top: -14px;
+    margin-top: -27px;
     margin-left: 2px;
   }
   .panel-titles{
@@ -26,8 +26,12 @@
     color: inherit;
   }
 
-  .body-container{
- 
+  .contain-body{
+  background: url(../image/ITS.jpg);
+     width: auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
   }
   .button-login{
   	text-align: center;
@@ -66,13 +70,20 @@
     border-color: #e7e7e7;
   }
   .forms-body{
-    background-color: #f8f8f8;
+    background-color: darkturquoise;
     border-color: #e7e7e7;
     width: 60%;
     margin: auto;
     border-radius: 5px;
     padding: 1em;
     margin-top: 80px;
+  }
+  .form-img-background{
+     /*background: url(../image/ITS.jpg);
+     width: auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;*/
   }
   form.tab-form-demo .tab-pane {
     margin: 20px 20px;
@@ -134,4 +145,8 @@
     text-align: left;
     width: auto;
 
+ }
+ .tab-content{
+    padding-top: 3em;
+    padding-bottom: 2em;
  }
