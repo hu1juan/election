@@ -14,108 +14,118 @@
 		</nav>
 		<div class="contain-body">
 			<div class="forms-body">
-			<div class="form-img-background">
-				<a class="navbar-brand" href=""><img class="img-logos" src="image/ITS.jpg"></a>
-				<h3 class="title-admin1">ITS election</h3>
-				<hr/>
-				<div class="record-info">
-					<form name="outerForm" class="tab-form-demo">
-						<uib-tabset active="activeForm">
-						<uib-tab index="0" heading="Registration">
-						<div class="form1">
-							<ng-form name="nestedForm">
-							<div class="form-group">
-								<label>Candidate #</label>
-								<input type="text" class="form-control" required readonly />
-								<label>Fullname</label>
-								<input type="text" class="form-control" required/>
-								<label>Position</label>
-								<select class="form-control" required>
-									<option>President</option>
-									<option>Vice President</option>
-									<option>Secretary</option>
-								</select>
+				<div class="form-img-background">
+					<a class="navbar-brand" href=""><img class="img-logos" src="image/ITS.jpg"></a>
+					<h3 class="title-admin1">ITS election</h3>
+					<hr/>
+					<div class="record-info">
+						<form name="outerForm" class="tab-form-demo">
+							<uib-tabset active="activeForm">
+							<uib-tab index="0" heading="Registration">
+							<div class="form1">
+								<div class="form-group">
+									<h4><span class="glyphicon glyphicon-info-sign">Information</span></h4>
+								</div>
+								<hr/>
+								<ng-form name="nestedForm">
+								<div class="form-group">
+									<label>Candidate #</label>
+									<input type="text" class="form-control" required readonly />
+									<label>Fullname</label>
+									<input type="text" class="form-control" required/>
+									<label>Position</label>
+									<select class="form-control" required>
+										<option>President</option>
+										<option>Vice President</option>
+										<option>Secretary</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<button class="btn btn-secondary"><span class="glyphicon glyphicon-ok"> Register</span></button>
+									<button class="btn btn-secondary"><span class="glyphicon glyphicon-remove"> Clear</span></button>
+								</div>
+								</ng-form>
 							</div>
-							<div class="form-group">
-								<button class="btn btn-secondary"><span class="glyphicon glyphicon-ok"> Register</span></button>
-								<button class="btn btn-secondary"><span class="glyphicon glyphicon-remove"> Clear</span></button>
+							</uib-tab>
+							<uib-tab index="1" heading="Candidates list">
+							<div class="form1">
+								<div class="form-group">
+									<h4><span class="glyphicon glyphicon-info-heart">List</span></h4>
+								</div>
+								<hr/>
+								<div class="form-group">
+									<table>
+										<thead>
+											<tr>
+												<th>Register #</th>
+												<th>Name</th>
+												<th>Position</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td>Roa duterte</td>
+												<td>President</td>
+											</tr>
+											<tr>
+												<td>2</td>
+												<td>Sarah duterte</td>
+												<td>Vice president</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
-							</ng-form>
-						</div>
-						</uib-tab>
-						<uib-tab index="1" heading="Candidates list">
-						<div class="form1">
-							<div class="form-group">
-								<table>
-									<thead>
-										<tr>
-											<th>Register #</th>
-											<th>Name</th>
-											<th>Position</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Roa duterte</td>
-											<td>President</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Sarah duterte</td>
-											<td>Vice president</td>
-										</tr>
-									</tbody>
-								</table>
+							</uib-tab>
+							<uib-tab index="2" heading="Voter list">
+							<div class="form1">
+								<div class="form-group">
+									<label>Searching</label>
+									<input type="text" class="form-control" required placeholder="Searching...." />
+								</div>
+								<hr/>
+								<div class="form-group">
+									<table>
+										<thead>
+											<tr>
+												<th>Voter #</th>
+												<th>Name</th>
+												<th>Password</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>48496509</td>
+												<td>Reymon Dinagat</td>
+												<td>#&$@@#SS</td>
+											</tr>
+											<tr>
+												<td>48496501</td>
+												<td>Opp hahaha</td>
+												<td>SD123s%</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
-						</div>
-						</uib-tab>
-						<uib-tab index="2" heading="Voter list">
-						<div class="form1">
-							<div class="form-group">
-								<label>Searching</label>
-								<input type="text" class="form-control" required placeholder="Searching...." />
-							</div><div class="form-group">
-							<table>
-								<thead>
-									<tr>
-										<th>Voter #</th>
-										<th>Name</th>
-										<th>Password</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>48496509</td>
-										<td>Reymon Dinagat</td>
-										<td>#&$@@#SS</td>
-									</tr>
-									<tr>
-										<td>48496501</td>
-										<td>Opp hahaha</td>
-										<td>SD123s%</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+							</uib-tab>
+							<uib-tab index="3" heading="Ongoing result">
+							<div class="form1">
+								Some Tab Content
+							</div>
+							</uib-tab>
+							<uib-tab index="4" heading="Final result">
+							<div class="form1">
+								Some Tab Content
+							</div>
+							</uib-tab>
+							</uib-tabset>
+						</form>
 					</div>
-					</uib-tab>
-					<uib-tab index="3" heading="Ongoing result">
-					<div class="form1">
-						Some Tab Content
-					</div>
-					</uib-tab>
-					<uib-tab index="4" heading="Final result">
-					<div class="form1">
-						Some Tab Content
-					</div>
-					</uib-tab>
-					</uib-tabset>
-				</form>
-			</div>
+				</div>
 			</div>
 		</div>
-	</div>
-	
-</body>
+		
+	</body>
 </html>

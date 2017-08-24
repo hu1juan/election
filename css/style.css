@@ -70,7 +70,7 @@
     border-color: #e7e7e7;
   }
   .forms-body{
-    background-color: darkturquoise;
+    background-color: #e7e7e7;
     border-color: #e7e7e7;
     width: 60%;
     margin: auto;
@@ -149,4 +149,8 @@
  .tab-content{
     padding-top: 3em;
     padding-bottom: 2em;
+ }
+ .info-logo{
+    font-weight: bold;
+    font-size: 22px;
  }
