@@ -4,13 +4,15 @@
 		<title>Admin</title>
 		<style type="text/css">
 			.pagerContainer{
-				width: 50%;
-				margin-left: 25%;
+				width: 70%;
+				margin-left: 15%;
+				margin-top: 0%;
 			}
 			.pageContain{
 				height: 30vh;
+				
 			}
-			.btnSubmit{
+			.btnSubmitContainer{
 				margin: -6% 0 0 28%;
 			}
 			.icon-size{
@@ -18,40 +20,51 @@
 				color: black;
 				
 			}
-			.logoutIcon{
-				margin: -8% 0 0 480%;
-			}
-			button{
+			#btnSubmit{
 				width: 60%;
+			}
+			label{
+				margin-left: -50%;
+				margin-top: -5%;
 			}
 		</style>
 	</head>
 <body>
 	<nav class="navbars navbar-defaults" role="navigation">
-		<div class="navbar-header">
-			<a class="navbar-brand" href=""><img class="img-logo" src="image/holycrosslogo.png"></a>
-		</div>
-		<div class="navbar-header">
-			<h4 class="panel-titles">Information Technology Society</h4>
-			<div class="logoutIcon">
-			<a href="#!"><span class="glyphicon glyphicon-log-out icon-size" aria-hidden="true">Logout</span></a>
+			<div class="navbar-header">
+				<a class="navbar-brand" href=""><img class="img-logo" src="image/holycrosslogo.png"></a>
 			</div>
-		</div>
-	</nav>
-<div class="pagerContainer">
-<div ng-controller="voteHomeCtrl">
-  <h4>Vote Wisely!</h4>
-  <pre>Current Page: {{currentPage}} / 10
-  	<div class="pageContain">
-  	</div>
-  </pre>
-  <ul uib-pager total-items="totalItems" ng-model="currentPage"></ul>
-  
-  <div class="btnSubmit">
-  	<button class="btn btn-primary" type="submit">Submit</button>
-  	</div>
+			<div class="navbar-header">
+				<h4 class="panel-titles">Information Technology Society</h4>
+			</div>
+			<div class="log-out-icon">
+				<button class="btn btn-default"><span class="glyphicon glyphicon-log-out">Logout</span></button>
+			</div>
+		</nav>
 
-</div>
+<div class="contain-body">
+	<div class="forms-body">
+		<div class="form-img-background">
+			<a class="navbar-brand" href=""><img class="img-logos" src="image/ITS.jpg"></a>
+			<h3 class="title-admin1">ITS election</h3>
+			<hr/>
+				<div class="pagerContainer">
+					<div ng-controller="voteHomeCtrl">
+					  <h4>Vote Wisely!</h4>
+					  <pre>
+					  	<div class="pageContain">
+					  		<label>Current Page: {{currentPage}} / 10 </label>
+					  	</div>
+					  </pre>
+					  <ul uib-pager total-items="totalItems" ng-model="currentPage"></ul>
+					  <div class="btnSubmitContainer">
+					  	<button class="btn btn-primary" type="submit" id="btnSubmit">Submit</button>
+					 </div>
+					</div>
+				</div>
+
+		</div>
+	</div>
 </div>
 </body>
 </html>
