@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<style type="text/css">
+	.modal-content{
+		background: transparent !important;
+		border-radius: 15px;
+		border: dashed;
+	}
+	.app-modal-window .modal-dialog {
+	  width: 300px;
+	}
+	.form-horizontal .form-group {
+	    margin-right: 15px;
+	    margin-left: 25px;
+	}
+	label{
+		margin-left: 5px;
+	}
+	button.x{
+		background-color: transparent;
+		border: none;
+		color:white;
+	}
+	input.log{
+		border-radius: 25px;
+		background-color: transparent;
+		color: white;
+		border-color: white;
+		font-weight: bold;
+	}
+	</style>
+</head>
+<body>
+<!-- <form class="form-horizontal">
+	<div class="form-group">
+		<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+	  <input type="text" class="form-control login" id="sID" placeholder="Enter id number" name="email">
+	</div>
+	<div class="form-group">
+		<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+	  <input type="password" class="form-control login" id="pwd" placeholder="Enter password" name="pwd">
+	</div>
+	<button type="submit" class="btn btn-default btn-xs login">Log In</button>
+</form> -->
+
+ <form class="form-horizontal">
+	<div class="modal-header"><button type="submit" class="btn btn-default btn-sm x" ng-click="cancel()" style="float: right;">×</button>
+        <h1 class="modal-title" id="modal-title">Log In</h1>
+        
+    </div>
+
+    <div class="modal-body" id="modal-body">
+		<div class="form-group">
+			<span class="glyphicon glyphicon-user" aria-hidden="true"></span><label>Username</label>
+		  <input type="text" class="form-control log" id="sID" placeholder="Enter id number" name="email">
+		</div>
+		<div class="form-group">
+			<span class="glyphicon glyphicon-lock" aria-hidden="true"></span><label>Password</label>
+		  <input type="password" class="form-control log" id="pwd" placeholder="Enter password" name="pwd">
+		</div>
+    </div>
+
+    <div class="modal-footer">
+		<button type="submit" class="btn btn-default btn-sm login" ng-click="ok()">Log In</button>
+		<button type="submit" class="btn btn-default btn-sm login" ng-click="cancel()">Cancel</button>
+    </div>
+</form>
+</body>
+</html>
