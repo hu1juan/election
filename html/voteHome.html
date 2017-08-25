@@ -1,67 +1,125 @@
+
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Admin</title>
-		<style type="text/css">
-			.pagerContainer{
-				width: 70%;
-				margin-left: 15%;
-				margin-top: 0%;
-			}
-			.pageContain{
-				height: 30vh;
-				margin-top: -5%;
-			}
-			.btnSubmitContainer{
-				margin: -6% 0 0 28%;
-			}
-			#btnSubmit{
-				width: 60%;
-			}
-			label{
-				margin-left: -50%;
-				margin-top: -5%;
-			}
-		</style>
-	</head>
+<head>
+<style>
+	.paginationclass{
+    
+margin: 19px 28px;    
+}
+.paginationclass span{
+    margin-left:15px;
+    display:inline-block;
+}
+.pagination-controle li{
+    display: inline-block;
+}
+.pagination-controle button{
+    font-size: 12px;
+    margin-top: -26px;
+    cursor:pointer;
+    
+}
+.pagination{
+    margin:5px 12px !important;
+}
+        .pagerContainer{
+                width: 70%;
+                margin-left: 15%;
+                margin-top: 0%;
+            }
+            .pageContain{
+                height: 30vh;
+                margin-top: -5%;
+            }
+            .btnSubmitContainer{
+                margin: -6% 0 0 28%;
+            }
+            #btnSubmit{
+                width: 60%;
+            }
+            label{
+                margin-left: -50%;
+                margin-top: -5%;
+            }
+            .table1{
+            	margin: -15% auto auto 30%;
+            
+            }
+            .table2{
+            	margin: -1% auto auto 30%;
+           
+            }
+</style>
+
+	<title></title>
+</head>
 <body>
-	<nav class="navbars navbar-defaults" role="navigation">
-			<div class="navbar-header">
-				<a class="navbar-brand" href=""><img class="img-logo" src="image/holycrosslogo.png"></a>
-			</div>
-			<div class="navbar-header">
-				<h4 class="panel-titles">Information Technology Society Organization</h4>
-			</div>
-			<div class="log-out-icon">
-				<a class="btn btn-default" href="#!"><span class="glyphicon glyphicon-log-out">Logout</span></a>
-			</div>
-		</nav>
+    <nav class="navbars navbar-defaults" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" href=""><img class="img-logo" src="image/holycrosslogo.png"></a>
+            </div>
+
+            <div class="navbar-header">
+                <h4 class="panel-titles">Information Technology Society Organization</h4>
+            </div>
+
+            <div class="log-out-icon">
+                <a class="btn btn-default" href="#!"><span class="glyphicon glyphicon-log-out">Logout</span></a>
+            </div>
+     </nav>
 
 <div class="contain-body">
-	<div class="forms-body">
-		<div class="form-img-background">
-			<a class="navbar-brand" href=""><img class="img-logos" src="image/ITS.jpg"></a>
-			<div class="form-group">
-			<h3 class="title-admin1">ITS Election</h3>
-			</div>
-			<hr/>
-				<div class="pagerContainer">
-					<div ng-controller="voteHomeCtrl">
-					  <h4>Vote Wisely!</h4>
-					  <pre>
-					  	<div class="pageContain">
-					  		<label>Current Page: {{currentPage}} / 10 </label>
-					  	</div>
-					  </pre>
-					  <ul uib-pager total-items="totalItems" ng-model="currentPage"></ul>
-					  <div class="btnSubmitContainer">
-					  	<button class="btn btn-primary" type="submit" id="btnSubmit">Submit</button>
-					 </div>
-					</div>
-				</div>
+    <div class="forms-body">
+        <div class="form-img-background">
+            <a class="navbar-brand" href=""><img class="img-logos" src="image/ITS.jpg"></a>
+            <div class="form-group">
+            <h3 class="title-admin1">ITS Election</h3>
+            </div>
+            <hr/>
+                <div class="pagerContainer">
+                    <div ng-controller="voteHomeCtrl">
+                      <h4>Vote Wisely!</h4>
+                      <pre>
+                        <div class="pageContain">
+                            
+ 	<div ng-controller="samplecontroller" ng-init="showData()" class="form-group">
+      <table class="table1">
+        <p class="paginationclass" style="font-weight:bold;">
+        <tr>
+ 		<th>Name</th>
+ 		<th>Age </th>
+ 		<th>Designation</th>
+ 		</p>  
+ 		</tr>  
 
-		</div>
+ 		<tr class="paginationclass" ng-repeat="datalist in datalists | pagination: curPage * pageSize | limitTo: pageSize">
+     		
+     	<td>{{ datalist.name }} </td><td>{{ datalist.age }}</td><td>{{ datalist.designation }}</td>
+     	</tr> 
+ 		</table>
+
+ 	<table class="table2">
+ 		<p style="font-weight:bold; margin-top: -20px">
+ 		<tr>
+  		<td><button type="button" class="btn btn-primary" ng-disabled="curPage == 0" ng-click="curPage=curPage-1" id="btnPrev"> &lt; PREV</button></td>
+ 		<td><p>Page {{curPage + 1}} of {{ numberOfPages() }}</p></td>
+ 		<td><button type="button" class="btn btn-primary" ng-disabled="curPage >= datalists.length/pageSize - 1" ng-click="curPage = curPage+1">NEXT &gt;</button></td>
+ 		</tr>
+ 		</p>
+	</table>
 	</div>
-</div>
+
+                   		</pre>
+                      <ul uib-pager total-items="totalItems" ng-model="currentPage"></ul>
+                      <div class="btnSubmitContainer">
+                        <button class="btn btn-primary" type="submit" id="btnSubmit">Submit</button>
+                     </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
 </body>
 </html>
