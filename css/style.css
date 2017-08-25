@@ -71,13 +71,6 @@
     padding: 1em;
     margin-top: 80px;
   }
-  .form-img-background{
-     /*background: url(../image/ITS.jpg);
-     width: auto;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;*/
-  }
   form.tab-form-demo .tab-pane {
     margin: 20px 20px;
 
@@ -120,4 +113,8 @@
     margin-top: 21px;
     margin-right: 39px;
     float: right;
+ }
+ .form-register{
+    width: 80%;
+    margin: auto;
  }
