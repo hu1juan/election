@@ -16,4 +16,7 @@ app.config(function($routeProvider){
 		templateUrl: 'html/voteHome.html',
 		controller: 'voteHomeCtrl'
 	})
+
 });
+
+
