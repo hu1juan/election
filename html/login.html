@@ -63,12 +63,17 @@
 		}
 		a{
 			color: white;
+			font-size: 16px;
+			text-decoration: underline;
+			font-style: italic;
 		}
 		a:hover{
 			color:black;
 		}
 		header{
 			height: 50px;
+			position: fixed;
+			width: 100%;
 		}
 		div.register{
 			padding: 15px;
@@ -78,6 +83,31 @@
 		.formaction{
 			margin: 0;
     		text-align: center;
+		}
+		span.down{
+			font-size: 40px;
+			padding-left:10px;
+		}
+		button.signin{
+			border-radius: 25px;
+    		background-color: black;
+    		color: white;
+    		border-color: white;
+    		font-size: 20px;
+    		margin-right: 25px;
+    		padding: 5px 20px;
+		}
+		button.signin:hover{
+			background-color: transparent !important;
+			color:black;
+			border-color: black;
+			transition: all 0.5s ease;
+		}
+		header:hover{
+			background-color: white;
+			opacity: 0.8;
+			color:black;
+			transition: all 2s ease;
 		}
 	</style>
 </head>
@@ -89,17 +119,18 @@
 	<a href="#!votehome">Voter</a>
 
 	<div class="pull-right">
-		<form class="form-inline">
+		<!-- <form class="form-inline">
 		    <div class="form-group">
-		      <label for="sID">Student ID #:</label>
+		    	<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 		      <input type="text" class="form-control login" id="sID" placeholder="Enter id number" name="email">
 		    </div>
 		    <div class="form-group">
-		      <label for="pwd">Password:</label>
+		    	<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
 		      <input type="password" class="form-control login" id="pwd" placeholder="Enter password" name="pwd">
 		    </div>
 		    <button type="submit" class="btn btn-default btn-xs login">Log In</button>
-		    </form>
+		    </form> -->
+		    <button type="button" class="btn btn-default btn-xs signin" ng-click="open('sm')">Sign In</button>
 	</div>
 </header>
 
@@ -117,7 +148,7 @@
 		<div class="pull-right">
 		<div class="register">
 			<form>
-			<label style="font-size: 50px;">Sign Up</label>
+			<label style="font-size: 50px;">Sign Up</label><span class="glyphicon glyphicon-hand-down down" aria-hidden="true"></span>
 		    <div class="form-group">
 		      <label for="sID">Student ID #:</label>
 		      <input type="text" class="form-control register" id="sID" placeholder="Enter id number" name="email">
@@ -127,7 +158,7 @@
 		      <input type="password" class="form-control register" id="pwd" placeholder="Enter password" name="pwd">
 		    </div>
 		    <div class="form-group">
-		      <label for="pwd">Re-Password:</label>
+		      <label for="pwd">Confirm Password:</label>
 		      <input type="password" class="form-control register" id="pwd" placeholder="Enter password" name="pwd">
 		    </div>
 		    <div class="form-group">
@@ -136,6 +167,7 @@
 		    </div>
 		    <div class="formaction">
 		   		 <button type="submit" class="btn btn-default login">Create Account</button>
+		   		 <!-- <a href="" ng-click="open('sm')">Login</a> -->
 		    </div>
 		    </form>
 		</div>
