@@ -81,45 +81,27 @@ margin: 19px 28px;
                     <div ng-controller="voteHomeCtrl">
                       <h4>Vote Wisely!</h4>
                       <pre>
+                            Current Page: {{currentPage +"/"+totalItems}}
+                            <table class="table">
+						      <tr ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+						        <td>{{row.Position}}</td>
+						        <td>{{row.Fullname}}</td>
+						      </tr>
+						    </table>
                         <div class="pageContain">
-                            
- 	<div ng-controller="samplecontroller" ng-init="showData()" class="form-group">
-      <table class="table1">
-        <p class="paginationclass" style="font-weight:bold;">
-        <tr>
- 		<th>Name</th>
- 		<th>Age </th>
- 		<th>Designation</th>
- 		</p>  
- 		</tr>  
-
- 		<tr class="paginationclass" ng-repeat="datalist in datalists | pagination: curPage * pageSize | limitTo: pageSize">
-     		
-     	<td>{{ datalist.name }} </td><td>{{ datalist.age }}</td><td>{{ datalist.designation }}</td>
-     	</tr> 
- 		</table>
-
- 	<table class="table2">
- 		<p style="font-weight:bold; margin-top: -20px">
- 		<tr>
-  		<td><button type="button" class="btn btn-primary" ng-disabled="curPage == 0" ng-click="curPage=curPage-1" id="btnPrev"> &lt; PREV</button></td>
- 		<td><p>Page {{curPage + 1}} of {{ numberOfPages() }}</p></td>
- 		<td><button type="button" class="btn btn-primary" ng-disabled="curPage >= datalists.length/pageSize - 1" ng-click="curPage = curPage+1">NEXT &gt;</button></td>
- 		</tr>
- 		</p>
-	</table>
-	</div>
-
+ 	
+						</div>
                    		</pre>
-                      <ul uib-pager total-items="totalItems" ng-model="currentPage"></ul>
+
+                      <ul uib-pager total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage"></ul>
                       <div class="btnSubmitContainer">
                         <button class="btn btn-primary" type="submit" id="btnSubmit">Submit</button>
                      </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
+ 
+  					</div>
+  				</div>
+  		</div>
+  	</div>
+</div>
 </body>
 </html>
