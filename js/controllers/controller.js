@@ -34,8 +34,14 @@ app.controller('adminCtrl',['$scope','$uibModal', function($scope,$uibModal){
 	};
 }]);
 
-app.controller('editAdminModalCtrl',['$uibModalInstance','$scope','$location', function($uibModalInstance,$scope,$location){
-	
+app.controller('editAdminModalCtrl',['$uibModalInstance','$scope','$location','$uibModal', function($uibModalInstance,$scope,$location,$uibModal){
+	$scope.comfirmation = function(){
+		$uibModal.open({
+			animation: true,
+			templateUrl: 'dialog/dialogconfirmation.html',
+			windowClass: 'app-modal-window'
+		}).result.then(function(){},function(res){})
+	}
 }]);
 
 app.controller('voteHomeCtrl',['$scope', function($scope){
