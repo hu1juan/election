@@ -23,6 +23,7 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location', fu
 	}
 }]);
 
+//modal admin
 app.controller('adminCtrl',['$scope','$uibModal', function($scope,$uibModal){
 	$scope.editadmin = function(){
 		$uibModal.open({
@@ -39,8 +40,16 @@ app.controller('editAdminModalCtrl',['$uibModalInstance','$scope','$location','$
 		$uibModal.open({
 			animation: true,
 			templateUrl: 'dialog/dialogconfirmation.html',
+			controller: 'confirmAdminCtrl',
 			windowClass: 'app-modal-window'
 		}).result.then(function(){},function(res){})
+	}
+}]);
+
+app.controller('confirmAdminCtrl',['$scope','$uibModalInstance', function($scope,$uibModalInstance){
+	$scope.confirmok = function(){
+		alert('successfull save');
+		$uibModalInstance.dismiss();
 	}
 }]);
 
@@ -61,6 +70,21 @@ app.controller('voteHomeCtrl',['$scope', function($scope){
 			{"Position":"Auditor", "Fullname":"Reymon Dinagat"}
 		]
 		$scope.viewby = 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
 		$scope.totalItems = $scope.data.length;
 		$scope.currentPage = 1;
 		$scope.itemsPerPage = $scope.viewby;
