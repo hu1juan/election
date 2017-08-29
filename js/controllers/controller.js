@@ -44,6 +44,9 @@ app.controller('editAdminModalCtrl',['$uibModalInstance','$scope','$location','$
 			windowClass: 'app-modal-window'
 		}).result.then(function(){},function(res){})
 	}
+	$scope.canceladmin = function(){
+		$uibModalInstance.dismiss();
+	}
 }]);
 
 app.controller('confirmAdminCtrl',['$scope','$uibModalInstance', function($scope,$uibModalInstance){
