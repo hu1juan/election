@@ -50,6 +50,7 @@ margin: 19px 28px;
             	margin: -1% auto auto 30%;
            
             }
+            
 </style>
 
 	<title></title>
@@ -81,12 +82,23 @@ margin: 19px 28px;
                     <div ng-controller="voteHomeCtrl">
                       <h4>Vote Wisely!</h4>
                       <pre>
-                            Current Page: {{currentPage +"/"+totalItems}}
-                            <table class="table">
+                            <!-- Current Page: {{currentPage +"/"+totalItems}} -->
+                           <table>
+                           		 <tr ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+                           			<th>                                              </th>
+                           		 	<th>{{row.Position}} </th>
+                           		 	<th></th>
+                           		 </tr>
+                           		 </table>
+                           		 <hr>
+                           		<table>
 						      <tr ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
-						        <td>{{row.Position}}</td>
+						      	
+						      	<td>                                 </td>
+						        <td><input type="radio" name=""></td> 
+						        <td>                    </td>
 						        <td>{{row.Fullname}}</td>
-						        <td> <input type="radio" name=""> </td>
+						        
 						      </tr>
 						    </table>
                         <div class="pageContain">
