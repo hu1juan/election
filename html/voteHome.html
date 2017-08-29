@@ -26,7 +26,7 @@ margin: 19px 28px;
         .pagerContainer{
                 width: 70%;
                 margin-left: 15%;
-                margin-top: 0%;
+                margin-top: 5%;
             }
             .pageContain{
                 height: 30vh;
@@ -48,9 +48,15 @@ margin: 19px 28px;
             }
             .table2{
             	margin: -1% auto auto 30%;
-           
             }
-            
+            .position{
+            	font-size: 20px;
+            	margin-left: -5%;
+            	margin-top: -5%;
+            }
+            .line{
+            	margin-top: -5%;	
+            }
 </style>
 
 	<title></title>
@@ -83,26 +89,14 @@ margin: 19px 28px;
                       <h4>Vote Wisely!</h4>
                       <pre>
                             <!-- Current Page: {{currentPage +"/"+totalItems}} -->
-                           <table>
-                           		 <tr ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
-                           			<th>                                              </th>
-                           		 	<th>{{row.Position}} </th>
-                           		 	<th></th>
-                           		 </tr>
-                           		 </table>
-                           		 <hr>
-                           		<table>
-						      <tr ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
-						      	
-						      	<td>                                 </td>
-						        <td><input type="radio" name=""></td> 
-						        <td>                    </td>
-						        <td>{{row.Fullname}}</td>
-						        
-						      </tr>
-						    </table>
+                            <div ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))" class="position">
+                            	{{row.Position}}
+                            </div>
+                           	<hr class="line">
+                           	<div ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+                           		<input type="radio" name="">                {{row.Fullname}}	
+                            </div>
                         <div class="pageContain">
- 	
 						</div>
                    		</pre>
 
