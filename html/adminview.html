@@ -39,9 +39,11 @@
 										<label>Candidate #</label>
 										<input type="text" class="form-control" readonly />
 										<label>Fullname</label>
-										<input type="text" class="form-control" name="fullName" ng-model="fullname" placeholder="Enter fullname" validation-form ng-change="onChange()" required/>
+										<input type="text" class="form-control" ng-minlength="5" ng-maxlength="50" name="fullName" ng-model="fullname" placeholder="Enter fullname" validation-form ng-change="onChange()" required/>
 										<div ng-messages="formValidation.fullName.$error" class="errorvalidation">
 											<div ng-message="required">This field is required</div>
+											<div ng-message="maxlength">Your field is too long</div>
+											<div ng-message="minlength">Your field is too short</div>
 										</div>
 										<label>Position</label>
 										<select class="form-control">
@@ -86,7 +88,7 @@
 										<tbody>
 											<tr>
 												<td>1</td>
-												<td>Roa duterte</td>
+												<td><a href="" ng-click="editadmin()">Roa duterte</a></td>
 												<td>President</td>
 											</tr>
 											<tr>

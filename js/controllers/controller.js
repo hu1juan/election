@@ -1,6 +1,6 @@
 'use strict'
 
-app.controller('loginCtrl',['$scope','$uibModal',function($scope,$uibModal){
+app.controller('loginCtrl',['$scope','$uibModal', function($scope,$uibModal){
 	$scope.open = function(size){
 		$uibModal.open({
 			animation: true,
@@ -23,7 +23,18 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location', fu
 	}
 }]);
 
-app.controller('adminCtrl',['$scope', function($scope){
+app.controller('adminCtrl',['$scope','$uibModal', function($scope,$uibModal){
+	$scope.editadmin = function(){
+		$uibModal.open({
+			animation: true,
+			templateUrl: 'modal/editadmin.html',
+			controller: 'editAdminModalCtrl',
+			windowClass: 'app-modal-window'
+		}).result.then(function(){},function(res){})
+	};
+}]);
+
+app.controller('editAdminModalCtrl',['$uibModalInstance','$scope','$location', function($uibModalInstance,$scope,$location){
 	
 }]);
 
