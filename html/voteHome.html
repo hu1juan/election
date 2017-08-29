@@ -85,9 +85,7 @@ margin: 19px 28px;
                             <!-- Current Page: {{currentPage +"/"+totalItems}} -->
                            <table>
                            		 <tr ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
-                           			<th>                                              </th>
-                           		 	<th>{{row.Position}} </th>
-                           		 	<th></th>
+                           		 	<th style="text-align: center;">{{row.Position}}</th>
                            		 </tr>
                            		 </table>
                            		 <hr>
