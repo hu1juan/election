@@ -71,8 +71,7 @@
 			color:black;
 		}
 		header{
-			height: 50px;
-			position: fixed;
+			height: 100px;
 			width: 100%;
 		}
 		div.register{
@@ -89,6 +88,7 @@
 			padding-left:10px;
 		}
 		button.signin{
+			margin-top: 20px;
 			border-radius: 25px;
     		background-color: black;
     		color: white;
@@ -98,7 +98,7 @@
     		padding: 5px 20px;
 		}
 		button.signin:hover{
-			margin-top: 3px;
+			margin-top: 23px;
 			background-color: transparent !important;
 			color:black;
 			border-color: black;
@@ -110,14 +110,32 @@
 			color:black;
 			transition: all 2s ease;
 		}
+		.logo{
+			padding-top: 10px;
+			height: auto;
+			width: 80px;
+		}
+		.logo:hover{
+			width: 85px;
+			transition: all 0.5s ease;
+		}
+		footer{
+			text-align: center;
+		}
+		footer:hover{
+			background-color: white;
+			opacity: 0.8;
+			color:black;
+			transition: all 2s ease;
+		}
 	</style>
 </head>
 <body>
 <header>
-	
-<<<<<<< HEAD
-	<a href="#!admin">admin</a>
-	<a href="#!votehome">Voter</a>
+	<div class="container">
+	<div class="pull-left">
+		<img class="logo" src="../image/vote7.png">
+	</div>
 
 	<div class="pull-right">
 		<!-- <form class="form-inline">
@@ -133,11 +151,11 @@
 		    </form> -->
 		    <button type="button" class="btn btn-default btn-xs signin" ng-click="open('sm')">Sign In</button>
 	</div>
+	</div>
 </header>
 
-
-
-	<div class="container">
+<div class="container">
+	<div class="bodyHOLDER">
 		<div class="pull-left">
 			<center>
 			<h3 style="font-size: 100px;background-color: black;border-radius: 25px;">E V E R Y</h3>
@@ -181,6 +199,11 @@
 			<p style="text-align: right;"> - <strong>George Jean Nathan</strong></p>
 		</div>
 	</div>
+</div>
 
+<footer>
+	<a href="#!admin">admin</a>
+	<a href="#!votehome">Voter</a>
+</footer>
 </body>
 </html>
