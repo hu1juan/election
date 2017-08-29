@@ -44,6 +44,21 @@ app.controller('voteHomeCtrl',['$scope', function($scope){
 			{"Position":"Auditor", "Fullname":"Reymon Dinagat"}
 		]
 		$scope.viewby = 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
 		$scope.totalItems = $scope.data.length;
 		$scope.currentPage = 1;
 		$scope.itemsPerPage = $scope.viewby;

@@ -26,7 +26,7 @@ margin: 19px 28px;
         .pagerContainer{
                 width: 70%;
                 margin-left: 15%;
-                margin-top: 0%;
+                margin-top: 5%;
             }
             .pageContain{
                 height: 30vh;
@@ -48,9 +48,15 @@ margin: 19px 28px;
             }
             .table2{
             	margin: -1% auto auto 30%;
-           
             }
-            
+            .position{
+            	font-size: 20px;
+            	margin-left: -5%;
+            	margin-top: -5%;
+            }
+            .line{
+            	margin-top: -5%;	
+            }
 </style>
 
 	<title></title>
@@ -83,6 +89,7 @@ margin: 19px 28px;
                       <h4>Vote Wisely!</h4>
                       <pre>
                             <!-- Current Page: {{currentPage +"/"+totalItems}} -->
+<<<<<<< HEAD
                            <table>
                            		 <tr ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
                            		 	<th style="text-align: center;">{{row.Position}}</th>
@@ -99,8 +106,16 @@ margin: 19px 28px;
 						        
 						      </tr>
 						    </table>
+=======
+                            <div ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))" class="position">
+                            	{{row.Position}}
+                            </div>
+                           	<hr class="line">
+                           	<div ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+                           		<input type="radio" name="">                {{row.Fullname}}	
+                            </div>
+>>>>>>> election_system/master
                         <div class="pageContain">
- 	
 						</div>
                    		</pre>
 
