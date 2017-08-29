@@ -89,24 +89,6 @@ margin: 19px 28px;
                       <h4>Vote Wisely!</h4>
                       <pre>
                             <!-- Current Page: {{currentPage +"/"+totalItems}} -->
-<<<<<<< HEAD
-                           <table>
-                           		 <tr ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
-                           		 	<th style="text-align: center;">{{row.Position}}</th>
-                           		 </tr>
-                           		 </table>
-                           		 <hr>
-                           		<table>
-						      <tr ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
-						      	
-						      	<td>                                 </td>
-						        <td><input type="radio" name=""></td> 
-						        <td>                    </td>
-						        <td>{{row.Fullname}}</td>
-						        
-						      </tr>
-						    </table>
-=======
                             <div ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))" class="position">
                             	{{row.Position}}
                             </div>
@@ -114,7 +96,6 @@ margin: 19px 28px;
                            	<div ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
                            		<input type="radio" name="">                {{row.Fullname}}	
                             </div>
->>>>>>> election_system/master
                         <div class="pageContain">
 						</div>
                    		</pre>
