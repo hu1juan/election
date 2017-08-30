@@ -123,9 +123,9 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr ng-repeat=" p in candidates | filter:cposition:strict">
+											<tr ng-repeat=" p in candidates | filter:{position: cposition}:true">
 												<td>{{p.id}}</td>
-												<td><a href="" ng-click="editadmin()">{{p.first_name}} {{p.middle_name}} {{p.last_name}}</a></td>
+												<td><a href="" ng-click="editadmin()">{{p.first_name}}  {{ p.middle_name }} {{p.last_name}}</a></td>
 												<td>{{p.position}}</td>
 											</tr>
 										</tbody>
