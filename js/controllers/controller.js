@@ -24,13 +24,22 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location', fu
 }]);
 
 //modal admin
-app.controller('adminCtrl',['$scope','$uibModal', function($scope,$uibModal){
+app.controller('adminCtrl',['$scope','$uibModal','$http', function($scope,$uibModal,$http){
+
+	$http({
+		method: 'GET',
+		url: 'https://devpartnerstraining.herokuapp.com/CandidateGet'
+	}).then(function successCallback(response) {
+    	$scope.candidates = response.data;
+	}, function errorCallback(response) {
+	  // called asynchronously if an error occurs
+	    // or server returns response with an error status.
+	});
 	$scope.editadmin = function(){
 		$uibModal.open({
 			animation: true,
 			templateUrl: 'modal/editadmin.html',
-			controller: 'editAdminModalCtrl',
-			windowClass: 'app-modal-window'
+			controller: 'editAdminModalCtrl'
 		}).result.then(function(){},function(res){})
 	};
 }]);
@@ -40,8 +49,7 @@ app.controller('editAdminModalCtrl',['$uibModalInstance','$scope','$location','$
 		$uibModal.open({
 			animation: true,
 			templateUrl: 'dialog/dialogconfirmation.html',
-			controller: 'confirmAdminCtrl',
-			windowClass: 'app-modal-window'
+			controller: 'confirmAdminCtrl'
 		}).result.then(function(){},function(res){})
 	}
 	$scope.canceladmin = function(){

@@ -38,19 +38,44 @@
 									<div class="form-group">
 										<label>Candidate #</label>
 										<input type="text" class="form-control" readonly />
-										<label>Fullname</label>
-										<input type="text" class="form-control" ng-minlength="5" ng-maxlength="50" name="fullName" ng-model="fullname" placeholder="Enter fullname" validation-form ng-change="onChange()" required/>
-										<div ng-messages="formValidation.fullName.$error" class="errorvalidation">
-											<div ng-message="required" ng-show="formValidation.fullName.$touched">This field is required</div>
+										<label>First name</label>
+										<input type="text" class="form-control" ng-minlength="5" ng-maxlength="50" name="cfname" ng-model="cfname" placeholder="Enter First Name" required/>
+										<div ng-messages="formValidation.cfname.$error" class="errorvalidation">
+											<div ng-message="required" ng-show="formValidation.cfname.$touched">This field is required</div>
 											<div ng-message="maxlength">Your field is too long</div>
 											<div ng-message="minlength">Your field is too short</div>
 										</div>
-										<label>Position</label>
+										<label>Middle name</label>
+										<input type="text" class="form-control" ng-minlength="5" ng-maxlength="50" name="cmname" ng-model="cmname" placeholder="Enter Middle Name" required/>
+										<div ng-messages="formValidation.cmname.$error" class="errorvalidation">
+											<div ng-message="required" ng-show="formValidation.cmname.$touched">This field is required</div>
+											<div ng-message="maxlength">Your field is too long</div>
+											<div ng-message="minlength">Your field is too short</div>
+										</div>
+										<label>Last name</label>
+										<input type="text" class="form-control" ng-minlength="5" ng-maxlength="50" name="clname" ng-model="clname" placeholder="Enter Last Name" required/>
+										<div ng-messages="formValidation.clname.$error" class="errorvalidation">
+											<div ng-message="required" ng-show="formValidation.clname.$touched">This field is required</div>
+											<div ng-message="maxlength">Your field is too long</div>
+											<div ng-message="minlength">Your field is too short</div>
+										</div>
+										<label>Gender</label>
 										<select class="form-control">
-											<option>Select position</option>
-											<option>President</option>
-											<option>Vice President</option>
-											<option>Secretary</option>
+											<option>Male</option>
+											<option>Female</option>
+										</select>
+										<label>Position</label>
+										<select class="form-control" ng-model="rcposition">
+											<option value="President">President</option>
+												<option value="Internal Vice President">Internal Vice President</option>
+												<option value="External Vice President">External Vice President</option>
+												<option value="Secretary">Secretary</option>
+												<option value="Ass. Secretary">Ass. Secretary</option>
+												<option value="Treasurer">Treasurer</option>
+												<option value="Ass. Treasurer">Ass. Treasurer</option>
+												<option value="Auditor">Auditor</option>
+												<option value="PIO">PIO</option>
+												<option value="Business Manager">Business Manager</option>
 										</select>
 									</div>
 									<div class="form-group">
@@ -68,10 +93,26 @@
 								<h4><span class="glyphicon glyphicon-list-alt"> List</span></h4>
 							</div>
 							<hr/>
+							
 							<div class="form-group">
 								<div class="panel panel-default">
 									<!-- Default panel contents -->
-									<div class="panel-heading">Position</div>
+									<div class="panel-heading">
+										<div class="form-group">
+											<select class="form-control" ng-model="cposition">
+												<option value="President">President</option>
+												<option value="Internal Vice President">Internal Vice President</option>
+												<option value="External Vice President">External Vice President</option>
+												<option value="Secretary">Secretary</option>
+												<option value="Ass. Secretary">Ass. Secretary</option>
+												<option value="Treasurer">Treasurer</option>
+												<option value="Ass. Treasurer">Ass. Treasurer</option>
+												<option value="Auditor">Auditor</option>
+												<option value="PIO">PIO</option>
+												<option value="Business Manager">Business Manager</option>
+											</select>
+										</div>
+									</div>
 									<!-- Table -->
 									<table class="table">
 										<thead>
@@ -82,15 +123,10 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>1</td>
-												<td><a href="" ng-click="editadmin()">Roa duterte</a></td>
-												<td>President</td>
-											</tr>
-											<tr>
-												<td>2</td>
-												<td>Sarah duterte</td>
-												<td>Vice president</td>
+											<tr ng-repeat=" p in candidates | filter:cposition:strict">
+												<td>{{p.id}}</td>
+												<td><a href="" ng-click="editadmin()">{{p.first_name}} {{p.middle_name}} {{p.last_name}}</a></td>
+												<td>{{p.position}}</td>
 											</tr>
 										</tbody>
 									</table>
