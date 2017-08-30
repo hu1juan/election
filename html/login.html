@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Log in</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style type="text/css">
 		html { 
 		  background: url(../image/bg.jpg) no-repeat center center fixed; 
@@ -25,19 +26,29 @@
     		font-weight: bold;
     	}
     	button.login{
-    		border-radius: 5px;
+    		border-radius: 25px;
     		background-color: black;
     		color: white;
     		border-color: white;
     	}
+    	button.login:hover{
+			background-color: white;
+			opacity: 0.6;
+			color:black;
+			border-color: black;
+			transition: all 0.5s ease;
+    		padding: 8px 25px;
+		}
     	input.register{
-    		background-color: transparent;
+    		background-color: transparent !important;
     		color: black;
     		border-color: white;
     		font-weight: bold;
+    		border-radius: 25px;
     	}
     	input::-webkit-input-placeholder {
-		color: gray !important;
+		color: black !important;
+		opacity: 0.5;
 		}
 		 
 		input:-moz-placeholder { /* Firefox 18- */
@@ -71,13 +82,10 @@
 			color:black;
 		}
 		header{
+			box-sizing: border-box;
 			height: 100px;
 			width: 100%;
-		}
-		div.register{
-			padding: 15px;
-			margin: 5px;
-			border-radius: 25px;
+			margin-top: 10px;
 		}
 		.formaction{
 			margin: 0;
@@ -88,21 +96,20 @@
 			padding-left:10px;
 		}
 		button.signin{
-			margin-top: 20px;
 			border-radius: 25px;
     		background-color: black;
     		color: white;
     		border-color: white;
     		font-size: 20px;
-    		margin-right: 25px;
     		padding: 5px 20px;
+    		margin-top: 15px;
 		}
 		button.signin:hover{
-			margin-top: 23px;
 			background-color: transparent !important;
 			color:black;
 			border-color: black;
 			transition: all 0.5s ease;
+    		padding: 8px 25px;
 		}
 		header:hover{
 			background-color: white;
@@ -111,9 +118,9 @@
 			transition: all 2s ease;
 		}
 		.logo{
-			padding-top: 2px;
 			height: auto;
 			width: 80px;
+			margin: auto 25px;
 		}
 		.logo:hover{
 			width: 85px;
@@ -130,19 +137,48 @@
 		}
 		h3.vote{
 			margin-top: -50px;
+			margin-left: 25px;
 			text-shadow: 0 0 4px #FF0000, 0 0 8px #0000FF;
+		}
+		.headerRIGHT{
+			height: 80px;
+			width: 20%;
+			float: left;
+			text-align:center;
+    		margin: 10px auto;
+		}
+		.headerLEFT{
+			height: 80px;
+			width: 80%;
+			float: left;
+    		margin: 10px auto;
+		}
+		.content{
+			width: 80%;
+		}
+		form.reg{
+			width: 420px;
+			border-style: outset;
+			padding: 15px;
+			border-radius: 25px;
+			border-color: white;
+			background: rgba(200, 54, 54, 0.5);
+			box-shadow: 15px 15px 50px black;
+		}
+		.pull-right{
+			text-align: right;
 		}
 	</style>
 </head>
 <body>
 <header>
-	<div class="container">
-	<div class="pull-left">
+	<div class="container content">
+	<div class="headerLEFT">
 		<img class="logo" src="../image/vote7.png">
 		<h3 class="vote">V O T E</h3>
 	</div>
 
-	<div class="pull-right">
+	<div class="headerRIGHT">
 		<!-- <form class="form-inline">
 		    <div class="form-group">
 		    	<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -160,49 +196,89 @@
 </header>
 
 <div class="container">
-	<div class="bodyHOLDER">
-		<div class="pull-left">
-			<center>
-			<h3 style="font-size: 100px;background-color: black;border-radius: 25px;">E V E R Y</h3>
-			<h1 style="font-size: 200px;color: cyan;text-shadow:0 0 15px black;"><strong>VOTE</strong></h1>
-			<h3 style="font-size: 100px;background-color: black;border-radius: 25px;">C O U N T S</h3>
-			</center>
-		</div>
+	<div class="pull-left">
+		<center>
+		<h3 style="font-size: 100px;background-color: black;border-radius: 25px;">E V E R Y</h3>
+		<h1 style="font-size: 200px;color: cyan;text-shadow:0 0 15px black;"><strong>VOTE</strong></h1>
+		<h3 style="font-size: 100px;background-color: black;border-radius: 25px;">C O U N T S</h3>
+		</center>
+	</div>
 
-		<div class="pull-right">
-		<div class="register">
-			<form>
-			<label style="font-size: 50px;">Sign Up</label><span class="glyphicon glyphicon-hand-down down" aria-hidden="true"></span>
+	<div class="pull-right">
+		<label style="font-size: 50px;">Sign Up</label><span class="glyphicon glyphicon-hand-down down" aria-hidden="true"></span>
+
+		<!-- <form>
+	    <div class="form-group">
+	      <label for="sID">Firstname:</label>
+	      <input type="text" class="form-control register" id="sID" placeholder="Enter id number" name="email">
+	    </div>
+
+	    <div class="form-group">
+	      <label for="pwd">Password:</label>
+	      <input type="password" class="form-control register" id="pwd" placeholder="Enter password" name="pwd">
+	    </div>
+	    <div class="form-group">
+	      <label for="pwd">Confirm Password:</label>
+	      <input type="password" class="form-control register" id="pwd" placeholder="Enter password" name="pwd">
+	    </div>
+	    <div class="form-group">
+	      <label for="pwd">Email:</label>
+	      <input type="email" class="form-control register" id="pwd" placeholder="yourmail@rock.ph" name="pwd">
+	    </div>
+	    <div class="formaction">
+	   		 <button type="submit" class="btn btn-default login">Create Account</button>
+	    </div>
+	    </form> -->
+
+	    <form role="form" class="form-horizontal reg">
+			<!-- <div class="form-group">
+		    	<label for="name" class="col-xs-2 control-label">Name</label>
+		        <div class="col-xs-4">
+		        	<input type="text" class="form-control" name="name" placeholder="name"/>
+		        </div>
+		    </div> -->
 		    <div class="form-group">
-		      <label for="sID">Student ID #:</label>
-		      <input type="text" class="form-control register" id="sID" placeholder="Enter id number" name="email">
+		        <div class="col-xs-6">
+		        	<input type="text" class="form-control register" name="name" placeholder="FIRSTNAME"/>
+		        </div>
+		        <div class="col-xs-6">
+		        	<input type="text" class="form-control register" name="name" placeholder="MIDDLENAME"/>
+		        </div>
 		    </div>
 		    <div class="form-group">
-		      <label for="pwd">Password:</label>
-		      <input type="password" class="form-control register" id="pwd" placeholder="Enter password" name="pwd">
+		        <div class="col-xs-6">
+		        	<input type="text" class="form-control register" name="name" placeholder="LASTNAME"/>
+		        </div>
+		        <div class="col-xs-6">
+		        	<label class="radio-inline"><input type="radio" name="gender" value="M">Male</label>
+		        	<label class="radio-inline"><input type="radio" name="gender" valye="F">Female</label>
+		        </div>
+		    </div>
+
+			<div class="form-group">
+		        <div class="col-xs-12">
+		        	<input type="text" class="form-control register" name="name" placeholder="USERNAME"/>
+		        </div>
 		    </div>
 		    <div class="form-group">
-		      <label for="pwd">Confirm Password:</label>
-		      <input type="password" class="form-control register" id="pwd" placeholder="Enter password" name="pwd">
-		    </div>
-		    <div class="form-group">
-		      <label for="pwd">Email:</label>
-		      <input type="email" class="form-control register" id="pwd" placeholder="yourmail@rock.ph" name="pwd">
+		        <div class="col-xs-6">
+		        	<input type="password" class="form-control register" name="name" placeholder="PASSWORD"/>
+		        </div>
+		        <div class="col-xs-6">
+		        	<input type="password" class="form-control register" name="name" placeholder="CONFIRM PASSWORD"/>
+		        </div>
 		    </div>
 		    <div class="formaction">
-		   		 <button type="submit" class="btn btn-default login">Create Account</button>
-		   		 <!-- <a href="" ng-click="open('sm')">Login</a> -->
-		    </div>
-		    </form>
-		</div>
-			
-		    <br>
-		    <br>
-		    <br>
-			<p>" Bad officials are elected by good</p>
-			<p>citizens who do not vote."</p>
-			<p style="text-align: right;"> - <strong>George Jean Nathan</strong></p>
-		</div>
+	   		 <button type="submit" class="btn btn-default login">Create Account</button>
+	    </div>
+	    </form>
+
+	    <br>
+	    <br>
+	    <br>
+		<p style="text-align: center;">" Bad officials are elected by good</p>
+		<p style="text-align: center;">citizens who do not vote."</p>
+		<p style="text-align: right;"> - <strong>George Jean Nathan</strong></p>
 	</div>
 </div>
 
