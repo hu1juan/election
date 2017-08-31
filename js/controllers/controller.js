@@ -73,48 +73,41 @@ app.controller('editAdminModalCtrl',['$uibModalInstance','$scope','$location','$
 	}
 }]);
 
-app.controller('confirmAdminCtrl',['$scope','$uibModalInstance', function($scope,$uibModalInstance){
+app.controller('confirmAdminCtrl',['$scope','$uibModalInstance',  function($scope,$uibModalInstance){
 	$scope.confirmok = function(){
 		alert('successfull save');
 		$uibModalInstance.dismiss();
 	}
 }]);
 
-app.controller('voteHomeCtrl',['$scope', function($scope){
+app.controller('voteHomeCtrl',['$scope','$http', function($scope,$http){
 	
 	//console.log($scope.currentPage);
 	//console.log($scope.totalItems);
-		$scope.data = [
-			{"Position":"President", "Fullname":"John Mangmang"},
-			{"Position":"Internal Vice-Pres ", "Fullname":"Hannie Nakila"},
-			{"Position":"External Vice-Pres", "Fullname":"Reymon Dinagat"},
-			{"Position":"Secretary", "Fullname":"Veah Ranario"},
-			{"Position":"Treasurer", "Fullname":"Reymon Dinagat"},
-			{"Position":"Asst.Secretary", "Fullname":"Reymon Dinagat"},
-			{"Position":"Asst. Treasurer", "Fullname":"Reymon Dinagat"},
-			{"Position":"PIO", "Fullname":"Reymon Dinagat"},
-			{"Position":"Bus Manager", "Fullname":"Reymon Dinagat"},
-			{"Position":"Auditor", "Fullname":"Reymon Dinagat"}
-		]
-		$scope.viewby = 1;
+		// $scope.data = [
+		// 	{"Position":"President", "Fullname":"John Mangmang"},
+		// 	{"Position":"Internal Vice-Pres ", "Fullname":"Hannie Nakila"},
+		// 	{"Position":"External Vice-Pres", "Fullname":"Reymon Dinagat"},
+		// 	{"Position":"Secretary", "Fullname":"Veah Ranario"},
+		// 	{"Position":"Treasurer", "Fullname":"Reymon Dinagat"},
+		// 	{"Position":"Asst.Secretary", "Fullname":"Reymon Dinagat"},
+		// 	{"Position":"Asst. Treasurer", "Fullname":"Reymon Dinagat"},
+		// 	{"Position":"PIO", "Fullname":"Reymon Dinagat"},
+		// 	{"Position":"Bus Manager", "Fullname":"Reymon Dinagat"},
+		// 	{"Position":"Auditor", "Fullname":"Reymon Dinagat"}
+		// ]
+		// $scope.viewby = 1;
+		// $scope.totalItems = $scope.data.length;
+		// $scope.currentPage = 1;
+		// $scope.itemsPerPage = $scope.viewby;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
-		$scope.totalItems = $scope.data.length;
+		 $http.get("https://devpartnerstraining.herokuapp.com/CandidateGet").then(function (response) {
+      		$scope.myData = response.data;
+      	
+      	$scope.viewby = 2;
+		$scope.totalItems = $scope.myData.length;
 		$scope.currentPage = 1;
 		$scope.itemsPerPage = $scope.viewby;
+}) 
 }]);
-
 
