@@ -129,7 +129,7 @@ margin: 19px 28px;
 						  	<th>Candidate Name</th>
 						    
 						  </tr>
-						  <tr ng-repeat="x in myData">
+						  <tr ng-repeat="x in myData.slice(((currentPage-1)*itemsPerPage),((currentPage)*itemsPerPage))">
 						  	<td>{{x.position}}</td>
 						  	<td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
 						  </tr>

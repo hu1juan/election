@@ -87,8 +87,11 @@ app.controller('voteHomeCtrl',['$scope','$http', function($scope,$http){
 
 		 $http.get("https://devpartnerstraining.herokuapp.com/CandidateGet").then(function (response) {
       		$scope.myData = response.data;
-  });
-
+      	
+      	$scope.viewby = 2;
+		$scope.totalItems = $scope.myData.length;
+		$scope.currentPage = 1;
+		$scope.itemsPerPage = $scope.viewby;
+}) 
 }]);
-
 
