@@ -230,7 +230,7 @@
 	    </div>
 	    </form> -->
 
-	    <form role="form" class="form-horizontal reg">
+	    <form role="form" class="form-horizontal reg" ng-submit="reg()" name="formreg">
 			<!-- <div class="form-group">
 		    	<label for="name" class="col-xs-2 control-label">Name</label>
 		        <div class="col-xs-4">
@@ -239,33 +239,33 @@
 		    </div> -->
 		    <div class="form-group">
 		        <div class="col-xs-6">
-		        	<input type="text" class="form-control register" name="name" placeholder="FIRSTNAME"/>
+		        	<input type="text" class="form-control register" ng-model="fName" placeholder="FIRSTNAME" required/>
 		        </div>
 		        <div class="col-xs-6">
-		        	<input type="text" class="form-control register" name="name" placeholder="MIDDLENAME"/>
+		        	<input type="text" class="form-control register" ng-model="mName" placeholder="MIDDLENAME" required/>
 		        </div>
 		    </div>
 		    <div class="form-group">
 		        <div class="col-xs-6">
-		        	<input type="text" class="form-control register" name="name" placeholder="LASTNAME"/>
+		        	<input type="text" class="form-control register" ng-model="lName" placeholder="LASTNAME" required/>
 		        </div>
 		        <div class="col-xs-6">
-		        	<label class="radio-inline"><input type="radio" name="gender" value="M">Male</label>
-		        	<label class="radio-inline"><input type="radio" name="gender" valye="F">Female</label>
+		        	<label class="radio-inline"><input type="radio" name="sex" ng-model="gender" ng-value="'M'" required>Male</label>
+		        	<label class="radio-inline"><input type="radio" name="sex" ng-model="gender" ng-value="'F'" required>Female</label>
 		        </div>
 		    </div>
 
 			<div class="form-group">
 		        <div class="col-xs-12">
-		        	<input type="text" class="form-control register" name="name" placeholder="USERNAME"/>
+		        	<input type="text" class="form-control register" ng-model="user" placeholder="USERNAME" required/>
 		        </div>
 		    </div>
 		    <div class="form-group">
 		        <div class="col-xs-6">
-		        	<input type="password" class="form-control register" name="name" placeholder="PASSWORD"/>
+		        	<input type="password" class="form-control register" ng-model="pass" placeholder="PASSWORD" required/>
 		        </div>
 		        <div class="col-xs-6">
-		        	<input type="password" class="form-control register" name="name" placeholder="CONFIRM PASSWORD"/>
+		        	<input type="password" class="form-control register" ng-model="pass2" placeholder="CONFIRM PASSWORD" required/>
 		        </div>
 		    </div>
 		    <div class="formaction">

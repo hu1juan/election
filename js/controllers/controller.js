@@ -1,6 +1,6 @@
 'use strict'
 
-app.controller('loginCtrl',['$scope','$uibModal', function($scope,$uibModal){
+app.controller('loginCtrl',['$scope','$uibModal','registration', function($scope,$uibModal,registration){
 	$scope.open = function(size){
 		$uibModal.open({
 			animation: true,
@@ -10,12 +10,28 @@ app.controller('loginCtrl',['$scope','$uibModal', function($scope,$uibModal){
 			size: size,
 		}).result.then(function(){},function(res){})
 	};
+	$scope.reg = function(){
+		registration.register($scope.fName,$scope.mName,$scope.lName,$scope.gender,$scope.user,$scope.pass,$scope.pass2);
+		$scope.formreg.$setUntouched();
+		$scope.formreg.$setPristine();
+	}
 }]);
 
-app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location', function($uibModalInstance,$scope,$location){
+app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$http', function($uibModalInstance,$scope,$location,$http){
 	$scope.ok = function(){
 		$uibModalInstance.dismiss();
-		$location.path('/admin');
+		let sample = {
+			username: $scope.loginuser,
+			password: $scope.loginpass
+		}
+		$http.post('https://devpartnerstraining.herokuapp.com/VoterLogin',JSON.stringify(sample)).then(function successCallback(response){
+			if(response.data){
+				console.log(response.data);
+			}
+		}, function errorCallback(response){
+			alert(response.status);
+		});
+	
 	}
 
 	$scope.cancel = function(){
