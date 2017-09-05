@@ -1,6 +1,6 @@
 'use strict'
 
-app.controller('loginCtrl',['$scope','$uibModal','registration', function($scope,$uibModal,registration){
+app.controller('loginCtrl',['$scope','$uibModal', function($scope,$uibModal){
 	$scope.open = function(size){
 		$uibModal.open({
 			animation: true,
@@ -10,28 +10,12 @@ app.controller('loginCtrl',['$scope','$uibModal','registration', function($scope
 			size: size,
 		}).result.then(function(){},function(res){})
 	};
-	$scope.reg = function(){
-		registration.register($scope.fName,$scope.mName,$scope.lName,$scope.gender,$scope.user,$scope.pass,$scope.pass2);
-		$scope.formreg.$setUntouched();
-		$scope.formreg.$setPristine();
-	}
 }]);
 
-app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$http', function($uibModalInstance,$scope,$location,$http){
+app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location', function($uibModalInstance,$scope,$location){
 	$scope.ok = function(){
 		$uibModalInstance.dismiss();
-		let sample = {
-			username: $scope.loginuser,
-			password: $scope.loginpass
-		}
-		$http.post('https://devpartnerstraining.herokuapp.com/VoterLogin',JSON.stringify(sample)).then(function successCallback(response){
-			if(response.data){
-				console.log(response.data);
-			}
-		}, function errorCallback(response){
-			alert(response.status);
-		});
-	
+		$location.path('/admin');
 	}
 
 	$scope.cancel = function(){
@@ -40,17 +24,19 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 }]);
 
 //modal admin
-app.controller('adminCtrl',['$scope','$uibModal','$http', function($scope,$uibModal,$http){
+app.controller('adminCtrl',['$scope','$uibModal','candidateGet', function($scope,$uibModal,candidateGet){
 
-	$http({
-		method: 'GET',
-		url: 'https://devpartnerstraining.herokuapp.com/CandidateGet'
-	}).then(function successCallback(response) {
-    	$scope.candidates = response.data;
-	}, function errorCallback(response) {
-	  // called asynchronously if an error occurs
-	    // or server returns response with an error status.
-	});
+	candidateGet.getCandidates().then(function(data){$scope.candidates = data;})
+
+	// $http({
+	// 	method: 'GET',
+	// 	url: 'https://devpartnerstraining.herokuapp.com/CandidateGet'
+	// }).then(function successCallback(response) {
+ //    	$scope.candidates = response.data;
+	// }, function errorCallback(response) {
+	//   // called asynchronously if an error occurs
+	//     // or server returns response with an error status.
+	// });
 	$scope.editadmin = function(){
 		$uibModal.open({
 			animation: true,
@@ -73,41 +59,48 @@ app.controller('editAdminModalCtrl',['$uibModalInstance','$scope','$location','$
 	}
 }]);
 
-app.controller('confirmAdminCtrl',['$scope','$uibModalInstance',  function($scope,$uibModalInstance){
+app.controller('confirmAdminCtrl',['$scope','$uibModalInstance', function($scope,$uibModalInstance){
 	$scope.confirmok = function(){
 		alert('successfull save');
 		$uibModalInstance.dismiss();
 	}
 }]);
 
-app.controller('voteHomeCtrl',['$scope','$http', function($scope,$http){
+app.controller('voteHomeCtrl',['$scope', function($scope){
 	
 	//console.log($scope.currentPage);
 	//console.log($scope.totalItems);
-		// $scope.data = [
-		// 	{"Position":"President", "Fullname":"John Mangmang"},
-		// 	{"Position":"Internal Vice-Pres ", "Fullname":"Hannie Nakila"},
-		// 	{"Position":"External Vice-Pres", "Fullname":"Reymon Dinagat"},
-		// 	{"Position":"Secretary", "Fullname":"Veah Ranario"},
-		// 	{"Position":"Treasurer", "Fullname":"Reymon Dinagat"},
-		// 	{"Position":"Asst.Secretary", "Fullname":"Reymon Dinagat"},
-		// 	{"Position":"Asst. Treasurer", "Fullname":"Reymon Dinagat"},
-		// 	{"Position":"PIO", "Fullname":"Reymon Dinagat"},
-		// 	{"Position":"Bus Manager", "Fullname":"Reymon Dinagat"},
-		// 	{"Position":"Auditor", "Fullname":"Reymon Dinagat"}
-		// ]
-		// $scope.viewby = 1;
-		// $scope.totalItems = $scope.data.length;
-		// $scope.currentPage = 1;
-		// $scope.itemsPerPage = $scope.viewby;
+		$scope.data = [
+			{"Position":"President", "Fullname":"John Mangmang"},
+			{"Position":"Internal Vice-Pres ", "Fullname":"Hannie Nakila"},
+			{"Position":"External Vice-Pres", "Fullname":"Reymon Dinagat"},
+			{"Position":"Secretary", "Fullname":"Veah Ranario"},
+			{"Position":"Treasurer", "Fullname":"Reymon Dinagat"},
+			{"Position":"Asst.Secretary", "Fullname":"Reymon Dinagat"},
+			{"Position":"Asst. Treasurer", "Fullname":"Reymon Dinagat"},
+			{"Position":"PIO", "Fullname":"Reymon Dinagat"},
+			{"Position":"Bus Manager", "Fullname":"Reymon Dinagat"},
+			{"Position":"Auditor", "Fullname":"Reymon Dinagat"}
+		]
+		$scope.viewby = 1;
 
-		 $http.get("https://devpartnerstraining.herokuapp.com/CandidateGet").then(function (response) {
-      		$scope.myData = response.data;
-      	
-      	$scope.viewby = 2;
-		$scope.totalItems = $scope.myData.length;
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+		$scope.totalItems = $scope.data.length;
 		$scope.currentPage = 1;
 		$scope.itemsPerPage = $scope.viewby;
-}) 
 }]);
+
 
