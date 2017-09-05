@@ -10,6 +10,10 @@ app.controller('loginCtrl',['$scope','$uibModal', function($scope,$uibModal){
 			size: size,
 		}).result.then(function(){},function(res){})
 	};
+
+	$scope.reg = function(){
+		registration.register($scope.fName,$scope.mName,$scope.lName,$scope.gender,$scope.user,$scope.pass,$scope.pass2);
+	}
 }]);
 
 app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location', function($uibModalInstance,$scope,$location){
