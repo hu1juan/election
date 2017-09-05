@@ -71,16 +71,26 @@ app.controller('confirmAdminCtrl',['$scope','$uibModalInstance', function($scope
 }]);
 
 app.controller('voteHomeCtrl',['$scope','$http', function($scope,$http){
-	$scope.oneAtATime = true;
 
-	$scope.status = {
+    // $http.get("https://devpartnerstraining.herokuapp.com/CandidateGet").then(function (response) {
+    //           $scope.myData = response.data;
+    //       });
+	$scope.oneAtATime = true;
+    $scope.status = {
     isCustomHeaderOpen: false,
     isFirstOpen: true,
     isFirstDisabled: false
   };
-    $http.get("https://devpartnerstraining.herokuapp.com/CandidateGet").then(function (response) {
-              $scope.myData = response.data;
-          })
+
+  $http({
+            method: 'GET',
+            url: 'https://devpartnerstraining.herokuapp.com/CandidateGet'
+        }).then(function successCallback(response){
+            $scope.myData = response.data;
+        },function errorCallback(response){
+
+        })
+    
 }]);
 
 
