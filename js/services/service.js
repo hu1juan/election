@@ -16,6 +16,21 @@ app.service("voterGet",["$http", function($http){
 	}
 }]);
 
+app.service("candidateGet",["$http", function($http){
+	return{
+		getCandidates: function(){
+			return $http({
+				method: 'GET',
+				url: 'https://devpartnerstraining.herokuapp.com/CandidateGet'
+			}).then(function successCallback(response){
+				return response.data;
+			},function errorCallback(response){
+
+			})
+		}
+	}
+}]);
+
 app.service("registration",["voterGet","$http", function(voterGet,$http){
 	this.register = function(fName,mName,lName,gender,user,pass,pass2){
 		voterGet.getVoters().then(function(data) {
@@ -55,4 +70,8 @@ app.service("registration",["voterGet","$http", function(voterGet,$http){
 			console.log(pass2);
 		})
 	};
+}]);
+
+app.service("adminManagementFunction",[function(){
+
 }]);

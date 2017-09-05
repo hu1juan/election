@@ -33,7 +33,7 @@
 							</div>
 							<hr/>
 							<!-- <ng-form name="nestedForm"> -->
-							<form name="formValidation" required novalidate>
+							<form name="formValidation" ng-submit="candidateregister" required novalidate>
 								<div class="form-register">
 									<div class="form-group">
 										<label>Candidate #</label>
@@ -67,15 +67,15 @@
 										<label>Position</label>
 										<select class="form-control" ng-model="rcposition">
 											<option value="President">President</option>
-												<option value="Internal Vice President">Internal Vice President</option>
-												<option value="External Vice President">External Vice President</option>
-												<option value="Secretary">Secretary</option>
-												<option value="Ass. Secretary">Ass. Secretary</option>
-												<option value="Treasurer">Treasurer</option>
-												<option value="Ass. Treasurer">Ass. Treasurer</option>
-												<option value="Auditor">Auditor</option>
-												<option value="PIO">PIO</option>
-												<option value="Business Manager">Business Manager</option>
+											<option value="Internal Vice President">Internal Vice President</option>
+											<option value="External Vice President">External Vice President</option>
+											<option value="Secretary">Secretary</option>
+											<option value="Ass. Secretary">Ass. Secretary</option>
+											<option value="Treasurer">Treasurer</option>
+											<option value="Ass. Treasurer">Ass. Treasurer</option>
+											<option value="Auditor">Auditor</option>
+											<option value="PIO">PIO</option>
+											<option value="Business Manager">Business Manager</option>
 										</select>
 									</div>
 									<div class="form-group">
@@ -99,6 +99,7 @@
 									<!-- Default panel contents -->
 									<div class="panel-heading">
 										<div class="form-group">
+											<label>Select position</label>
 											<select class="form-control" ng-model="cposition">
 												<option value="President">President</option>
 												<option value="Internal Vice President">Internal Vice President</option>
