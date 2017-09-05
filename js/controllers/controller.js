@@ -16,10 +16,31 @@ app.controller('loginCtrl',['$scope','$uibModal','registration', function($scope
 	}
 }]);
 
-app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location', function($uibModalInstance,$scope,$location){
+app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$http', function($uibModalInstance,$scope,$location,$http){
 	$scope.ok = function(){
 		$uibModalInstance.dismiss();
-		$location.path('/admin');
+		let sample = {
+			username: $scope.loginuser,
+			password: $scope.loginpass
+		}
+		$http.post('https://devpartnerstraining.herokuapp.com/VoterLogin',JSON.stringify(sample)).then(function successCallback(response){
+			if(response.data){
+				if(response.data.status === false){
+					console.log('Invalid Login');
+				}else{
+					var hold = atob(response.data);
+					var obj = angular.fromJson(hold);
+					console.log(hold);
+					console.log(obj);
+					console.log(obj.password);
+					console.log(obj.date);
+					$location.path('/votehome');
+				}
+			}
+		}, function errorCallback(response){
+			alert(response.status);
+		});
+	
 	}
 
 	$scope.cancel = function(){
