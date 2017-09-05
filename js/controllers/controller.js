@@ -30,10 +30,14 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location', fu
 //modal admin
 app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction', function($scope,candidateGet,adminManagementFunction){
 
-	candidateGet.getCandidates().then(function(data){$scope.candidates = data;})
+	candidateGet.getCandidates().then(function(data){
+		$scope.candidates = data;
+		$scope.count = data.length + 1;
+	})
 
 	$scope.candidateregister = function(val1,val2,val3,val4,val5){
 		adminManagementFunction.registercandidates(val1,val2,val3,val4,val5);
+		candidateGet.getCandidates().then(function(data){$scope.count = data.length + 1;})
 	}
 
 	$scope.editadmin = function(){

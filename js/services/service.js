@@ -102,12 +102,29 @@ app.service("adminManagementFunction",["$uibModal","$http","candidateGet", funct
 				position: position,
 				isDeleted: 0
 			}
-			if(candidatesmember.findIndex(sample1 => sample1.first_name === fname) == -1){
-				alert('ok');
+
+			var id = candidatesmember.findIndex(sample1 => sample1.last_name === lname && sample1.first_name === fname && sample1.middle_name === mname);
+			// var idcandidate = ;
+			// console.log(candidatesmember[i].id);
+			if(id == -1){
+				var i = candidatesmember.findIndex(sample1 => sample1.last_name === lname && sample1.first_name === fname && sample1.middle_name === mname && sample1.position === position);
+				// var candidateposition = candidatesmember[i].position;
+				// console.log(candidateposition);
+				if(i == -1){
+					$http.post('https://devpartnerstraining.herokuapp.com/CandidateSet',JSON.stringify(sample1)).then(function successCallback(response){
+						if(response.data){
+							alert("Posting data successful.");
+						}
+					}, function errorCallback(response){
+						alert(response.status);
+					});
+					// alert('ok');
+				}else{
+					alert('you already have position.');
+				}
 			}else{
-				alert('already register');
+				alert('already register candidate.');
 			}
-			console.log(data);
 		})
 
 		console.log(fname);

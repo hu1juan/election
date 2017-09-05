@@ -37,7 +37,8 @@
 								<div class="form-register">
 									<div class="form-group">
 										<label>Candidate #</label>
-										<input type="text" class="form-control" readonly />
+										<input type="text" class="form-control" value="{{count}}" readonly />
+
 										<label>First name</label>
 										<input type="text" class="form-control" ng-minlength="5" ng-maxlength="50" name="cfname" ng-model="cfirstname" placeholder="Enter First Name" required/>
 										<div ng-messages="formValidation.cfname.$error" class="errorvalidation">
