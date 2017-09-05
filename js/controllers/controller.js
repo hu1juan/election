@@ -28,35 +28,22 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location', fu
 }]);
 
 //modal admin
-app.controller('adminCtrl',['$scope','$uibModal','candidateGet', function($scope,$uibModal,candidateGet){
+app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction', function($scope,candidateGet,adminManagementFunction){
 
 	candidateGet.getCandidates().then(function(data){$scope.candidates = data;})
 
-	// $http({
-	// 	method: 'GET',
-	// 	url: 'https://devpartnerstraining.herokuapp.com/CandidateGet'
-	// }).then(function successCallback(response) {
- //    	$scope.candidates = response.data;
-	// }, function errorCallback(response) {
-	//   // called asynchronously if an error occurs
-	//     // or server returns response with an error status.
-	// });
+	$scope.candidateregister = function(val1,val2,val3,val4,val5){
+		adminManagementFunction.registercandidates(val1,val2,val3,val4,val5);
+	}
+
 	$scope.editadmin = function(){
-		$uibModal.open({
-			animation: true,
-			templateUrl: 'modal/editadmin.html',
-			controller: 'editAdminModalCtrl'
-		}).result.then(function(){},function(res){})
+		adminManagementFunction.editadminmanagement();
 	};
 }]);
 
-app.controller('editAdminModalCtrl',['$uibModalInstance','$scope','$location','$uibModal', function($uibModalInstance,$scope,$location,$uibModal){
+app.controller('editAdminModalCtrl',['$scope','adminManagementFunction','$uibModalInstance', function($scope,adminManagementFunction,$uibModalInstance){
 	$scope.comfirmation = function(){
-		$uibModal.open({
-			animation: true,
-			templateUrl: 'dialog/dialogconfirmation.html',
-			controller: 'confirmAdminCtrl'
-		}).result.then(function(){},function(res){})
+		adminManagementFunction.confirmationadmin();
 	}
 	$scope.canceladmin = function(){
 		$uibModalInstance.dismiss();

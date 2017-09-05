@@ -72,6 +72,48 @@ app.service("registration",["voterGet","$http", function(voterGet,$http){
 	};
 }]);
 
-app.service("adminManagementFunction",[function(){
+app.service("adminManagementFunction",["$uibModal","$http","candidateGet", function($uibModal,$http,candidateGet){
 
+	this.editadminmanagement = function(){
+		$uibModal.open({
+			animation: true,
+			templateUrl: 'modal/editadmin.html',
+			controller: 'editAdminModalCtrl'
+		}).result.then(function(){},function(res){})
+	}
+
+	this.confirmationadmin= function(){
+		$uibModal.open({
+			animation: true,
+			templateUrl: 'dialog/dialogconfirmation.html',
+			controller: 'confirmAdminCtrl'
+		}).result.then(function(){},function(res){})
+	}
+
+	this.registercandidates = function(fname,mname,lname,gender,position){
+
+		candidateGet.getCandidates().then(function(data){
+			var candidatesmember = data;
+			let sample1 = {
+				first_name: fname,
+				middle_name: mname,
+				last_name: lname,
+				gender: gender,
+				position: position,
+				isDeleted: 0
+			}
+			if(candidatesmember.findIndex(sample1 => sample1.first_name === fname) == -1){
+				alert('ok');
+			}else{
+				alert('already register');
+			}
+			console.log(data);
+		})
+
+		console.log(fname);
+		console.log(mname);
+		console.log(lname);
+		console.log(gender);
+		console.log(position);
+	}
 }]);
