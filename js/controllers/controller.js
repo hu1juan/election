@@ -1,6 +1,6 @@
 'use strict'
 
-app.controller('loginCtrl',['$scope','$uibModal', function($scope,$uibModal){
+app.controller('loginCtrl',['$scope','$uibModal','registration', function($scope,$uibModal,registration){
 	$scope.open = function(size){
 		$uibModal.open({
 			animation: true,
