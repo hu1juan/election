@@ -12,8 +12,6 @@ app.controller('loginCtrl',['$scope','$uibModal','registration', function($scope
 	};
 	$scope.reg = function(){
 		registration.register($scope.fName,$scope.mName,$scope.lName,$scope.gender,$scope.user,$scope.pass,$scope.pass2);
-		$scope.formreg.$setUntouched();
-		$scope.formreg.$setPristine();
 	}
 }]);
 
