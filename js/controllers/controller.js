@@ -70,7 +70,6 @@ app.controller('confirmAdminCtrl',['$scope','$uibModalInstance', function($scope
 	}
 }]);
 
-<<<<<<< HEAD
 app.controller('voteHomeCtrl',['$scope','$http', function($scope,$http){
 	$scope.oneAtATime = true;
 
@@ -82,29 +81,6 @@ app.controller('voteHomeCtrl',['$scope','$http', function($scope,$http){
     $http.get("https://devpartnerstraining.herokuapp.com/CandidateGet").then(function (response) {
               $scope.myData = response.data;
           })
-=======
-app.controller('voteHomeCtrl',['$scope', function($scope){
-	
-	//console.log($scope.currentPage);
-	//console.log($scope.totalItems);
-		$scope.data = [
-			{"Position":"President", "Fullname":"John Mangmang"},
-			{"Position":"Internal Vice-Pres ", "Fullname":"Hannie Nakila"},
-			{"Position":"External Vice-Pres", "Fullname":"Reymon Dinagat"},
-			{"Position":"Secretary", "Fullname":"Veah Ranario"},
-			{"Position":"Treasurer", "Fullname":"Reymon Dinagat"},
-			{"Position":"Asst.Secretary", "Fullname":"Reymon Dinagat"},
-			{"Position":"Asst. Treasurer", "Fullname":"Reymon Dinagat"},
-			{"Position":"PIO", "Fullname":"Reymon Dinagat"},
-			{"Position":"Bus Manager", "Fullname":"Reymon Dinagat"},
-			{"Position":"Auditor", "Fullname":"Reymon Dinagat"}
-		]
-		$scope.viewby = 1;
-		
-		$scope.totalItems = $scope.data.length;
-		$scope.currentPage = 1;
-		$scope.itemsPerPage = $scope.viewby;
->>>>>>> origin/master
 }]);
 
 
