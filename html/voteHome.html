@@ -67,6 +67,33 @@ margin: 19px 28px;
             	text-align: center;
             	font-size: 20px;
             }
+              .forms-body{
+    			background-color: #e7e7e7;
+   			    border-color: #e7e7e7;
+    			width: 60%;
+    			margin: auto;
+    			border-radius: 5px;
+    			padding: 1em;
+    	margin-top: 80px;
+  }
+  .list-group-item {
+  	width: 300px;
+  }
+  .btn{
+  	width: 250px;
+  }
+  .list-group{
+
+  }
+  .list-form-view{
+  	border: 1px solid #ddd;
+  	width: 50%;
+  	height: 500px;
+  	background-color: #fff;
+  	float: right;
+  	margin-top: -34em;
+  	margin-right: 10em;
+  }
 </style>
     <title></title>
 </head>
@@ -95,7 +122,88 @@ margin: 19px 28px;
 				      <input type="checkbox" ng-model="oneAtATime">
 				      Open only one at a time
 				  </div>
-				  <uib-accordion close-others="oneAtATime">
+				 <!--  <uib-accordion close-others="oneAtATime"> -->
+
+				  	<ul>
+                        <li class="list-group-item row">
+                            <a type="button" class="btn btn-info col-lg-3" data-toggle="collapse" data-target="#pres">President</a>
+                        </li>
+                        <li class="list-group-item row">
+                            <a type="button" class="btn btn-info col-lg-3" data-toggle="collapse" data-target="#invice">Internal Vice President</a>
+                        </li>
+                          <li class="list-group-item row">
+                            <a type="button" class="btn btn-info col-lg-3" data-toggle="collapse" data-target="#exvice">External Vice President</a>
+                        </li>
+                           <li class="list-group-item row">
+                            <a type="button" class="btn btn-info col-lg-3" data-toggle="collapse" data-target="#sec">Secretary</a>
+                        </li>
+                           <li class="list-group-item row">
+                            <a type="button" class="btn btn-info col-lg-3" data-toggle="collapse" data-target="#asec">Asst. Secretary</a>
+                        </li>
+                           <li class="list-group-item row">
+                            <a type="button" class="btn btn-info col-lg-3" data-toggle="collapse" data-target="#tre">Treasurer</a>
+                        </li>
+                           <li class="list-group-item row">
+                            <a type="button" class="btn btn-info col-lg-3" data-toggle="collapse" data-target="#atre">Asst. Treasurer</a>
+                        </li>
+                           <li class="list-group-item row">
+                            <a type="button" class="btn btn-info col-lg-3" data-toggle="collapse" data-target="#aud">Auditor</a>
+                        </li>
+                           <li class="list-group-item row">
+                            <a type="button" class="btn btn-info col-lg-3" data-toggle="collapse" data-target="#pio">PIO</a>
+                        </li>
+                           <li class="list-group-item row">
+                            <a type="button" class="btn btn-info col-lg-3" data-toggle="collapse" data-target="#bus">Business Manager</a>
+                        </li>
+                         
+                    </ul>
+                    <div class="list-form-view">
+                    <div class="list-group">
+
+                            <div id="pres" class="collapse col-lg-9" style="padding-top:5px;">
+                                <font ng-repeat="x in myData | filter:{position: 'President'}:true"/>
+                                <input type="radio" name="vote"> {{x.first_name+' '+x.middle_name+' '+x.last_name}}</labfontel>
+                            </div>
+                              <div id="invice" class="collapse col-lg-9" style="padding-top:5px;">
+                                <font ng-repeat="x in myData | filter:{position: 'Internal Vice President'}:true"/>
+                                <input type="radio" name="vote"> {{x.first_name+' '+x.middle_name+' '+x.last_name}}</labfontel>
+                            </div>
+                               <div id="exvice" class="collapse col-lg-9" style="padding-top:5px;">
+                                <font ng-repeat="x in myData | filter:{position: 'External Vice President'}:true"/>
+                                <input type="radio" name="vote"> {{x.first_name+' '+x.middle_name+' '+x.last_name}}</labfontel>
+                            </div>
+                             <div id="sec" class="collapse col-lg-9" style="padding-top:5px;">
+                                <font ng-repeat="x in myData | filter:{position: 'Secretary'}:true"/>
+                                <input type="radio" name="vote"> {{x.first_name+' '+x.middle_name+' '+x.last_name}}</labfontel>
+                            </div>
+                             <div id="asec" class="collapse col-lg-9" style="padding-top:5px;">
+                                <font ng-repeat="x in myData | filter:{position: 'Assistant Secretary'}:true"/>
+                                <input type="radio" name="vote"> {{x.first_name+' '+x.middle_name+' '+x.last_name}}</labfontel>
+                            </div>
+                             <div id="tre" class="collapse col-lg-9" style="padding-top:5px;">
+                                <font ng-repeat="x in myData | filter:{position: 'Treasurer'}:true"/>
+                                <input type="radio" name="vote"> {{x.first_name+' '+x.middle_name+' '+x.last_name}}</labfontel>
+                            </div>
+                             <div id="atre" class="collapse col-lg-9" style="padding-top:5px;">
+                                <font ng-repeat="x in myData | filter:{position: 'Assistant Treasurer'}:true"/>
+                                <input type="radio" name="vote"> {{x.first_name+' '+x.middle_name+' '+x.last_name}}</labfontel>
+                            </div>
+                             <div id="aud" class="collapse col-lg-9" style="padding-top:5px;">
+                                <font ng-repeat="x in myData | filter:{position: 'Auditor'}:true"/>
+                                <input type="radio" name="vote"> {{x.first_name+' '+x.middle_name+' '+x.last_name}}</labfontel>
+                            </div>
+                             <div id="pio" class="collapse col-lg-9" style="padding-top:5px;">
+                                <font ng-repeat="x in myData | filter:{position: 'PIO'}:true"/>
+                                <input type="radio" name="vote"> {{x.first_name+' '+x.middle_name+' '+x.last_name}}</labfontel>
+                            </div>
+                             <div id="bus" class="collapse col-lg-9" style="padding-top:5px;">
+                                <font ng-repeat="x in myData | filter:{position: 'Business Manager'}:true"/>
+                                <input type="radio" name="vote"> {{x.first_name+' '+x.middle_name+' '+x.last_name}}</labfontel>
+                            </div>
+                  </div>
+                  </div>
+<!-- 
+
 				    <div uib-accordion-group class="panel-default" heading="President" is-open="status.isCustomHeaderOpen" is-disabled="status.isFirstDisabled">
 				    	<table>
 				      	<tr ng-repeat="x in myData | filter:{position: 'President'}:true">
@@ -175,7 +283,7 @@ margin: 19px 28px;
 						  	<td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
 						</tr>
 						</table>
-				    </div>
+				    </div>  -->
 				    <!--<div uib-accordion-group class="panel-default" heading="{{group.title}}" ng-repeat="group in groups">
 				    	<div ng-repeat="x in myData | filter:{position: 'President'}">
 						  	<p>{{x.position}}</p>
