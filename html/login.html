@@ -1,290 +1,281 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Log in</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style type="text/css">
-		html { 
-		  background: url(../image/bg.jpg) no-repeat center center fixed; 
-		  -webkit-background-size: cover;
-		  -moz-background-size: cover;
-		  -o-background-size: cover;
-		  background-size: cover;
-		}
-		body{
-       		background-color:transparent !important;
-       		color: #fff;
-    	}
-    	p{
-    		font-style: italic;
-    	}
-    	input.login{
-    		border-radius: 25px;
-    		background-color: transparent;
-    		color: black;
-    		border-color: white;
-    		font-weight: bold;
-    	}
-    	button.login{
-    		border-radius: 25px;
-    		background-color: black;
-    		color: white;
-    		border-color: white;
-    	}
-    	button.login:hover{
-			background-color: white;
-			opacity: 0.6;
-			color:black;
-			border-color: black;
-			transition: all 0.5s ease;
-    		padding: 8px 25px;
-		}
-    	input.register{
-    		background-color: transparent !important;
-    		color: black;
-    		border-color: white;
-    		font-weight: bold;
-    		border-radius: 25px;
-    	}
-    	input::-webkit-input-placeholder {
-		color: black !important;
-		opacity: 0.5;
-		}
-		 
-		input:-moz-placeholder { /* Firefox 18- */
-		color: #ffe6ba !important;  
-		}
-		 
-		input::-moz-placeholder {  /* Firefox 19+ */
-		color: #ffe6ba !important;  
-		}
-		 
-		input:-ms-input-placeholder {  
-		color: #ffe6ba !important;  
+	<head>
+		<title>Log in</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style type="text/css">
+			html {
+			background: url(../image/bg.jpg) no-repeat center center fixed;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+			}
+			body{
+			background-color:transparent !important;
+			color: #fff;
 		}
 		p{
-			text-align: left;
-			font-size: 16px;
-			border-color: black;
-			color: white;
-			text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
-		}
-		label{
-			text-shadow:0 0 5px black;
-		}
-		a{
-			color: white;
-			font-size: 16px;
-			text-decoration: underline;
 			font-style: italic;
 		}
-		a:hover{
-			color:black;
-		}
-		header{
-			box-sizing: border-box;
-			height: 100px;
-			width: 100%;
-			margin-top: 10px;
-		}
-		.formaction{
-			margin: 0;
-    		text-align: center;
-		}
-		span.down{
-			font-size: 40px;
-			padding-left:10px;
-		}
-		button.signin{
+		input.login{
 			border-radius: 25px;
-    		background-color: black;
-    		color: white;
-    		border-color: white;
-    		font-size: 20px;
-    		padding: 5px 20px;
-    		margin-top: 15px;
-		}
-		button.signin:hover{
-			background-color: transparent !important;
-			color:black;
-			border-color: black;
-			transition: all 0.5s ease;
-    		padding: 8px 25px;
-		}
-		header:hover{
-			background-color: white;
-			opacity: 0.8;
-			color:black;
-			transition: all 2s ease;
-		}
-		.logo{
-			height: auto;
-			width: 80px;
-			margin: auto 25px;
-		}
-		.logo:hover{
-			width: 85px;
-			transition: all 0.5s ease;
-		}
-		footer{
-			text-align: center;
-		}
-		footer:hover{
-			background-color: white;
-			opacity: 0.8;
-			color:black;
-			transition: all 2s ease;
-		}
-		h3.vote{
-			margin-top: -50px;
-			margin-left: 25px;
-			text-shadow: 0 0 4px #FF0000, 0 0 8px #0000FF;
-		}
-		.headerRIGHT{
-			height: 80px;
-			width: 20%;
-			float: left;
-			text-align:center;
-    		margin: 10px auto;
-		}
-		.headerLEFT{
-			height: 80px;
-			width: 80%;
-			float: left;
-    		margin: 10px auto;
-		}
-		.content{
-			width: 80%;
-		}
-		form.reg{
-			width: 420px;
-			border-style: outset;
-			padding: 15px;
-			border-radius: 25px;
+			background-color: transparent;
+			color: black;
 			border-color: white;
-			background: rgba(200, 54, 54, 0.5);
-			box-shadow: 15px 15px 50px black;
+			font-weight: bold;
 		}
-		.pull-right{
-			text-align: right;
+		button.login{
+			border-radius: 25px;
+			background-color: black;
+			color: white;
+			border-color: white;
 		}
-	</style>
-</head>
-<body>
-<header>
-	<div class="container content">
-	<div class="headerLEFT">
-		<img class="logo" src="../image/vote7.png">
-		<h3 class="vote">V O T E</h3>
-	</div>
-
-	<div class="headerRIGHT">
-		<!-- <form class="form-inline">
-		    <div class="form-group">
-		    	<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-		      <input type="text" class="form-control login" id="sID" placeholder="Enter id number" name="email">
-		    </div>
-		    <div class="form-group">
-		    	<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-		      <input type="password" class="form-control login" id="pwd" placeholder="Enter password" name="pwd">
-		    </div>
-		    <button type="submit" class="btn btn-default btn-xs login">Log In</button>
-		    </form> -->
-		    <button type="button" class="btn btn-default btn-xs signin" ng-click="open('sm')">Sign In</button>
-	</div>
-	</div>
-</header>
-
-<div class="container">
-	<div class="pull-left">
-		<center>
-		<h3 style="font-size: 100px;background-color: black;border-radius: 25px;">E V E R Y</h3>
-		<h1 style="font-size: 200px;color: cyan;text-shadow:0 0 15px black;"><strong>VOTE</strong></h1>
-		<h3 style="font-size: 100px;background-color: black;border-radius: 25px;">C O U N T S</h3>
-		</center>
-	</div>
-
-	<div class="pull-right">
-		<label style="font-size: 50px;">Sign Up</label><span class="glyphicon glyphicon-hand-down down" aria-hidden="true"></span>
-
-		<!-- <form>
-	    <div class="form-group">
-	      <label for="sID">Firstname:</label>
-	      <input type="text" class="form-control register" id="sID" placeholder="Enter id number" name="email">
-	    </div>
-
-	    <div class="form-group">
-	      <label for="pwd">Password:</label>
-	      <input type="password" class="form-control register" id="pwd" placeholder="Enter password" name="pwd">
-	    </div>
-	    <div class="form-group">
-	      <label for="pwd">Confirm Password:</label>
-	      <input type="password" class="form-control register" id="pwd" placeholder="Enter password" name="pwd">
-	    </div>
-	    <div class="form-group">
-	      <label for="pwd">Email:</label>
-	      <input type="email" class="form-control register" id="pwd" placeholder="yourmail@rock.ph" name="pwd">
-	    </div>
-	    <div class="formaction">
-	   		 <button type="submit" class="btn btn-default login">Create Account</button>
-	    </div>
-	    </form> -->
-
-	    <form name="regFORM" class="form-horizontal reg" ng-submit="reg()">
-			<!-- <div class="form-group">
-		    	<label for="name" class="col-xs-2 control-label">Name</label>
-		        <div class="col-xs-4">
-		        	<input type="text" class="form-control" name="name" placeholder="name"/>
-		        </div>
-		    </div> -->
-		    <div class="form-group">
-		        <div class="col-xs-6">
-		        	<input type="text" class="form-control register" ng-model="fName" placeholder="FIRSTNAME" required/>
-		        </div>
-		        <div class="col-xs-6">
-		        	<input type="text" class="form-control register" ng-model="mName" placeholder="MIDDLENAME" required/>
-		        </div>
-		    </div>
-		    <div class="form-group">
-		        <div class="col-xs-6">
-		        	<input type="text" class="form-control register" ng-model="lName" placeholder="LASTNAME" required/>
-		        </div>
-		        <div class="col-xs-6">
-		        	<label class="radio-inline"><input type="radio" name="sex" ng-model="gender" ng-value="'M'" required>Male</label>
-		        	<label class="radio-inline"><input type="radio" name="sex" ng-model="gender" ng-value="'F'" required>Female</label>
-		        </div>
-		    </div>
-
-			<div class="form-group">
-		        <div class="col-xs-12">
-		        	<input type="text" class="form-control register" ng-model="user" placeholder="USERNAME" required/>
-		        </div>
-		    </div>
-		    <div class="form-group">
-		        <div class="col-xs-6">
-		        	<input type="password" class="form-control register" ng-model="pass" placeholder="PASSWORD" required/>
-		        </div>
-		        <div class="col-xs-6">
-		        	<input type="password" class="form-control register" ng-model="pass2" placeholder="CONFIRM PASSWORD" required/>
-		        </div>
-		    </div>
-		    <div class="formaction">
-	   		 <button type="submit" class="btn btn-default login">Create Account</button>
-	    </div>
-	    </form>
-
-	    <br>
-	    <br>
-	    <br>
-		<p style="text-align: center;">" Bad officials are elected by good</p>
-		<p style="text-align: center;">citizens who do not vote."</p>
-		<p style="text-align: right;"> - <strong>George Jean Nathan</strong></p>
-	</div>
-</div>
-
-<footer>
-	<a href="#!admin">admin</a>
-	<a href="#!votehome">Voter</a>
-</footer>
-</body>
+		button.login:hover{
+				background-color: white;
+				opacity: 0.6;
+				color:black;
+				border-color: black;
+				transition: all 0.5s ease;
+			padding: 8px 25px;
+			}
+		input.register{
+			background-color: transparent !important;
+			color: black;
+			border-color: white;
+			font-weight: bold;
+			border-radius: 25px;
+		}
+		input::-webkit-input-placeholder {
+			color: black !important;
+			opacity: 0.5;
+			}
+			
+			input:-moz-placeholder { /* Firefox 18- */
+			color: #ffe6ba !important;
+			}
+			
+			input::-moz-placeholder {  /* Firefox 19+ */
+			color: #ffe6ba !important;
+			}
+			
+			input:-ms-input-placeholder {
+			color: #ffe6ba !important;
+			}
+			p{
+				text-align: left;
+				font-size: 16px;
+				border-color: black;
+				color: white;
+				text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+			}
+			label{
+				text-shadow:0 0 5px black;
+			}
+			a{
+				color: white;
+				font-size: 16px;
+				text-decoration: underline;
+				font-style: italic;
+			}
+			a:hover{
+				color:black;
+			}
+			header{
+				box-sizing: border-box;
+				height: 100px;
+				width: 100%;
+				margin-top: 10px;
+			}
+			.formaction{
+				margin: 0;
+			text-align: center;
+			}
+			span.down{
+				font-size: 40px;
+				padding-left:10px;
+			}
+			button.signin{
+				border-radius: 25px;
+			background-color: black;
+			color: white;
+			border-color: white;
+			font-size: 20px;
+			padding: 5px 20px;
+			margin-top: 15px;
+			}
+			button.signin:hover{
+				background-color: transparent !important;
+				color:black;
+				border-color: black;
+				transition: all 0.5s ease;
+			padding: 8px 25px;
+			}
+			header:hover{
+				background-color: white;
+				opacity: 0.8;
+				color:black;
+				transition: all 2s ease;
+			}
+			.logo{
+				height: auto;
+				width: 80px;
+				margin: auto 25px;
+			}
+			.logo:hover{
+				width: 85px;
+				transition: all 0.5s ease;
+			}
+			footer{
+				text-align: center;
+			}
+			footer:hover{
+				background-color: white;
+				opacity: 0.8;
+				color:black;
+				transition: all 2s ease;
+			}
+			h3.vote{
+				margin-top: -50px;
+				margin-left: 25px;
+				text-shadow: 0 0 4px #FF0000, 0 0 8px #0000FF;
+			}
+			.headerRIGHT{
+				height: 80px;
+				width: 20%;
+				float: left;
+				text-align:center;
+			margin: 10px auto;
+			}
+			.headerLEFT{
+				height: 80px;
+				width: 80%;
+				float: left;
+			margin: 10px auto;
+			}
+			.content{
+				width: 80%;
+			}
+			form.reg{
+				width: 420px;
+				border-style: outset;
+				padding: 15px;
+				border-radius: 25px;
+				border-color: white;
+				background: rgba(200, 54, 54, 0.5);
+				box-shadow: 15px 15px 50px black;
+			}
+			.pull-right{
+				text-align: right;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="container content">
+				<div class="headerLEFT">
+					<img class="logo" src="../image/vote7.png">
+					<h3 class="vote">V O T E</h3>
+				</div>
+				<div class="headerRIGHT">
+					<!-- <form class="form-inline">
+						<div class="form-group">
+								<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+							<input type="text" class="form-control login" id="sID" placeholder="Enter id number" name="email">
+						</div>
+						<div class="form-group">
+								<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+							<input type="password" class="form-control login" id="pwd" placeholder="Enter password" name="pwd">
+						</div>
+						<button type="submit" class="btn btn-default btn-xs login">Log In</button>
+					</form> -->
+					<button type="button" class="btn btn-default btn-xs signin" ng-click="open('sm')">Sign In</button>
+				</div>
+			</div>
+		</header>
+		<div class="container">
+			<div class="pull-left">
+				<center>
+				<h3 style="font-size: 100px;background-color: black;border-radius: 25px;">E V E R Y</h3>
+				<h1 style="font-size: 200px;color: cyan;text-shadow:0 0 15px black;"><strong>VOTE</strong></h1>
+				<h3 style="font-size: 100px;background-color: black;border-radius: 25px;">C O U N T S</h3>
+				</center>
+			</div>
+			<div class="pull-right">
+				<label style="font-size: 50px;">Sign Up</label><span class="glyphicon glyphicon-hand-down down" aria-hidden="true"></span>
+				<!-- <form>
+					<div class="form-group">
+						<label for="sID">Firstname:</label>
+						<input type="text" class="form-control register" id="sID" placeholder="Enter id number" name="email">
+					</div>
+					<div class="form-group">
+						<label for="pwd">Password:</label>
+						<input type="password" class="form-control register" id="pwd" placeholder="Enter password" name="pwd">
+					</div>
+					<div class="form-group">
+						<label for="pwd">Confirm Password:</label>
+						<input type="password" class="form-control register" id="pwd" placeholder="Enter password" name="pwd">
+					</div>
+					<div class="form-group">
+						<label for="pwd">Email:</label>
+						<input type="email" class="form-control register" id="pwd" placeholder="yourmail@rock.ph" name="pwd">
+					</div>
+					<div class="formaction">
+							<button type="submit" class="btn btn-default login">Create Account</button>
+					</div>
+				</form> -->
+				<form role="form" class="form-horizontal reg" ng-submit="reg()" name="formreg">
+					<!-- <div class="form-group">
+						<label for="name" class="col-xs-2 control-label">Name</label>
+						<div class="col-xs-4">
+							<input type="text" class="form-control" name="name" placeholder="name"/>
+						</div>
+					</div> -->
+					<div class="form-group">
+						<div class="col-xs-6">
+							<input type="text" class="form-control register" ng-model="fName" placeholder="FIRSTNAME" required/>
+						</div>
+						<div class="col-xs-6">
+							<input type="text" class="form-control register" ng-model="mName" placeholder="MIDDLENAME" required/>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-6">
+							<input type="text" class="form-control register" ng-model="lName" placeholder="LASTNAME" required/>
+						</div>
+						<div class="col-xs-6">
+							<label class="radio-inline"><input type="radio" name="sex" ng-model="gender" ng-value="'M'" required>Male</label>
+							<label class="radio-inline"><input type="radio" name="sex" ng-model="gender" ng-value="'F'" required>Female</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-12">
+							<input type="text" class="form-control register" ng-model="user" placeholder="USERNAME" required/>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-6">
+							<input type="password" class="form-control register" ng-model="pass" placeholder="PASSWORD" required/>
+						</div>
+						<div class="col-xs-6">
+							<input type="password" class="form-control register" ng-model="pass2" placeholder="CONFIRM PASSWORD" required/>
+						</div>
+					</div>
+					<div class="formaction">
+						<button type="submit" class="btn btn-default login">Create Account</button>
+					</div>
+				</form>
+				<br>
+				<br>
+				<br>
+				<p style="text-align: center;">" Bad officials are elected by good</p>
+				<p style="text-align: center;">citizens who do not vote."</p>
+				<p style="text-align: right;"> - <strong>George Jean Nathan</strong></p>
+			</div>
+		</div>
+		<footer>
+			<a href="#!admin">admin</a>
+			<a href="#!votehome">Voter</a>
+		</footer>
+	</body>
 </html>
