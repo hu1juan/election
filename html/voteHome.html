@@ -90,58 +90,99 @@ margin: 19px 28px;
             <h3 class="title-admin1">ITS Election</h3>
             </div>
             <hr/>
-                <div class="pagerContainer">
-                    <div ng-controller="voteHomeCtrl">
-                      <h4>Vote Wisely!</h4>
-                      <pre>
-                            <!-- Current Page: {{currentPage +"/"+totalItems}} -->
-                            <!--<div ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))" id="position">
-                                {{row.Position}}
-                            </div>
-                            <hr class="line">-->
-                        <!--<div class="pageContain">
-                            <div ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
-                            	<div class="candidate-style">
-                                <input type="radio" name="">                {{row.Fullname}}  
-                            	</div>
-                            </div>-->
-                            <!--<table class="table table-bordered">
-                            	<thead>
-							      <tr>
-							        <th>Vote</th>
-							        <th>Candidate/s</th>
-							      </tr>
-							    </thead>
-							    <tbody>
-							      <tr ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
-							        <td><input type="radio" name=""></td>
-							        <td>{{row.Fullname}}</td>
-							      </tr>
-							     </tbody>
-                            </table>
-
-
-
-                        </div>-->
-                        <table border="1">
-						  <tr>
-						  	<th>Position</th>
-						  	<th>Candidate Name</th>
-						    
-						  </tr>
-						  <tr ng-repeat="x in myData.slice(((currentPage-1)*itemsPerPage),((currentPage)*itemsPerPage))">
-						  	<td>{{x.position}}</td>
+            	<div ng-controller="voteHomeCtrl">
+            		<div class="checkbox">
+				      <input type="checkbox" ng-model="oneAtATime">
+				      Open only one at a time
+				  </div>
+				  <uib-accordion close-others="oneAtATime">
+				    <div uib-accordion-group class="panel-default" heading="President" is-open="status.isCustomHeaderOpen" is-disabled="status.isFirstDisabled">
+				    	<table>
+				      	<tr ng-repeat="x in myData | filter:{position: 'President'}:true">
+				      		<td><input type="radio" name="vote"></td>
 						  	<td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
-						  </tr>
+						</tr>
 						</table>
-                        </pre>
-                      <ul uib-pager total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage"></ul>
-                      <div class="btnSubmitContainer">
-                        <button class="btn btn-primary" type="submit" id="btnSubmit">Submit</button>
-                     </div>
- 
-                    </div>
-                </div>
+				    </div>
+				    <div uib-accordion-group class="panel-default" heading="Internal Vice President">
+				    	<table>
+				      	<tr ng-repeat="x in myData | filter:{position: 'Internal Vice President'}:true">
+				      		<td><input type="radio" name="vote"></td>
+						  	<td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
+						</tr>
+						</table>
+				    </div>
+				    <div uib-accordion-group class="panel-default" heading="External Vice President">
+				    	<table>
+				      	<tr ng-repeat="x in myData | filter:{position: 'External Vice President'}:true">
+				      		<td><input type="radio" name="vote"></td>
+						  	<td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
+						</tr>
+						</table>
+				    </div>
+				    <div uib-accordion-group class="panel-default" heading="Secretary">
+				    <table>
+				      	<tr ng-repeat="x in myData | filter:{position: 'Secretary'}:true">
+				      		<td><input type="radio" name="vote"></td>
+						  	<td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
+						</tr>
+						</table>
+				    </div>
+				    <div uib-accordion-group class="panel-default" heading="Asst. Secretary">
+				      <table>
+				      	<tr ng-repeat="x in myData | filter:{position: 'Assistant Secretary'}:true">
+				      		<td><input type="radio" name="vote"></td>
+						  	<td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
+						</tr>
+						</table>
+				    </div>
+				    <div uib-accordion-group class="panel-default" heading="Treasurer">
+				      <table>
+				      	<tr ng-repeat="x in myData | filter:{position: 'Treasurer'}:true">
+				      		<td><input type="radio" name="vote"></td>
+						  	<td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
+						</tr>
+						</table>
+				    </div>
+				    <div uib-accordion-group class="panel-default" heading="Asst. Treasurer">
+				      <table>
+				      	<tr ng-repeat="x in myData | filter:{position: 'Assistant Treasurer'}:true">
+				      		<td><input type="radio" name="vote"></td>
+						  	<td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
+						</tr>
+						</table>
+				    </div>
+				    <div uib-accordion-group class="panel-default" heading="Auditor">
+				      <table>
+				      	<tr ng-repeat="x in myData | filter:{position: 'Assistant Treasurer'}:true">
+				      		<td><input type="radio" name="vote"></td>
+						  	<td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
+						</tr>
+						</table>
+				    </div>
+				    <div uib-accordion-group class="panel-default" heading="PIO">
+				      <table>
+				      	<tr ng-repeat="x in myData | filter:{position: 'PIO'}">
+				      		<td><input type="radio" name="vote"></td>
+						  	<td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
+						</tr>
+						</table>
+				    </div>
+				    <div uib-accordion-group class="panel-default" heading="Business Manager">
+				      <table>
+				      	<tr ng-repeat="x in myData | filter:{position: 'Business Manager'}:true">
+				      		<td><input type="radio" name="vote"></td>
+						  	<td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
+						</tr>
+						</table>
+				    </div>
+				    <!--<div uib-accordion-group class="panel-default" heading="{{group.title}}" ng-repeat="group in groups">
+				    	<div ng-repeat="x in myData | filter:{position: 'President'}">
+						  	<p>{{x.position}}</p>
+						  	<p>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</p>
+						</div>
+				    </div>-->
+            	</div> 
         </div>
     </div>
 </div>
