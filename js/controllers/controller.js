@@ -49,35 +49,31 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 }]);
 
 //modal admin
-app.controller('adminCtrl',['$scope','$uibModal','candidateGet', function($scope,$uibModal,candidateGet){
+app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction', function($scope,candidateGet,adminManagementFunction){
 
-	candidateGet.getCandidates().then(function(data){$scope.candidates = data;})
+	candidateGet.getCandidates().then(function(data){
+		$scope.candidates = data;
+		$scope.count = data.length + 1;
+	})
 
-	// $http({
-	// 	method: 'GET',
-	// 	url: 'https://devpartnerstraining.herokuapp.com/CandidateGet'
-	// }).then(function successCallback(response) {
- //    	$scope.candidates = response.data;
-	// }, function errorCallback(response) {
-	//   // called asynchronously if an error occurs
-	//     // or server returns response with an error status.
-	// });
-	$scope.editadmin = function(){
-		$uibModal.open({
-			animation: true,
-			templateUrl: 'modal/editadmin.html',
-			controller: 'editAdminModalCtrl'
-		}).result.then(function(){},function(res){})
+	$scope.candidateregister = function(val1,val2,val3,val4,val5){
+		adminManagementFunction.registercandidates(val1,val2,val3,val4,val5);
+		candidateGet.getCandidates().then(function(data){$scope.count = data.length + 1;})
+	}
+
+	$scope.editadmin = function(id){
+		adminManagementFunction.editadminmanagement(id);
 	};
 }]);
 
-app.controller('editAdminModalCtrl',['$uibModalInstance','$scope','$location','$uibModal', function($uibModalInstance,$scope,$location,$uibModal){
+app.controller('editAdminModalCtrl',['$scope','adminManagementFunction','$uibModalInstance','candidateGet', function($scope,adminManagementFunction,$uibModalInstance,candidateGet){
+	$scope.ids = adminManagementFunction.idcandidate;
+	candidateGet.getCandidates().then(function(data){
+		$scope.candidates = data;
+	})
 	$scope.comfirmation = function(){
-		$uibModal.open({
-			animation: true,
-			templateUrl: 'dialog/dialogconfirmation.html',
-			controller: 'confirmAdminCtrl'
-		}).result.then(function(){},function(res){})
+		adminManagementFunction.editCandidate();
+		adminManagementFunction.confirmationadmin();
 	}
 	$scope.canceladmin = function(){
 		$uibModalInstance.dismiss();
