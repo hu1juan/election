@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WELCOME ADMIN</title>
+	<style type="text/css">
+		.inputdemoIcons {
+  /*
+.right-icon {
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  left: auto;
+  margin-top: 0;
+}
+*/ }
+  .inputdemoIcons .inputIconDemo {
+    min-height: 48px; }
+  .inputdemoIcons md-input-container:not(.md-input-invalid) > md-icon.email {
+    color: green; }
+  .inputdemoIcons md-input-container:not(.md-input-invalid) > md-icon.name {
+    color: dodgerblue; }
+  .inputdemoIcons md-input-container.md-input-invalid > md-icon.email,
+  .inputdemoIcons md-input-container.md-input-invalid > md-icon.name {
+    color: red; }
+    body{
+    	background-color: #CFD8DC;
+    }
+    .login{
+    	margin: 0 auto;
+    	background-color: #B0BEC5;
+    	width: 20%;
+    	height: 30%;
+    	box-shadow: 5px 5px 10px black;
+    }
+    .md-no-momentum{
+    	background-color: #CFD8DC;
+    }
+    .b1{
+    	color: grey;
+    }
+    .md-button:not([disabled]):hover {
+	  background-color: #CFD8DC;
+	}
+    input.in1{
+    	color:grey;
+    	font-size: 20px;
+    }
+    img{
+    	width: 150px;
+    	height: 150px;
+    	margin:0 auto;
+    	display: block;
+   		margin: auto;
+    }
+	</style>
+</head>
+<body>
+
+<div class="login">
+	<div layout="column" layout-padding ng-cloak>
+		<md-content class="md-no-momentum">
+		<img src="../image/user.png">
+		    <md-input-container class="md-icon-float md-block">
+		      <!-- Use floating label instead of placeholder -->
+		      <label>Username</label>
+		      <input class="in1" ng-model="user.name" type="text">
+		    </md-input-container>
+
+		    <md-input-container class="md-icon-float md-block">
+		      <!-- Use floating label instead of placeholder -->
+		      <label>Password</label>
+		      <input class="in1" ng-model="user.name" type="password">
+		    </md-input-container>
+		</md-content>
+		<md-button class="b1">Log in</md-button>
+	</div>
+</div>
+	
+</body>
+</html>
