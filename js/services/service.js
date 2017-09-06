@@ -94,36 +94,40 @@ app.service("adminManagementFunction",["$uibModal","$http","candidateGet", funct
 
 	this.registercandidates = function(fname,mname,lname,gender,position){
 
-		candidateGet.getCandidates().then(function(data){
-			var candidatesmember = data;
-			let sample1 = {
-				first_name: fname,
-				middle_name: mname,
-				last_name: lname,
-				gender: gender,
-				position: position,
-				isDeleted: 0
-			}
-
-			var id = candidatesmember.findIndex(sample1 => sample1.last_name === lname && sample1.first_name === fname && sample1.middle_name === mname);
-			if(id == -1){
-				var i = candidatesmember.findIndex(sample1 => sample1.last_name === lname && sample1.first_name === fname && sample1.middle_name === mname && sample1.position === position);
-				if(i == -1){
-					$http.post('https://devpartnerstraining.herokuapp.com/CandidateSet',JSON.stringify(sample1)).then(function successCallback(response){
-						if(response.data){
-							alert("Posting data successful.");
-						}
-					}, function errorCallback(response){
-						alert(response.status);
-					});
-					// alert('ok');
-				}else{
-					alert('you already have position.');
+		if(position == null || gender == null){
+			alert('ok');
+		}else{
+				candidateGet.getCandidates().then(function(data){
+				var candidatesmember = data;
+				let sample1 = {
+					first_name: fname,
+					middle_name: mname,
+					last_name: lname,
+					gender: gender,
+					position: position,
+					isDeleted: 0
 				}
-			}else{
-				alert('already register candidate.');
-			}
-		})
+
+				var id = candidatesmember.findIndex(sample1 => sample1.last_name === lname && sample1.first_name === fname && sample1.middle_name === mname);
+				if(id == -1){
+					var i = candidatesmember.findIndex(sample1 => sample1.last_name === lname && sample1.first_name === fname && sample1.middle_name === mname && sample1.position === position);
+					if(i == -1){
+						$http.post('https://devpartnerstraining.herokuapp.com/CandidateSet',JSON.stringify(sample1)).then(function successCallback(response){
+							if(response.data){
+								alert("Posting data successful.");
+							}
+						}, function errorCallback(response){
+							alert(response.status);
+						});
+						// alert('ok');
+					}else{
+						alert('you already have position.');
+					}
+				}else{
+					alert('already register candidate.');
+				}
+			})
+		}
 	}
 
 	this.editCandidate = function(){

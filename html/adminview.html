@@ -61,12 +61,15 @@
 											<div ng-message="minlength">Your field is too short</div>
 										</div>
 										<label>Gender</label>
-										<select class="form-control" ng-model="cgender">
+										<select class="form-control" ng-model="cgender" name="cgenders" required>
 											<option value="M">Male</option>
 											<option value="F">Female</option>
 										</select>
+										<div ng-messages="formValidation.cgenders.$error" class="errorvalidation">
+											<div ng-message="required" ng-show="formValidation.clname.$touched">This field is required</div>
+										</div>
 										<label>Position</label>
-										<select class="form-control" ng-model="rcposition">
+										<select class="form-control" ng-model="rcposition" name="cposition" required>
 											<option value="President">President</option>
 											<option value="Internal Vice President">Internal Vice President</option>
 											<option value="External Vice President">External Vice President</option>
@@ -78,6 +81,9 @@
 											<option value="PIO">PIO</option>
 											<option value="Business Manager">Business Manager</option>
 										</select>
+										<div ng-messages="formValidation.cposition.$error" class="errorvalidation">
+											<div ng-message="required" ng-show="formValidation.clname.$touched">This field is required</div>
+										</div>
 									</div>
 									<div class="form-group">
 										<button type="submit" class="btn btn-secondary" ng-disabled="formValidation.$invalid"><span class="glyphicon glyphicon-ok"> Register</span></button>
@@ -153,19 +159,16 @@
 											<tr>
 												<th>Voter #</th>
 												<th>Name</th>
-												<th>Password</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr>
 												<td>48496509</td>
 												<td>Reymon Dinagat</td>
-												<td>#&$@@#SS</td>
 											</tr>
 											<tr>
 												<td>48496501</td>
 												<td>Opp hahaha</td>
-												<td>SD123s%</td>
 											</tr>
 										</tbody>
 									</table>
