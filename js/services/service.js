@@ -74,7 +74,8 @@ app.service("registration",["voterGet","$http", function(voterGet,$http){
 
 app.service("adminManagementFunction",["$uibModal","$http","candidateGet", function($uibModal,$http,candidateGet){
 
-	this.editadminmanagement = function(){
+	this.editadminmanagement = function(id){
+		this.idcandidate = id;
 		$uibModal.open({
 			animation: true,
 			templateUrl: 'modal/editadmin.html',
@@ -104,12 +105,8 @@ app.service("adminManagementFunction",["$uibModal","$http","candidateGet", funct
 			}
 
 			var id = candidatesmember.findIndex(sample1 => sample1.last_name === lname && sample1.first_name === fname && sample1.middle_name === mname);
-			// var idcandidate = ;
-			// console.log(candidatesmember[i].id);
 			if(id == -1){
 				var i = candidatesmember.findIndex(sample1 => sample1.last_name === lname && sample1.first_name === fname && sample1.middle_name === mname && sample1.position === position);
-				// var candidateposition = candidatesmember[i].position;
-				// console.log(candidateposition);
 				if(i == -1){
 					$http.post('https://devpartnerstraining.herokuapp.com/CandidateSet',JSON.stringify(sample1)).then(function successCallback(response){
 						if(response.data){
@@ -126,11 +123,9 @@ app.service("adminManagementFunction",["$uibModal","$http","candidateGet", funct
 				alert('already register candidate.');
 			}
 		})
+	}
 
-		console.log(fname);
-		console.log(mname);
-		console.log(lname);
-		console.log(gender);
-		console.log(position);
+	this.editCandidate = function(){
+		// alert('ok');
 	}
 }]);

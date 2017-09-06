@@ -61,13 +61,18 @@ app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction', f
 		candidateGet.getCandidates().then(function(data){$scope.count = data.length + 1;})
 	}
 
-	$scope.editadmin = function(){
-		adminManagementFunction.editadminmanagement();
+	$scope.editadmin = function(id){
+		adminManagementFunction.editadminmanagement(id);
 	};
 }]);
 
-app.controller('editAdminModalCtrl',['$scope','adminManagementFunction','$uibModalInstance', function($scope,adminManagementFunction,$uibModalInstance){
+app.controller('editAdminModalCtrl',['$scope','adminManagementFunction','$uibModalInstance','candidateGet', function($scope,adminManagementFunction,$uibModalInstance,candidateGet){
+	$scope.ids = adminManagementFunction.idcandidate;
+	candidateGet.getCandidates().then(function(data){
+		$scope.candidates = data;
+	})
 	$scope.comfirmation = function(){
+		adminManagementFunction.editCandidate();
 		adminManagementFunction.confirmationadmin();
 	}
 	$scope.canceladmin = function(){

@@ -62,8 +62,8 @@
 										</div>
 										<label>Gender</label>
 										<select class="form-control" ng-model="cgender">
-											<option value="Male">Male</option>
-											<option value="Female">Female</option>
+											<option value="M">Male</option>
+											<option value="F">Female</option>
 										</select>
 										<label>Position</label>
 										<select class="form-control" ng-model="rcposition">
@@ -127,7 +127,7 @@
 										<tbody>
 											<tr ng-repeat=" p in candidates | filter:{position: cposition}:true">
 												<td>{{p.id}}</td>
-												<td><a href="" ng-click="editadmin()">{{p.first_name}}  {{ p.middle_name }} {{p.last_name}}</a></td>
+												<td><a href="" ng-click="editadmin(p.id)">{{p.first_name}}  {{ p.middle_name }} {{p.last_name}}</a></td>
 												<td>{{p.position}}</td>
 											</tr>
 										</tbody>
