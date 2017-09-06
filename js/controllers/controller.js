@@ -91,21 +91,27 @@ app.controller('confirmAdminCtrl',['$scope','$uibModalInstance', function($scope
 	}
 }]);
 
-app.controller('voteHomeCtrl',['$scope','$http','candidateGetData', function($scope,$http,candidateGetData){
+app.controller('voteHomeCtrl',['$scope','$http','candidateGetData','votingService' , function($scope,$http,candidateGetData,votingService){
 
     $('.collapse').on('show.bs.collapse', function (e) {
     $('.collapse').not(e.target).removeClass('in');
 })
     candidateGetData.candidates().then(function(data){$scope.candidatesData = data;})
-  // $http({
-  //       method: 'GET',
-  //       url: 'https://devpartnerstraining.herokuapp.com/CandidateGet'
-  //       }).then(function successCallback(response){
-  //           $scope.myData = response.data;
-  //       },function errorCallback(response){
 
-  //       })
-    
+    $scope.sumbitvotes = function(press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
+
+    		votingService.sumbitvotes ($scope.press,$scope.internalvicepress,$scope.externalvicepress,$scope.secretary,$scope.asstSec,$scope.treasurer,
+    			$scope.asstTreas,$scope.auditor,$scope.pio,$scope.busManager);
+
+    	// console.log($scope.press);
+    	// console.log($scope.internalvicepress);
+    	// console.log($scope.externalvicepress);
+    	// console.log($scope.secretary);
+    	// console.log($scope.asstSec);
+    	// console.log($scope.treasurer);
+    	// console.log($scope.asstTreas);
+    	// console.log($scope.auditor);
+    	// console.log($scope.pio);
+    	// console.log($scope.busManager);
+    };
 }]);
-
-
