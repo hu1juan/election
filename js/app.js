@@ -1,6 +1,6 @@
 'use strict'
 
-var app = angular.module('myApp', ['ngRoute','ui.bootstrap','ngMessages']);
+var app = angular.module('myApp', ['ngRoute','ui.bootstrap','ngMessages','ngMaterial']);
 
 app.config(function($routeProvider){
 	$routeProvider
@@ -15,6 +15,9 @@ app.config(function($routeProvider){
 	.when('/votehome',{
 		templateUrl: 'html/voteHome.html',
 		controller: 'voteHomeCtrl'
+	})
+	.when('/loginadmin',{
+		templateUrl: 'html/adminlogin.html'
 	})
 
 });

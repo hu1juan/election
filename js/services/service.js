@@ -74,6 +74,7 @@ app.service("registration",["voterGet","$http", function(voterGet,$http){
 
 app.service("adminManagementFunction",["$uibModal","$http","candidateGet", function($uibModal,$http,candidateGet){
 
+
 	this.editadminmanagement = function(id){
 		this.idcandidate = id;
 		$uibModal.open({
@@ -127,5 +128,21 @@ app.service("adminManagementFunction",["$uibModal","$http","candidateGet", funct
 
 	this.editCandidate = function(){
 		// alert('ok');
+}
+}]);
+
+app.service("candidateGetData",['$http',function($http){
+	return{
+		candidates: function(){
+			return $http({
+				method: 'GET',
+				url: 'https://devpartnerstraining.herokuapp.com/CandidateGet'
+			}).then(function successCallback(response){
+				return response.data;
+			},function errorCallback(response){
+
+			})
+		}
+
 	}
 }]);

@@ -87,26 +87,20 @@ app.controller('confirmAdminCtrl',['$scope','$uibModalInstance', function($scope
 	}
 }]);
 
-app.controller('voteHomeCtrl',['$scope','$http', function($scope,$http){
+app.controller('voteHomeCtrl',['$scope','$http','candidateGetData', function($scope,$http,candidateGetData){
 
-    // $http.get("https://devpartnerstraining.herokuapp.com/CandidateGet").then(function (response) {
-    //           $scope.myData = response.data;
-    //       });
-	$scope.oneAtATime = true;
-    $scope.status = {
-    isCustomHeaderOpen: false,
-    isFirstOpen: true,
-    isFirstDisabled: false
-  };
+    $('.collapse').on('show.bs.collapse', function (e) {
+    $('.collapse').not(e.target).removeClass('in');
+})
+    candidateGetData.candidates().then(function(data){$scope.candidatesData = data;})
+  // $http({
+  //       method: 'GET',
+  //       url: 'https://devpartnerstraining.herokuapp.com/CandidateGet'
+  //       }).then(function successCallback(response){
+  //           $scope.myData = response.data;
+  //       },function errorCallback(response){
 
-  $http({
-            method: 'GET',
-            url: 'https://devpartnerstraining.herokuapp.com/CandidateGet'
-        }).then(function successCallback(response){
-            $scope.myData = response.data;
-        },function errorCallback(response){
-
-        })
+  //       })
     
 }]);
 
