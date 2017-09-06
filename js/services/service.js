@@ -75,3 +75,18 @@ app.service("registration",["voterGet","$http", function(voterGet,$http){
 app.service("adminManagementFunction",[function(){
 
 }]);
+
+app.service("candidateGetData",['$http',function($http){
+	return{
+		candidates: function(){
+			return $http({
+				method: 'GET',
+				url: 'https://devpartnerstraining.herokuapp.com/CandidateGet'
+			}).then(function successCallback(response){
+				return response.data;
+			},function errorCallback(response){
+
+			})
+		}
+	}
+}]);
