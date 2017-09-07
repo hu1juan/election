@@ -58,7 +58,7 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 	}
 }]);
 
-app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','voterGet','$http', function($scope,candidateGet,adminManagementFunction,voterGet,$http){
+app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','voterGet','$http','adminLogin', function($scope,candidateGet,adminManagementFunction,voterGet,$http,adminLogin){
 
 	adminLogin.checkToken();
 	$http({
