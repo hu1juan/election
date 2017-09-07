@@ -154,7 +154,7 @@ app.service("candidateGetData",['$http',function($http){
 
 }]);
 
-app.service("votingService",['$http','candidateGetData', function($http, candidateGetData){
+app.service("votingService",['$http', '$location','candidateGetData', function($http,$location, candidateGetData){
 	    this.sumbitvotes = function(press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
 	    	var vt = {
 	    		press: press,
@@ -181,6 +181,8 @@ app.service("votingService",['$http','candidateGetData', function($http, candida
     	if (press != null || internalvicepress != null || externalvicepress != null || secretary != null || asstSec != null ||
     		treasurer != null || asstTreas != null || auditor != null || pio != null || busManager != null){
     		alert("successful");
+    		$location.path("/voteview");
+
     	}else{
     		alert("please vote");
     	}

@@ -87,7 +87,7 @@ app.controller('confirmAdminCtrl',['$scope','$uibModalInstance', function($scope
 	}
 }]);
 
-app.controller('voteHomeCtrl',['$scope','$http','candidateGetData','votingService' , function($scope,$http,candidateGetData,votingService){
+app.controller('voteHomeCtrl',['$scope','$http','candidateGetData','votingService','$location', function($scope,$http,candidateGetData,votingService,$location){
 
     $('.collapse').on('show.bs.collapse', function (e) {
     $('.collapse').not(e.target).removeClass('in');

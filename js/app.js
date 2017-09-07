@@ -19,6 +19,10 @@ app.config(function($routeProvider){
 	.when('/loginadmin',{
 		templateUrl: 'html/adminlogin.html'
 	})
+	.when('/voteview', {
+		templateUrl: 'html/voteView.html'
+	
+	})
 
 });
 
