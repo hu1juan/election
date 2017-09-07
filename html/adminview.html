@@ -159,16 +159,14 @@
 											<tr>
 												<th>Voter #</th>
 												<th>Name</th>
+												<th>Gender</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>48496509</td>
-												<td>Reymon Dinagat</td>
-											</tr>
-											<tr>
-												<td>48496501</td>
-												<td>Opp hahaha</td>
+											<tr ng-repeat="v in voterslist">
+												<td>{{v.id}}</td>
+												<td>{{v.first_name}} {{v.middle_name}} {{v.last_name}}</td>
+												<td>{{v.gender}}</td>
 											</tr>
 										</tbody>
 									</table>

@@ -49,7 +49,21 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 }]);
 
 //modal admin
-app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction', function($scope,candidateGet,adminManagementFunction){
+app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','voterGet','$http', function($scope,candidateGet,adminManagementFunction,voterGet,$http){
+
+
+	$http({
+		method: 'GET',
+		url: 'https://devpartnerstraining.herokuapp.com/VoterGet'
+	}).then(function successCallback(response){
+		$scope.voterslist = response.data;
+	},function errorCallback(response){
+
+	})
+
+	voterGet.getVoters().then(function(data){
+		$scope.voters = data;
+	})
 
 	candidateGet.getCandidates().then(function(data){
 		$scope.candidates = data;
