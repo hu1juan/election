@@ -54,6 +54,7 @@ app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction', f
 	candidateGet.getCandidates().then(function(data){
 		$scope.candidates = data;
 		$scope.count = data.length + 1;
+		console.log(data);
 	})
 
 	$scope.candidateregister = function(val1,val2,val3,val4,val5){
@@ -71,8 +72,8 @@ app.controller('editAdminModalCtrl',['$scope','adminManagementFunction','$uibMod
 	candidateGet.getCandidates().then(function(data){
 		$scope.candidates = data;
 	})
-	$scope.comfirmation = function(){
-		adminManagementFunction.editCandidate();
+	$scope.editcandidates = function(idcandidate,firstname,middlename,lastname,gender,position){
+		adminManagementFunction.editCandidate(idcandidate,firstname,middlename,lastname,gender,position);
 		adminManagementFunction.confirmationadmin();
 	}
 	$scope.canceladmin = function(){

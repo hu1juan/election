@@ -130,8 +130,27 @@ app.service("adminManagementFunction",["$uibModal","$http","candidateGet", funct
 		}
 	}
 
-	this.editCandidate = function(){
+	this.editCandidate = function(idcandidate,fname,mname,lname,gender,position){
 		// alert('ok');
+		let sample2 = {
+			first_name: fname,
+			middle_name: mname,
+			last_name: lname,
+			gender: gender,
+			position: position,
+			isDeleted: 0
+		}
+		$http.post('https://devpartnerstraining.herokuapp.com/CandidateSet/'+idcandidate,JSON.stringify(sample2)).then(function successCallback(response){
+			response.data
+		}, function errorCallback(response){
+			alert(response.status);
+		});
+		console.log(idcandidate);
+		console.log(fname);
+		console.log(mname);
+		console.log(lname);
+		console.log(gender);
+		console.log(position);
 }
 }]);
 
