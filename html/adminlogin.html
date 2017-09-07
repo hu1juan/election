@@ -63,16 +63,16 @@
 		    <md-input-container class="md-icon-float md-block">
 		      <!-- Use floating label instead of placeholder -->
 		      <label>Username</label>
-		      <input class="in1" ng-model="user.name" type="text">
+		      <input class="in1" type="text" ng-model="adminuser">
 		    </md-input-container>
 
 		    <md-input-container class="md-icon-float md-block">
 		      <!-- Use floating label instead of placeholder -->
 		      <label>Password</label>
-		      <input class="in1" ng-model="user.name" type="password">
+		      <input class="in1" type="password" ng-model="adminpass">
 		    </md-input-container>
 		</md-content>
-		<md-button class="b1">Log in</md-button>
+		<md-button class="b1" ng-click="login()">Log in</md-button>
 	</div>
 </div>
 	
