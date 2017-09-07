@@ -135,6 +135,8 @@ app.service("adminManagementFunction",["$uibModal","$http","candidateGet", funct
 }
 }]);
 
+
+
 app.service("candidateGetData",['$http',function($http){
 	return{
 		candidates: function(){
@@ -149,4 +151,39 @@ app.service("candidateGetData",['$http',function($http){
 		}
 
 	}
+
+}]);
+
+app.service("votingService",['$http','candidateGetData', function($http, candidateGetData){
+	    this.sumbitvotes = function(press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
+	    	var vt = {
+	    		press: press,
+	    		internalvicepress: internalvicepress,
+	    		externalvicepress: externalvicepress,
+	    		secretary: secretary,
+	    		asstSec: asstSec,
+	    		asstTreas: asstTreas,
+	    		auditor: auditor,
+	    		pio: pio,
+	    		busManager: busManager
+	    	}
+    	console.log(press);
+    	console.log(internalvicepress);
+    	console.log(externalvicepress);
+    	console.log(secretary);
+    	console.log(asstSec);
+    	console.log(treasurer);
+    	console.log(asstTreas);
+    	console.log(auditor);
+    	console.log(pio);
+    	console.log(busManager);
+    	
+    	if (press != null || internalvicepress != null || externalvicepress != null || secretary != null || asstSec != null ||
+    		treasurer != null || asstTreas != null || auditor != null || pio != null || busManager != null){
+    		alert("successful");
+    	}else{
+    		alert("please vote");
+    	}
+    }
+
 }]);
