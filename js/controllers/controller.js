@@ -58,11 +58,21 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 	}
 }]);
 
-//modal admin
-app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','adminLogin', function($scope,candidateGet,adminManagementFunction,adminLogin){
+app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','voterGet','$http', function($scope,candidateGet,adminManagementFunction,voterGet,$http){
+
 	adminLogin.checkToken();
+	$http({
+		method: 'GET',
+		url: 'https://devpartnerstraining.herokuapp.com/VoterGet'
+	}).then(function successCallback(response){
+		$scope.voterslist = response.data;
+	},function errorCallback(response){
 
+	})
 
+	voterGet.getVoters().then(function(data){
+		$scope.voters = data;
+	})
 
 	candidateGet.getCandidates().then(function(data){
 		$scope.candidates = data;
@@ -109,8 +119,8 @@ app.controller('voteHomeCtrl',['$scope','$http','candidateGetData','votingServic
 		userLogin.logout();
 	}
     $('.collapse').on('show.bs.collapse', function (e) {
-    $('.collapse').not(e.target).removeClass('in');
-})
+	    $('.collapse').not(e.target).removeClass('in');
+	})
     candidateGetData.candidates().then(function(data){$scope.candidatesData = data;})
 
     $scope.sumbitvotes = function(press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
