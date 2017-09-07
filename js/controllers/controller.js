@@ -77,7 +77,6 @@ app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','v
 	candidateGet.getCandidates().then(function(data){
 		$scope.candidates = data;
 		$scope.count = data.length + 1;
-		console.log(data);
 	})
 	$scope.logout = function(){
 		adminLogin.logout();
@@ -98,6 +97,7 @@ app.controller('editAdminModalCtrl',['$scope','adminManagementFunction','$uibMod
 		$scope.candidates = data;
 	})
 	$scope.editcandidates = function(idcandidate,firstname,middlename,lastname,gender,position){
+		// console.log(idcandidate,firstname,middlename,lastname,gender,position);
 		adminManagementFunction.editCandidate(idcandidate,firstname,middlename,lastname,gender,position);
 		adminManagementFunction.confirmationadmin();
 	}
@@ -113,7 +113,6 @@ app.controller('confirmAdminCtrl',['$scope','$uibModalInstance', function($scope
 	}
 }]);
 
-app.controller('voteHomeCtrl',['$scope','$http','candidateGetData','votingService','$location', function($scope,$http,candidateGetData,votingService,$location){
 app.controller('voteHomeCtrl',['$scope','$http','candidateGetData','votingService','userLogin' , function($scope,$http,candidateGetData,votingService,userLogin){
 
 	userLogin.checkToken();

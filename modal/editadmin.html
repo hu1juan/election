@@ -9,21 +9,21 @@
 				<label>Candidate #</label>
 				<input type="text" class="form-control" ng-model="x.id" readonly />
 				<label>First name</label>
-				<input type="text" class="form-control" ng-minlength="5" ng-maxlength="50" name="cfname" ng-model="x.first_name" placeholder="Enter First Name" required/>
+				<input type="text" class="form-control" ng-minlength="3" ng-maxlength="50" name="cfname" ng-model="x.first_name" placeholder="Enter First Name" required/>
 				<div ng-messages="formValidation.cfname.$error" class="errorvalidation">
 					<div ng-message="required" ng-show="formValidation.cfname.$touched">This field is required</div>
 					<div ng-message="maxlength">Your field is too long</div>
 					<div ng-message="minlength">Your field is too short</div>
 				</div>
 				<label>Middle name</label>
-				<input type="text" class="form-control" ng-minlength="5" ng-maxlength="50" name="cmname" ng-model="x.middle_name" placeholder="Enter Middle Name" required/>
+				<input type="text" class="form-control" ng-minlength="1" ng-maxlength="50" name="cmname" ng-model="x.middle_name" placeholder="Enter Middle Name" required/>
 				<div ng-messages="formValidation.cmname.$error" class="errorvalidation">
 					<div ng-message="required" ng-show="formValidation.cmname.$touched">This field is required</div>
 					<div ng-message="maxlength">Your field is too long</div>
 					<div ng-message="minlength">Your field is too short</div>
 				</div>
 				<label>Last name</label>
-				<input type="text" class="form-control" ng-minlength="5" ng-maxlength="50" name="clname" ng-model="x.last_name" placeholder="Enter Last Name" required/>
+				<input type="text" class="form-control" ng-minlength="3" ng-maxlength="50" name="clname" ng-model="x.last_name" placeholder="Enter Last Name" required/>
 				<div ng-messages="formValidation.clname.$error" class="errorvalidation">
 					<div ng-message="required" ng-show="formValidation.clname.$touched">This field is required</div>
 					<div ng-message="maxlength">Your field is too long</div>
