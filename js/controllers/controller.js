@@ -96,8 +96,9 @@ app.controller('editAdminModalCtrl',['$scope','adminManagementFunction','$uibMod
 	candidateGet.getCandidates().then(function(data){
 		$scope.candidates = data;
 	})
-	$scope.comfirmation = function(){
-		adminManagementFunction.editCandidate();
+	$scope.editcandidates = function(idcandidate,firstname,middlename,lastname,gender,position){
+		// console.log(idcandidate,firstname,middlename,lastname,gender,position);
+		adminManagementFunction.editCandidate(idcandidate,firstname,middlename,lastname,gender,position);
 		adminManagementFunction.confirmationadmin();
 	}
 	$scope.canceladmin = function(){
