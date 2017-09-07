@@ -112,7 +112,6 @@ app.controller('confirmAdminCtrl',['$scope','$uibModalInstance', function($scope
 	}
 }]);
 
-app.controller('voteHomeCtrl',['$scope','$http','candidateGetData','votingService','$location', function($scope,$http,candidateGetData,votingService,$location){
 app.controller('voteHomeCtrl',['$scope','$http','candidateGetData','votingService','userLogin' , function($scope,$http,candidateGetData,votingService,userLogin){
 
 	userLogin.checkToken();
@@ -124,9 +123,9 @@ app.controller('voteHomeCtrl',['$scope','$http','candidateGetData','votingServic
 	})
     candidateGetData.candidates().then(function(data){$scope.candidatesData = data;})
 
-    $scope.sumbitvotes = function(press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
+    $scope.submitvotes = function(press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
 
-    		votingService.sumbitvotes ($scope.press,$scope.internalvicepress,$scope.externalvicepress,$scope.secretary,$scope.asstSec,$scope.treasurer,
+    		votingService.submitvotes ($scope.press,$scope.internalvicepress,$scope.externalvicepress,$scope.secretary,$scope.asstSec,$scope.treasurer,
     			$scope.asstTreas,$scope.auditor,$scope.pio,$scope.busManager);
 
     	// console.log($scope.press);
@@ -140,4 +139,12 @@ app.controller('voteHomeCtrl',['$scope','$http','candidateGetData','votingServic
     	// console.log($scope.pio);
     	// console.log($scope.busManager);
     };
+}]);
+
+app.controller('voteViewCtrl',['$scope', '$http', '$location','userLogin','votingService', function($scope,$http,$location,userLogin,votingService){
+	userLogin.checkToken();
+	$location.path('/voteview');
+	$scope.logout = function(){
+		userLogin.logout();
+	}
 }]);

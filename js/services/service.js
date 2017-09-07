@@ -207,9 +207,10 @@ app.service("candidateGetData",['$http',function($http){
 
 }]);
 
-app.service("votingService",['$http', '$location','candidateGetData', function($http,$location, candidateGetData){
-	    this.sumbitvotes = function(press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
+app.service("votingService",['$http','$location','candidateGetData', function($http,$location, candidateGetData){
+	    this.submitvotes = function( press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
 	    	var vt = {
+	    
 	    		press: press,
 	    		internalvicepress: internalvicepress,
 	    		externalvicepress: externalvicepress,
@@ -220,6 +221,7 @@ app.service("votingService",['$http', '$location','candidateGetData', function($
 	    		pio: pio,
 	    		busManager: busManager
 	    	}
+
     	console.log(press);
     	console.log(internalvicepress);
     	console.log(externalvicepress);
@@ -234,11 +236,11 @@ app.service("votingService",['$http', '$location','candidateGetData', function($
     	if (press != null || internalvicepress != null || externalvicepress != null || secretary != null || asstSec != null ||
     		treasurer != null || asstTreas != null || auditor != null || pio != null || busManager != null){
     		alert("successful");
-    		$location.path("/voteview");
-
+    		$location.path('/voteview');
     	}else{
     		alert("please vote");
     	}
+    	
     }
 
 }]);

@@ -21,8 +21,8 @@ app.config(function($routeProvider){
 		controller: 'adminloginCtrl'
 	})
 	.when('/voteview', {
-		templateUrl: 'html/voteView.html'
-	
+		templateUrl: 'html/voteView.html',
+		controller: 'voteViewCtrl'
 	})
 
 });
