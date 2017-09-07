@@ -12,7 +12,7 @@
 				<h4 class="panel-titles">Information Technology Society Organization</h4>
 			</div>
 			<div class="log-out-icon">
-				<a class="btn btn-default" href="#!"><span class="glyphicon glyphicon-log-out">Logout</span></a>
+				<a class="btn btn-default" href="" ng-click="logout()"><span class="glyphicon glyphicon-log-out">Logout</span></a>
 			</div>
 		</nav>
 		<div class="contain-body">
@@ -159,16 +159,14 @@
 											<tr>
 												<th>Voter #</th>
 												<th>Name</th>
+												<th>Gender</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>48496509</td>
-												<td>Reymon Dinagat</td>
-											</tr>
-											<tr>
-												<td>48496501</td>
-												<td>Opp hahaha</td>
+											<tr ng-repeat="v in voterslist">
+												<td>{{v.id}}</td>
+												<td>{{v.first_name}} {{v.middle_name}} {{v.last_name}}</td>
+												<td>{{v.gender}}</td>
 											</tr>
 										</tbody>
 									</table>

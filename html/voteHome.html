@@ -40,11 +40,7 @@
 		  	margin-top: -35em;
 		  	margin-right: 10em;
 		  }
-		   .log-out{
-		    margin-top: 21px;
-		    margin-right: 39px;
-		    float: right;
-		 }
+		
 		 a{
 		 	color: green;
 		 }
@@ -64,9 +60,13 @@
             <div class="navbar-header">
                 <h4 class="panel-titles">Information Technology Society Organization</h4>
             </div>
+
+           
+
             <div class="log-out">
-                <a class="btn btn-default" href="#!"><span class="glyphicon glyphicon-log-out">Logout</span></a>
+                <a class="btn btn-default" href="" ng-click="logout()"><span class="glyphicon glyphicon-log-out">Logout</span></a>
             </div>
+
      </nav>
 <div class="contain-body">
     <div class="forms-body">
@@ -119,11 +119,13 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'President'}:true">
-                                        <td><input type="radio" name="pres"></td>
+                                        <td><input type="radio" name="pres" ng-model="$parent.press" value="{{x.id}}""></td>
                                         <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
+
                             </div>
+                            
                             <div class="collapse" id="ivp" style="padding-top: 5px;">
                                 <table>
                                     <tr>
@@ -131,7 +133,7 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'Internal Vice President'}:true">
-                                        <td><input type="radio" name="ivp"></td>
+                                        <td><input type="radio" name="ivp" ng-model="$parent.internalvicepress" value="{{x.id}}"></td>
                                         <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
@@ -143,7 +145,7 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'External Vice President'}:true">
-                                        <td><input type="radio" name="evp"></td>
+                                        <td><input type="radio" name="evp" ng-model="$parent.externalvicepress" value="{{x.id}}"></td>
                                         <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
@@ -155,8 +157,8 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'Secretary'}:true">
-                                        <td><input type="radio" name="sec"></td>
-                                        <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
+                                        <td><input type="radio" name="sec" ng-model="$parent.secretary" value="{{x.id}}"></td>
+                                        <td>{{x.id+' '+x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
                             </div>
@@ -167,7 +169,7 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'Assistant Secretary'}:true">
-                                        <td><input type="radio" name="pres"></td>
+                                        <td><input type="radio" name="pres" ng-model="$parent.asstSec" value="{{x.id}}"></td>
                                         <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
@@ -179,7 +181,7 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'Treasurer'}:true">
-                                        <td><input type="radio" name="treas"></td>
+                                        <td><input type="radio" name="treas" ng-model="$parent.treasurer" value="{{x.id}}"></td>
                                         <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
@@ -191,7 +193,7 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'Assistant Treasurer'}:true">
-                                        <td><input type="radio" name="atreas"></td>
+                                        <td><input type="radio" name="atreas" ng-model="$parent.asstTreas" value="{{x.id}}"></td>
                                         <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
@@ -203,7 +205,7 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'Auditor'}:true">
-                                        <td><input type="radio" name="aud"></td>
+                                        <td><input type="radio" name="aud" ng-model="$parent.auditor" value="{{x.id}}"></td>
                                         <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
@@ -215,7 +217,7 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'PIO'}:true">
-                                        <td><input type="radio" name="pio"></td>
+                                        <td><input type="radio" name="pio" ng-model="$parent.pio" value="{{x.id}}"></td>
                                         <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
@@ -227,7 +229,7 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'Business Manager'}:true">
-                                        <td><input type="radio" name="bus"></td>
+                                        <td><input type="radio" name="bus" ng-model="$parent.busManager" value="{{x.id}}"></td>
                                         <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
@@ -236,7 +238,8 @@
                         </div>
                     </div>
                             <div class="btnSubmit">
-                                <button ng-click="" class="btn btn-success">Submit</button>
+                                <button ng-click="sumbitvotes($parent.press,$parent.internalvicepress,$parent.externalvicepress,$parent.secretary,$parent.asstSec,$parent.treasurer,
+                                $parent.asstTreas,$parent.auditor,$parent.pio,$parent.busManager)" class="btn btn-success" >Submit</button>
                             </div>  
         </div>
     </div>

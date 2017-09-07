@@ -1,6 +1,15 @@
 'use strict'
 
-app.controller('loginCtrl',['$scope','$uibModal','registration', function($scope,$uibModal,registration){
+
+app.controller('adminloginCtrl',['$scope','adminLogin', function($scope,adminLogin){
+	adminLogin.checkToken();
+	$scope.login = function(){
+		adminLogin.login($scope.adminuser,$scope.adminpass);
+	}
+}]);
+
+app.controller('loginCtrl',['$scope','$uibModal','registration','userLogin', function($scope,$uibModal,registration,userLogin){
+	userLogin.checkToken();
 	$scope.open = function(size){
 		$uibModal.open({
 			animation: true,
@@ -16,7 +25,7 @@ app.controller('loginCtrl',['$scope','$uibModal','registration', function($scope
 	}
 }]);
 
-app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$http', function($uibModalInstance,$scope,$location,$http){
+app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$http','$localStorage', function($uibModalInstance,$scope,$location,$http,$localStorage){
 	$scope.ok = function(){
 		$uibModalInstance.dismiss();
 		let sample = {
@@ -26,8 +35,9 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 		$http.post('https://devpartnerstraining.herokuapp.com/VoterLogin',JSON.stringify(sample)).then(function successCallback(response){
 			if(response.data){
 				if(response.data.status === false){
-					console.log('Invalid Login');
+					alert('Invalid Login');
 				}else{
+					$localStorage.userToken = true;
 					var hold = atob(response.data);
 					var obj = angular.fromJson(hold);
 					console.log(hold);
@@ -48,15 +58,30 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 	}
 }]);
 
-//modal admin
-app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction', function($scope,candidateGet,adminManagementFunction){
+app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','voterGet','$http','adminLogin', function($scope,candidateGet,adminManagementFunction,voterGet,$http,adminLogin){
+
+	adminLogin.checkToken();
+	$http({
+		method: 'GET',
+		url: 'https://devpartnerstraining.herokuapp.com/VoterGet'
+	}).then(function successCallback(response){
+		$scope.voterslist = response.data;
+	},function errorCallback(response){
+
+	})
+
+	voterGet.getVoters().then(function(data){
+		$scope.voters = data;
+	})
 
 	candidateGet.getCandidates().then(function(data){
 		$scope.candidates = data;
 		$scope.count = data.length + 1;
 		console.log(data);
 	})
-
+	$scope.logout = function(){
+		adminLogin.logout();
+	}
 	$scope.candidateregister = function(val1,val2,val3,val4,val5){
 		adminManagementFunction.registercandidates(val1,val2,val3,val4,val5);
 		candidateGet.getCandidates().then(function(data){$scope.count = data.length + 1;})
@@ -88,21 +113,32 @@ app.controller('confirmAdminCtrl',['$scope','$uibModalInstance', function($scope
 	}
 }]);
 
-app.controller('voteHomeCtrl',['$scope','$http','candidateGetData', function($scope,$http,candidateGetData){
+app.controller('voteHomeCtrl',['$scope','$http','candidateGetData','votingService','$location', function($scope,$http,candidateGetData,votingService,$location){
+app.controller('voteHomeCtrl',['$scope','$http','candidateGetData','votingService','userLogin' , function($scope,$http,candidateGetData,votingService,userLogin){
 
+	userLogin.checkToken();
+	$scope.logout = function(){
+		userLogin.logout();
+	}
     $('.collapse').on('show.bs.collapse', function (e) {
-    $('.collapse').not(e.target).removeClass('in');
-})
+	    $('.collapse').not(e.target).removeClass('in');
+	})
     candidateGetData.candidates().then(function(data){$scope.candidatesData = data;})
-  // $http({
-  //       method: 'GET',
-  //       url: 'https://devpartnerstraining.herokuapp.com/CandidateGet'
-  //       }).then(function successCallback(response){
-  //           $scope.myData = response.data;
-  //       },function errorCallback(response){
 
-  //       })
-    
+    $scope.sumbitvotes = function(press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
+
+    		votingService.sumbitvotes ($scope.press,$scope.internalvicepress,$scope.externalvicepress,$scope.secretary,$scope.asstSec,$scope.treasurer,
+    			$scope.asstTreas,$scope.auditor,$scope.pio,$scope.busManager);
+
+    	// console.log($scope.press);
+    	// console.log($scope.internalvicepress);
+    	// console.log($scope.externalvicepress);
+    	// console.log($scope.secretary);
+    	// console.log($scope.asstSec);
+    	// console.log($scope.treasurer);
+    	// console.log($scope.asstTreas);
+    	// console.log($scope.auditor);
+    	// console.log($scope.pio);
+    	// console.log($scope.busManager);
+    };
 }]);
-
-

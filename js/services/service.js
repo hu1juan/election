@@ -31,6 +31,59 @@ app.service("candidateGet",["$http", function($http){
 	}
 }]);
 
+app.service("adminLogin",['$location','$localStorage',function($location,$localStorage){
+	if(!$localStorage.isToken){
+		$localStorage.isToken = false;
+	}
+	this.checkToken = function(){
+		if($localStorage.isToken == true){
+			$location.path('/admin');
+		}else{
+			$location.path('/adminlogin');
+		}
+	}
+
+	this.logout = function(){
+		$localStorage.isToken = false;
+		$location.path('/adminlogin');
+	}
+
+
+	this.login = function(user,pass){
+		if(user === 'admin'){
+			if(pass === 'admin_123'){
+				$localStorage.isToken = true;
+				$location.path('/admin');
+			}else{
+				alert('Invalid password.')
+			}
+		}else{
+			alert('Invalid Account');
+		}
+	}
+}]);
+
+app.service("userLogin",['$location','$localStorage',function($location,$localStorage){
+	if(!$localStorage.userToken){
+		$localStorage.userToken = false;
+	}
+
+	this.checkToken = function(){
+		if($localStorage.userToken == true){
+			$location.path('/votehome');
+		}else{
+			$location.path('/');
+		}
+	}
+
+	this.logout = function(){
+		$localStorage.userToken = false;
+		$location.path('/');
+	}
+
+}]);
+
+
 app.service("registration",["voterGet","$http", function(voterGet,$http){
 	this.register = function(fName,mName,lName,gender,user,pass,pass2){
 		voterGet.getVoters().then(function(data) {
@@ -154,6 +207,8 @@ app.service("adminManagementFunction",["$uibModal","$http","candidateGet", funct
 }
 }]);
 
+
+
 app.service("candidateGetData",['$http',function($http){
 	return{
 		candidates: function(){
@@ -168,4 +223,41 @@ app.service("candidateGetData",['$http',function($http){
 		}
 
 	}
+
+}]);
+
+app.service("votingService",['$http', '$location','candidateGetData', function($http,$location, candidateGetData){
+	    this.sumbitvotes = function(press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
+	    	var vt = {
+	    		press: press,
+	    		internalvicepress: internalvicepress,
+	    		externalvicepress: externalvicepress,
+	    		secretary: secretary,
+	    		asstSec: asstSec,
+	    		asstTreas: asstTreas,
+	    		auditor: auditor,
+	    		pio: pio,
+	    		busManager: busManager
+	    	}
+    	console.log(press);
+    	console.log(internalvicepress);
+    	console.log(externalvicepress);
+    	console.log(secretary);
+    	console.log(asstSec);
+    	console.log(treasurer);
+    	console.log(asstTreas);
+    	console.log(auditor);
+    	console.log(pio);
+    	console.log(busManager);
+    	
+    	if (press != null || internalvicepress != null || externalvicepress != null || secretary != null || asstSec != null ||
+    		treasurer != null || asstTreas != null || auditor != null || pio != null || busManager != null){
+    		alert("successful");
+    		$location.path("/voteview");
+
+    	}else{
+    		alert("please vote");
+    	}
+    }
+
 }]);
