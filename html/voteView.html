@@ -49,6 +49,16 @@
 		 a{
 		 	color: green;
 		 }
+		      .table{
+            width: 70%;
+            margin: 0% auto auto 10%;
+         }
+         .forms-body{
+            height: auto;
+         }
+         .views{
+            margin-left: 43%;
+         }
 		
 </style>
     <title></title>
@@ -76,10 +86,61 @@
             </div>
             <hr>
            
- 				<div class="list-form-view">
- 					
+	<div class="form1">
+   <p class="views">Views</p>
+    <table class="table table-striped">
+    	    <thead>
+              <tr>
+              <th>Candidate/s</th>
+              <th>Position</th>
+              </tr>
+              </thead>
+               <tbody>
+        <tr ng-repeat="c in disss">
+            <td> {{ c.candidate_id.press }} </td>
+            <td> President </td>  
+        </tr>
+        <tr ng-repeat="c in disss">
+            <td> {{ c.candidate_id.internalvicepress }} </td>
+            <td> Internal Vice President </td>  
+        </tr>
+        <tr ng-repeat="c in disss">
+            <td> {{ c.candidate_id.externalvicepress }} </td>
+            <td> External Vice President </td>  
+        </tr>
+        <tr ng-repeat="c in disss">
+            <td> {{ c.candidate_id.secretary }} </td>
+            <td> Secretary </td>  
+        </tr>
+        <tr ng-repeat="c in disss">
+            <td> {{ c.candidate_id.asstSec }} </td>
+            <td> Assistant Secretary </td>  
+        </tr>
+        <tr ng-repeat="c in disss">
+            <td> {{ c.candidate_id.treasurer }} </td>
+            <td> Treasurer </td>  
+        </tr>
+        <tr ng-repeat="c in disss">
+            <td> {{ c.candidate_id.asstTreas }} </td>
+            <td> Assistant Treasurer </td>  
+        </tr>
+         <tr ng-repeat="c in disss">
+            <td> {{ c.candidate_id.auditor }} </td>
+            <td> Auditor </td>  
+        </tr>
+         <tr ng-repeat="c in disss">
+            <td> {{ c.candidate_id.pio }} </td>
+            <td> PIO </td>  
+        </tr>
+         <tr ng-repeat="c in disss">
+            <td> {{ c.candidate_id.busManager }} </td>
+            <td> Business Manager </td>  
+        </tr>
+</table> 
 
- 				</div>
+</div>
+
+</div>
 
  				 
         </div>

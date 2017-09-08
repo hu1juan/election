@@ -114,7 +114,7 @@ app.controller('confirmAdminCtrl',['$scope','$uibModalInstance', function($scope
 	}
 }]);
 
-app.controller('voteHomeCtrl',['$scope','$http','candidateGetData','votingService','userLogin' , function($scope,$http,candidateGetData,votingService,userLogin){
+app.controller('voteHomeCtrl',['$scope','$http','$localStorage','candidateGetData','votingService','userLogin' , function($scope,$http,$localStorage,candidateGetData,votingService,userLogin){
 	
 	userLogin.checkToken();
 	votingService.hey();
@@ -143,10 +143,13 @@ app.controller('voteHomeCtrl',['$scope','$http','candidateGetData','votingServic
     };
 }]);
 
-app.controller('voteViewCtrl',['$scope', '$http', '$location','userLogin','votingService', function($scope,$http,$location,userLogin,votingService){
+app.controller('voteViewCtrl',['$scope', '$http', '$location','$localStorage','userLogin','votingService', function($scope,$http,$location,$localStorage,userLogin,votingService){
 	userLogin.checkToken();
 	$location.path('/voteview');
 	$scope.logout = function(){
+		$localStorage.votes = [];
 		userLogin.logout();
 	}
+		$scope.disss = $localStorage.votes;
+      	console.log($scope.disss);
 }]);

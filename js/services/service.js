@@ -229,17 +229,19 @@ app.service("candidateGetData",['$http',function($http){
 
 }]);
 
-app.service("votingService",['$http','$location','candidateGetData','userLogin', function($http,$location, candidateGetData, userLogin){
-
-		this.hey = function(){
+app.service("votingService",['$http','$location','$localStorage','candidateGetData','userLogin', function($http,$location,$localStorage, candidateGetData, userLogin){
 		var holder={};
+		var index = -1;
+		var count = 1;
+		this.hey = function(){
+
 		let sam = {
 			username: userLogin.user
 		}
 		$http.get('https://devpartnerstraining.herokuapp.com/VoterGet').then(function success(response){
 			holder = response.data;
-			var index = holder.findIndex(sam => sam.username === userLogin.user);
-			console.log(holder[index].id);
+			index = holder.findIndex(sam => sam.username === userLogin.user);
+			// console.log(holder[index].id);
 		}, function failure(response){
 
 		});
@@ -250,31 +252,27 @@ app.service("votingService",['$http','$location','candidateGetData','userLogin',
 
 	    this.submitvotes = function( press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
 	    	var vt = {
-	    
-	    		press: press,
-	    		internalvicepress: internalvicepress,
+	    		voter_id: holder[index].id,
+	    		candidate_id: {
+	    		 press: press, 
+	    		internalvicepress: internalvicepress, 
 	    		externalvicepress: externalvicepress,
 	    		secretary: secretary,
 	    		asstSec: asstSec,
+	    		treasurer: treasurer,
 	    		asstTreas: asstTreas,
 	    		auditor: auditor,
 	    		pio: pio,
 	    		busManager: busManager
+	    		}
+	  
+	    		
 	    	}
 
-    	console.log(press);
-    	console.log(internalvicepress);
-    	console.log(externalvicepress);
-    	console.log(secretary);
-    	console.log(asstSec);
-    	console.log(treasurer);
-    	console.log(asstTreas);
-    	console.log(auditor);
-    	console.log(pio);
-    	console.log(busManager);
-    	
+    	console.log($localStorage.votes);
     	if (press != null || internalvicepress != null || externalvicepress != null || secretary != null || asstSec != null ||
     		treasurer != null || asstTreas != null || auditor != null || pio != null || busManager != null){
+    		$localStorage.votes.push(vt);
     		alert("successful");
     		$location.path('/voteview');
     	}else{
