@@ -38,7 +38,6 @@
 									<div class="form-group">
 										<label>Candidate #</label>
 										<input type="text" class="form-control" value="{{count}}" readonly />
-
 										<label>First name</label>
 										<input type="text" class="form-control" ng-minlength="3" ng-maxlength="50" name="cfname" ng-model="cfirstname" placeholder="Enter First Name" required/>
 										<div ng-messages="formValidation.cfname.$error" class="errorvalidation">
@@ -86,8 +85,10 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<button type="submit" class="btn btn-secondary" ng-disabled="formValidation.$invalid"><span class="glyphicon glyphicon-ok"> Register</span></button>
-										<button class="btn btn-secondary" type="reset"><span class="glyphicon glyphicon-remove"> Clear</span></button>
+										<div class="btn-contain">
+											<button type="submit" class="btn-button" ng-disabled="formValidation.$invalid"><span class="glyphicon glyphicon-ok"> Register</span></button>
+											<button class="btn-button" type="reset"><span class="glyphicon glyphicon-remove"> Clear</span></button>
+										</div>
 									</div>
 								</div>
 							</form>

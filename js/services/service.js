@@ -23,7 +23,36 @@ app.factory('VoterService',[
 			return defer.promise;
 		}
 		return factory;
-	}]);
+	}
+]);
+
+app.factory('CandidateService', [
+	'$http',
+	'$q',
+	function(
+		$http,
+		$q)
+	{
+		var baseUrl = 'https://devpartnerstraining.herokuapp.com/';
+		var factory = this;
+
+		factory.getCandidate = function(){
+			var defer = $q.defer();
+
+			$http({
+				method: 'GET',
+				url: baseUrl + 'CandidateGet'
+			}).then(function(response){
+				return defer.resolve(response);
+			}, function(error){
+				return defer.reject(error);
+			});
+			return defer.promise;
+		}
+		return factory;
+	}
+
+]);
 
 app.service("voterGet",["$http", function($http){
 	return {

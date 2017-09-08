@@ -66,7 +66,7 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 	}
 }]);
 
-app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','voterGet','$http','adminLogin', function($scope,candidateGet,adminManagementFunction,voterGet,$http,adminLogin){
+app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','voterGet','$http','adminLogin','CandidateService', function($scope,candidateGet,adminManagementFunction,voterGet,$http,adminLogin,CandidateService){
 
 	adminLogin.checkToken();
 	$http({
@@ -82,10 +82,16 @@ app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','v
 		$scope.voters = data;
 	})
 
-	candidateGet.getCandidates().then(function(data){
-		$scope.candidates = data;
-		$scope.count = data.length + 1;
+	CandidateService.getCandidate().then(function(response){
+		$scope.candidates = response.data;
+		$scope.count = response.data.length + 1;
 	})
+
+	// candidateGet.getCandidates().then(function(data){
+	// 	$scope.candidates = data;
+	// 	$scope.count = data.length + 1;
+	// })
+
 	$scope.logout = function(){
 		adminLogin.logout();
 	}
