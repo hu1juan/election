@@ -1,11 +1,18 @@
 'use strict'
 
 
-app.controller('adminloginCtrl',['$scope','adminLogin', function($scope,adminLogin){
+app.controller('adminloginCtrl',['$scope','adminLogin','VoterService', function($scope,adminLogin,VoterService){
 	adminLogin.checkToken();
 	$scope.login = function(){
 		adminLogin.login($scope.adminuser,$scope.adminpass);
 	}
+
+	$scope.getmyVoters = function(){
+		VoterService.gettingVoters().then(function(response){
+			$scope.list = response.data;
+		})
+	};
+	$scope.getmyVoters();
 }]);
 
 app.controller('loginCtrl',['$scope','$uibModal','registration','userLogin', function($scope,$uibModal,registration,userLogin){
@@ -38,12 +45,12 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 					alert('Invalid Login');
 				}else{
 					$localStorage.userToken = true;
-					var hold = atob(response.data);
-					var obj = angular.fromJson(hold);
-					console.log(hold);
-					console.log(obj);
-					console.log(obj.password);
-					console.log(obj.date);
+					// var hold = atob(response.data);
+					// var obj = angular.fromJson(hold);
+					// console.log(hold);
+					// console.log(obj);
+					// console.log(obj.password);
+					// console.log(obj.date);
 					$location.path('/votehome');
 				}
 			}

@@ -1,5 +1,30 @@
 'use strict'
 
+app.factory('VoterService',[
+	'$http',
+	'$q',
+	function(
+		$http,
+		$q){
+		var baseUrl = 'https://devpartnerstraining.herokuapp.com/';
+		var factory = this;
+		factory.gettingVoters = function(){
+			var defer = $q.defer();
+
+			$http({
+				method: 'GET',
+				url: baseUrl+'VoterGet'
+			}).then(function(response){
+				factory.data = response.data;
+				return defer.resolve(response);
+			}, function(error){
+				return defer.reject(error);
+			});
+			return defer.promise;
+		}
+		return factory;
+	}]);
+
 app.service("voterGet",["$http", function($http){
 	return {
 		getVoters: function(){
@@ -112,15 +137,14 @@ app.service("registration",["voterGet","$http", function(voterGet,$http){
 			}else{
 				alert('Username is already taken.');
 			}
-
-			console.log(registeredVOTERS);
-			console.log(fName);
-			console.log(mName);
-			console.log(lName);
-			console.log(gender);
-			console.log(user);
-			console.log(pass);
-			console.log(pass2);
+			// console.log(registeredVOTERS);
+			// console.log(fName);
+			// console.log(mName);
+			// console.log(lName);
+			// console.log(gender);
+			// console.log(user);
+			// console.log(pass);
+			// console.log(pass2);
 		})
 	};
 }]);
