@@ -67,7 +67,7 @@ app.service("userLogin",['$location','$localStorage',function($location,$localSt
 	if(!$localStorage.userToken){
 		$localStorage.userToken = false;
 	}
-
+	this.user='';
 	this.checkToken = function(){
 		if($localStorage.userToken == true){
 			$location.path('/votehome');
@@ -229,7 +229,25 @@ app.service("candidateGetData",['$http',function($http){
 
 }]);
 
-app.service("votingService",['$http','$location','candidateGetData', function($http,$location, candidateGetData){
+app.service("votingService",['$http','$location','candidateGetData','userLogin', function($http,$location, candidateGetData, userLogin){
+
+		this.hey = function(){
+		var holder={};
+		let sam = {
+			username: userLogin.user
+		}
+		$http.get('https://devpartnerstraining.herokuapp.com/VoterGet').then(function success(response){
+			holder = response.data;
+			var index = holder.findIndex(sam => sam.username === userLogin.user);
+			console.log(holder[index].id);
+		}, function failure(response){
+
+		});
+		
+		}
+
+
+
 	    this.submitvotes = function( press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
 	    	var vt = {
 	    

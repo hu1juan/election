@@ -25,7 +25,7 @@ app.controller('loginCtrl',['$scope','$uibModal','registration','userLogin', fun
 	}
 }]);
 
-app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$http','$localStorage', function($uibModalInstance,$scope,$location,$http,$localStorage){
+app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$http','$localStorage','userLogin', function($uibModalInstance,$scope,$location,$http,$localStorage,userLogin){
 	$scope.ok = function(){
 		$uibModalInstance.dismiss();
 		let sample = {
@@ -45,6 +45,7 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 					console.log(obj.password);
 					console.log(obj.date);
 					$location.path('/votehome');
+					userLogin.user = $scope.loginuser;
 				}
 			}
 		}, function errorCallback(response){
@@ -114,11 +115,11 @@ app.controller('confirmAdminCtrl',['$scope','$uibModalInstance', function($scope
 }]);
 
 app.controller('voteHomeCtrl',['$scope','$http','candidateGetData','votingService','userLogin' , function($scope,$http,candidateGetData,votingService,userLogin){
-
+	
 	userLogin.checkToken();
-	$scope.logout = function(){
-		userLogin.logout();
-	}
+	votingService.hey();
+	
+
     $('.collapse').on('show.bs.collapse', function (e) {
 	    $('.collapse').not(e.target).removeClass('in');
 	})
