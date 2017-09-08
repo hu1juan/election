@@ -130,16 +130,6 @@ app.controller('voteHomeCtrl',['$scope','$http','$localStorage','candidateGetDat
     		votingService.submitvotes ($scope.press,$scope.internalvicepress,$scope.externalvicepress,$scope.secretary,$scope.asstSec,$scope.treasurer,
     			$scope.asstTreas,$scope.auditor,$scope.pio,$scope.busManager);
 
-    	// console.log($scope.press);
-    	// console.log($scope.internalvicepress);
-    	// console.log($scope.externalvicepress);
-    	// console.log($scope.secretary);
-    	// console.log($scope.asstSec);
-    	// console.log($scope.treasurer);
-    	// console.log($scope.asstTreas);
-    	// console.log($scope.auditor);
-    	// console.log($scope.pio);
-    	// console.log($scope.busManager);
     };
 }]);
 
