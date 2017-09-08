@@ -32,7 +32,7 @@ app.controller('loginCtrl',['$scope','$uibModal','registration','userLogin', fun
 	}
 }]);
 
-app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$http','$localStorage', function($uibModalInstance,$scope,$location,$http,$localStorage){
+app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$http','$localStorage','userLogin', function($uibModalInstance,$scope,$location,$http,$localStorage,userLogin){
 	$scope.ok = function(){
 		$uibModalInstance.dismiss();
 		let sample = {
@@ -52,6 +52,7 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 					// console.log(obj.password);
 					// console.log(obj.date);
 					$location.path('/votehome');
+					userLogin.user = $scope.loginuser;
 				}
 			}
 		}, function errorCallback(response){
@@ -103,8 +104,9 @@ app.controller('editAdminModalCtrl',['$scope','adminManagementFunction','$uibMod
 	candidateGet.getCandidates().then(function(data){
 		$scope.candidates = data;
 	})
-	$scope.comfirmation = function(){
-		adminManagementFunction.editCandidate();
+	$scope.editcandidates = function(idcandidate,firstname,middlename,lastname,gender,position){
+		// console.log(idcandidate,firstname,middlename,lastname,gender,position);
+		adminManagementFunction.editCandidate(idcandidate,firstname,middlename,lastname,gender,position);
 		adminManagementFunction.confirmationadmin();
 	}
 	$scope.canceladmin = function(){
@@ -120,19 +122,19 @@ app.controller('confirmAdminCtrl',['$scope','$uibModalInstance', function($scope
 }]);
 
 app.controller('voteHomeCtrl',['$scope','$http','candidateGetData','votingService','userLogin' , function($scope,$http,candidateGetData,votingService,userLogin){
-
+	
 	userLogin.checkToken();
-	$scope.logout = function(){
-		userLogin.logout();
-	}
+	votingService.hey();
+	
+
     $('.collapse').on('show.bs.collapse', function (e) {
 	    $('.collapse').not(e.target).removeClass('in');
 	})
     candidateGetData.candidates().then(function(data){$scope.candidatesData = data;})
 
-    $scope.sumbitvotes = function(press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
+    $scope.submitvotes = function(press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
 
-    		votingService.sumbitvotes ($scope.press,$scope.internalvicepress,$scope.externalvicepress,$scope.secretary,$scope.asstSec,$scope.treasurer,
+    		votingService.submitvotes ($scope.press,$scope.internalvicepress,$scope.externalvicepress,$scope.secretary,$scope.asstSec,$scope.treasurer,
     			$scope.asstTreas,$scope.auditor,$scope.pio,$scope.busManager);
 
     	// console.log($scope.press);
@@ -146,4 +148,12 @@ app.controller('voteHomeCtrl',['$scope','$http','candidateGetData','votingServic
     	// console.log($scope.pio);
     	// console.log($scope.busManager);
     };
+}]);
+
+app.controller('voteViewCtrl',['$scope', '$http', '$location','userLogin','votingService', function($scope,$http,$location,userLogin,votingService){
+	userLogin.checkToken();
+	$location.path('/voteview');
+	$scope.logout = function(){
+		userLogin.logout();
+	}
 }]);

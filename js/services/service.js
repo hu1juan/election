@@ -92,7 +92,7 @@ app.service("userLogin",['$location','$localStorage',function($location,$localSt
 	if(!$localStorage.userToken){
 		$localStorage.userToken = false;
 	}
-
+	this.user='';
 	this.checkToken = function(){
 		if($localStorage.userToken == true){
 			$location.path('/votehome');
@@ -207,8 +207,30 @@ app.service("adminManagementFunction",["$uibModal","$http","candidateGet", funct
 		}
 	}
 
-	this.editCandidate = function(){
+	this.editCandidate = function(idcandidate,fname,mname,lname,gender,position){
 		// alert('ok');
+		let sample1 = {
+			first_name: fname,
+			middle_name: mname,
+			last_name: lname,
+			gender: gender,
+			position: position,
+			isDeleted: 0
+		}
+		console.log(sample1);
+		$http.post('https://devpartnerstraining.herokuapp.com/CandidateSet/'+idcandidate,JSON.stringify(sample1)).then(function successCallback(response){
+			if(response.data){
+				alert("Update successful.");
+			}
+		}, function errorCallback(response){
+			alert(response.status);
+		});
+		console.log(idcandidate);
+		console.log(fname);
+		console.log(mname);
+		console.log(lname);
+		console.log(gender);
+		console.log(position);
 }
 }]);
 
@@ -231,9 +253,28 @@ app.service("candidateGetData",['$http',function($http){
 
 }]);
 
-app.service("votingService",['$http','candidateGetData', function($http, candidateGetData){
-	    this.sumbitvotes = function(press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
+app.service("votingService",['$http','$location','candidateGetData','userLogin', function($http,$location, candidateGetData, userLogin){
+
+		this.hey = function(){
+		var holder={};
+		let sam = {
+			username: userLogin.user
+		}
+		$http.get('https://devpartnerstraining.herokuapp.com/VoterGet').then(function success(response){
+			holder = response.data;
+			var index = holder.findIndex(sam => sam.username === userLogin.user);
+			console.log(holder[index].id);
+		}, function failure(response){
+
+		});
+		
+		}
+
+
+
+	    this.submitvotes = function( press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
 	    	var vt = {
+	    
 	    		press: press,
 	    		internalvicepress: internalvicepress,
 	    		externalvicepress: externalvicepress,
@@ -244,6 +285,7 @@ app.service("votingService",['$http','candidateGetData', function($http, candida
 	    		pio: pio,
 	    		busManager: busManager
 	    	}
+
     	console.log(press);
     	console.log(internalvicepress);
     	console.log(externalvicepress);
@@ -258,9 +300,11 @@ app.service("votingService",['$http','candidateGetData', function($http, candida
     	if (press != null || internalvicepress != null || externalvicepress != null || secretary != null || asstSec != null ||
     		treasurer != null || asstTreas != null || auditor != null || pio != null || busManager != null){
     		alert("successful");
+    		$location.path('/voteview');
     	}else{
     		alert("please vote");
     	}
+    	
     }
 
 }]);
