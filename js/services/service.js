@@ -49,6 +49,39 @@ app.factory('CandidateService', [
 			});
 			return defer.promise;
 		}
+
+		factory.postCandidate = function($data){
+			var defer = $q.defer();
+
+			$http({
+				method: 'POST',
+				url: baseUrl + 'CandidateSet',
+				data: $data
+			}).then(function(response){
+				return defer.resolve(response);
+			}, function(error){
+				return defer.reject(error);
+			});
+
+			return defer.promise;
+		}
+
+		factory.setCandidate = function(id, $data){
+			var defer = $q.defer();
+
+			$http({
+				method: 'POST',
+				url: baseUrl + 'CandidateSet/' + id,
+				data: $data
+			}).then(function(response){
+				return defer.resolve(response);
+			}, function(error){
+				return defer.reject(error);
+			});
+
+			return defer.promise;
+		}
+
 		return factory;
 	}
 
@@ -178,7 +211,7 @@ app.service("registration",["voterGet","$http", function(voterGet,$http){
 	};
 }]);
 
-app.service("adminManagementFunction",["$uibModal","$http","candidateGet", function($uibModal,$http,candidateGet){
+app.service("adminManagementFunction",["$uibModal","$http","candidateGet","CandidateService", function($uibModal,$http,candidateGet,CandidateService){
 
 
 	this.editadminmanagement = function(id){
@@ -218,13 +251,20 @@ app.service("adminManagementFunction",["$uibModal","$http","candidateGet", funct
 				if(id == -1){
 					var i = candidatesmember.findIndex(sample1 => sample1.last_name === lname && sample1.first_name === fname && sample1.middle_name === mname && sample1.position === position);
 					if(i == -1){
-						$http.post('https://devpartnerstraining.herokuapp.com/CandidateSet',JSON.stringify(sample1)).then(function successCallback(response){
+						// alert('ok');
+						// console.log(sample1);
+						CandidateService.postCandidate(sample1).then(function(response){
 							if(response.data){
 								alert("Posting data successful.");
 							}
-						}, function errorCallback(response){
-							alert(response.status);
 						});
+						// $http.post('https://devpartnerstraining.herokuapp.com/CandidateSet',JSON.stringify(sample1)).then(function successCallback(response){
+						// 	if(response.data){
+						// 		alert("Posting data successful.");
+						// 	}
+						// }, function errorCallback(response){
+						// 	alert(response.status);
+						// });
 						// alert('ok');
 					}else{
 						alert('you already have position.');
@@ -247,13 +287,18 @@ app.service("adminManagementFunction",["$uibModal","$http","candidateGet", funct
 			isDeleted: 0
 		}
 		console.log(sample1);
-		$http.post('https://devpartnerstraining.herokuapp.com/CandidateSet/'+idcandidate,JSON.stringify(sample1)).then(function successCallback(response){
+		CandidateService.setCandidate(idcandidate,sample1).then(function(response){
 			if(response.data){
-				alert("Update successful.");
+				alert('Update data');
 			}
-		}, function errorCallback(response){
-			alert(response.status);
-		});
+		})
+		// $http.post('https://devpartnerstraining.herokuapp.com/CandidateSet/'+idcandidate,JSON.stringify(sample1)).then(function successCallback(response){
+		// 	if(response.data){
+		// 		alert("Update successful.");
+		// 	}
+		// }, function errorCallback(response){
+		// 	alert(response.status);
+		// });
 		console.log(idcandidate);
 		console.log(fname);
 		console.log(mname);

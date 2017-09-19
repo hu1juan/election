@@ -177,7 +177,50 @@
 						</uib-tab>
 						<uib-tab index="3" heading="Ongoing result">
 						<div class="form1">
-							Some Tab Content
+							<div class="form-group">
+								<h4><span class="glyphicon glyphicon-list-alt"> List</span></h4>
+							</div>
+							<hr/>
+							
+							<div class="form-group">
+								<div class="panel panel-default">
+									<!-- Default panel contents -->
+									<div class="panel-heading">
+										<div class="form-group">
+											<label>Select position</label>
+											<select class="form-control" ng-model="cposition">
+												<option value="President">President</option>
+												<option value="Internal Vice President">Internal Vice President</option>
+												<option value="External Vice President">External Vice President</option>
+												<option value="Secretary">Secretary</option>
+												<option value="Ass. Secretary">Ass. Secretary</option>
+												<option value="Treasurer">Treasurer</option>
+												<option value="Ass. Treasurer">Ass. Treasurer</option>
+												<option value="Auditor">Auditor</option>
+												<option value="PIO">PIO</option>
+												<option value="Business Manager">Business Manager</option>
+											</select>
+										</div>
+									</div>
+									<!-- Table -->
+									<table class="table">
+										<thead>
+											<tr>
+												<th>Register #</th>
+												<th>Name</th>
+												<th>Position</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat=" p in candidates | filter:{position: cposition}:true">
+												<td>{{p.id}}</td>
+												<td><a href="" ng-click="editadmin(p.id)">{{p.first_name}}  {{ p.middle_name }} {{p.last_name}}</a></td>
+												<td>{{p.position}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
 						</div>
 						</uib-tab>
 						<uib-tab index="4" heading="Final result">
