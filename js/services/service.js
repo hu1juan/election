@@ -328,22 +328,22 @@ app.service("candidateGetData",['$http',function($http){
 }]);
 
 app.service("votingService",['$http','$location','$localStorage','candidateGetData','userLogin', function($http,$location,$localStorage, candidateGetData, userLogin){
-<<<<<<< HEAD
+
 		var holder={};
 		var index = -1;
 		var count = 1;
 		this.hey = function(){
 
-		let sam = {
-			username: userLogin.user
-		}
-		$http.get('https://devpartnerstraining.herokuapp.com/VoterGet').then(function success(response){
-			holder = response.data;
-			index = holder.findIndex(sam => sam.username === userLogin.user);
-			// console.log(holder[index].id);
-		}, function failure(response){
+			let sam = {
+				username: userLogin.user
+			}
+			$http.get('https://devpartnerstraining.herokuapp.com/VoterGet').then(function success(response){
+				holder = response.data;
+				index = holder.findIndex(sam => sam.username === userLogin.user);
+				// console.log(holder[index].id);
+			}, function failure(response){
 
-		});
+			});
 		
 		}
 
@@ -378,7 +378,6 @@ app.service("votingService",['$http','$location','$localStorage','candidateGetDa
     		alert("please vote");
     	}
     	
-=======
         var holder={};
         var index = -1;
         var count = 1;
@@ -394,7 +393,7 @@ app.service("votingService",['$http','$location','$localStorage','candidateGetDa
         });
         
         }
-        
+        }
         this.submitvotes = function( press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
             var vt = {
                 voter_id: holder[index].id,
@@ -425,6 +424,5 @@ app.service("votingService",['$http','$location','$localStorage','candidateGetDa
             alert("please vote");
         }
         
->>>>>>> origin/branch1
     }
 }]);
