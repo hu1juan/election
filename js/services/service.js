@@ -26,6 +26,33 @@ app.factory('VoterService',[
 	}
 ]);
 
+app.factory('VoteService', [
+	'$http',
+	'$q',
+	function(
+		$http,
+		$q){
+		var baseUrl = 'https://devpartnerstraining.herokuapp.com/';
+		var factory = this;
+
+		factory.postVote = function(){
+			var defer = $q.defer();
+
+			$http({
+				method: 'POST',
+				url: baseUrl + 'VoteSet'
+			}).then(function(response){
+				return defer.resolve(resolve);
+			}, function(error){
+				return defer.reject(error);
+			});
+			return defer.promise;
+		}
+		return factory;
+	}
+
+]);
+
 app.factory('CandidateService', [
 	'$http',
 	'$q',
