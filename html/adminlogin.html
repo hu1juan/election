@@ -28,9 +28,8 @@
     .login{
     	margin: 0 auto;
     	background-color: #B0BEC5;
-    	width: 20%;
-    	height: 30%;
     	box-shadow: 5px 5px 10px black;
+    	width: 20%;
     }
     .md-no-momentum{
     	background-color: #CFD8DC;
@@ -52,29 +51,51 @@
     	display: block;
    		margin: auto;
     }
+
+    .outer {
+	    display: table;
+	    position: absolute;
+	    height: 100%;
+	    width: 100%;
+	}
+
+	.middle {
+	    display: table-cell;
+	    vertical-align: middle;
+	    text-align: center;
+	    color: #607D8B;
+	}
+	h3{
+		color:grey;
+	}
 	</style>
 </head>
 <body>
+<div class="outer">
+	<div class="middle">
+		<div class="login">
+			<div layout="column" layout-padding ng-cloak>
+				<md-content class="md-no-momentum">
+				<h3>Administrator</h3>
+				<img src="../image/user.png">
+				    <md-input-container class="md-icon-float md-block">
+				      <!-- Use floating label instead of placeholder -->
+				      <label>Username</label>
+				      <input class="in1" type="text" ng-model="adminuser">
+				    </md-input-container>
 
-<div class="login">
-	<div layout="column" layout-padding ng-cloak>
-		<md-content class="md-no-momentum">
-		<img src="../image/user.png">
-		    <md-input-container class="md-icon-float md-block">
-		      <!-- Use floating label instead of placeholder -->
-		      <label>Username</label>
-		      <input class="in1" type="text" ng-model="adminuser">
-		    </md-input-container>
-
-		    <md-input-container class="md-icon-float md-block">
-		      <!-- Use floating label instead of placeholder -->
-		      <label>Password</label>
-		      <input class="in1" type="password" ng-model="adminpass">
-		    </md-input-container>
-		</md-content>
-		<md-button class="b1" ng-click="login()">Log in</md-button>
+				    <md-input-container class="md-icon-float md-block">
+				      <!-- Use floating label instead of placeholder -->
+				      <label>Password</label>
+				      <input class="in1" type="password" ng-model="adminpass" ng-enter="login()">
+				    </md-input-container>
+				</md-content>
+				<md-button class="b1" ng-click="login()">Log in</md-button>
+			</div>
+		</div>
 	</div>
 </div>
+
 	
 </body>
 </html>

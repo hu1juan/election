@@ -1,11 +1,18 @@
 'use strict'
 
 
-app.controller('adminloginCtrl',['$scope','adminLogin', function($scope,adminLogin){
+app.controller('adminloginCtrl',['$scope','adminLogin','VoterService', function($scope,adminLogin,VoterService){
 	adminLogin.checkToken();
 	$scope.login = function(){
 		adminLogin.login($scope.adminuser,$scope.adminpass);
 	}
+
+	$scope.getmyVoters = function(){
+		VoterService.gettingVoters().then(function(response){
+			$scope.list = response.data;
+		})
+	};
+	$scope.getmyVoters();
 }]);
 
 app.controller('loginCtrl',['$scope','$uibModal','registration','userLogin', function($scope,$uibModal,registration,userLogin){
@@ -38,12 +45,12 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 					alert('Invalid Login');
 				}else{
 					$localStorage.userToken = true;
-					var hold = atob(response.data);
-					var obj = angular.fromJson(hold);
-					console.log(hold);
-					console.log(obj);
-					console.log(obj.password);
-					console.log(obj.date);
+					// var hold = atob(response.data);
+					// var obj = angular.fromJson(hold);
+					// console.log(hold);
+					// console.log(obj);
+					// console.log(obj.password);
+					// console.log(obj.date);
 					$location.path('/votehome');
 					userLogin.user = $scope.loginuser;
 				}
@@ -59,7 +66,7 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 	}
 }]);
 
-app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','voterGet','$http','adminLogin', function($scope,candidateGet,adminManagementFunction,voterGet,$http,adminLogin){
+app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','voterGet','$http','adminLogin','CandidateService', function($scope,candidateGet,adminManagementFunction,voterGet,$http,adminLogin,CandidateService){
 
 	adminLogin.checkToken();
 	$http({
@@ -75,10 +82,16 @@ app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','v
 		$scope.voters = data;
 	})
 
-	candidateGet.getCandidates().then(function(data){
-		$scope.candidates = data;
-		$scope.count = data.length + 1;
+	CandidateService.getCandidate().then(function(response){
+		$scope.candidates = response.data;
+		$scope.count = response.data.length + 1;
 	})
+
+	// candidateGet.getCandidates().then(function(data){
+	// 	$scope.candidates = data;
+	// 	$scope.count = data.length + 1;
+	// })
+
 	$scope.logout = function(){
 		adminLogin.logout();
 	}
@@ -115,17 +128,25 @@ app.controller('confirmAdminCtrl',['$scope','$uibModalInstance', function($scope
 }]);
 
 app.controller('voteHomeCtrl',['$scope','$http','$localStorage','candidateGetData','votingService','userLogin' , function($scope,$http,$localStorage,candidateGetData,votingService,userLogin){
+<<<<<<< HEAD
 	
 	userLogin.checkToken();
 	votingService.hey();
 	
 
+=======
+    
+    userLogin.checkToken();
+    votingService.hey();
+    
+>>>>>>> origin/branch1
     $('.collapse').on('show.bs.collapse', function (e) {
-	    $('.collapse').not(e.target).removeClass('in');
-	})
+        $('.collapse').not(e.target).removeClass('in');
+    })
     candidateGetData.candidates().then(function(data){$scope.candidatesData = data;})
-
+    //$localStorage.votes = [];
     $scope.submitvotes = function(press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
+<<<<<<< HEAD
 
     		votingService.submitvotes ($scope.press,$scope.internalvicepress,$scope.externalvicepress,$scope.secretary,$scope.asstSec,$scope.treasurer,
     			$scope.asstTreas,$scope.auditor,$scope.pio,$scope.busManager);
@@ -143,3 +164,19 @@ app.controller('voteViewCtrl',['$scope', '$http', '$location','$localStorage','u
 		$scope.disss = $localStorage.votes;
       	console.log($scope.disss);
 }]);
+=======
+            votingService.submitvotes ($scope.press,$scope.internalvicepress,$scope.externalvicepress,$scope.secretary,$scope.asstSec,$scope.treasurer,
+                $scope.asstTreas,$scope.auditor,$scope.pio,$scope.busManager);
+    };
+}]);
+app.controller('voteViewCtrl',['$scope', '$http', '$location','$localStorage','userLogin','votingService', function($scope,$http,$location,$localStorage,userLogin,votingService){
+    userLogin.checkToken();
+    $location.path('/voteview');
+    $scope.logout = function(){
+        $localStorage.votes = [];
+        userLogin.logout();
+    }
+        $scope.disss = $localStorage.votes;
+        console.log($scope.disss);
+}]);
+>>>>>>> origin/branch1

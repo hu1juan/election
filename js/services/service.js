@@ -1,5 +1,92 @@
 'use strict'
 
+app.factory('VoterService',[
+	'$http',
+	'$q',
+	function(
+		$http,
+		$q){
+		var baseUrl = 'https://devpartnerstraining.herokuapp.com/';
+		var factory = this;
+		factory.gettingVoters = function(){
+			var defer = $q.defer();
+
+			$http({
+				method: 'GET',
+				url: baseUrl+'VoterGet'
+			}).then(function(response){
+				factory.data = response.data;
+				return defer.resolve(response);
+			}, function(error){
+				return defer.reject(error);
+			});
+			return defer.promise;
+		}
+		return factory;
+	}
+]);
+
+app.factory('CandidateService', [
+	'$http',
+	'$q',
+	function(
+		$http,
+		$q)
+	{
+		var baseUrl = 'https://devpartnerstraining.herokuapp.com/';
+		var factory = this;
+
+		factory.getCandidate = function(){
+			var defer = $q.defer();
+
+			$http({
+				method: 'GET',
+				url: baseUrl + 'CandidateGet'
+			}).then(function(response){
+				return defer.resolve(response);
+			}, function(error){
+				return defer.reject(error);
+			});
+			return defer.promise;
+		}
+
+		factory.postCandidate = function($data){
+			var defer = $q.defer();
+
+			$http({
+				method: 'POST',
+				url: baseUrl + 'CandidateSet',
+				data: $data
+			}).then(function(response){
+				return defer.resolve(response);
+			}, function(error){
+				return defer.reject(error);
+			});
+
+			return defer.promise;
+		}
+
+		factory.setCandidate = function(id, $data){
+			var defer = $q.defer();
+
+			$http({
+				method: 'POST',
+				url: baseUrl + 'CandidateSet/' + id,
+				data: $data
+			}).then(function(response){
+				return defer.resolve(response);
+			}, function(error){
+				return defer.reject(error);
+			});
+
+			return defer.promise;
+		}
+
+		return factory;
+	}
+
+]);
+
 app.service("voterGet",["$http", function($http){
 	return {
 		getVoters: function(){
@@ -112,20 +199,19 @@ app.service("registration",["voterGet","$http", function(voterGet,$http){
 			}else{
 				alert('Username is already taken.');
 			}
-
-			console.log(registeredVOTERS);
-			console.log(fName);
-			console.log(mName);
-			console.log(lName);
-			console.log(gender);
-			console.log(user);
-			console.log(pass);
-			console.log(pass2);
+			// console.log(registeredVOTERS);
+			// console.log(fName);
+			// console.log(mName);
+			// console.log(lName);
+			// console.log(gender);
+			// console.log(user);
+			// console.log(pass);
+			// console.log(pass2);
 		})
 	};
 }]);
 
-app.service("adminManagementFunction",["$uibModal","$http","candidateGet", function($uibModal,$http,candidateGet){
+app.service("adminManagementFunction",["$uibModal","$http","candidateGet","CandidateService", function($uibModal,$http,candidateGet,CandidateService){
 
 
 	this.editadminmanagement = function(id){
@@ -165,13 +251,20 @@ app.service("adminManagementFunction",["$uibModal","$http","candidateGet", funct
 				if(id == -1){
 					var i = candidatesmember.findIndex(sample1 => sample1.last_name === lname && sample1.first_name === fname && sample1.middle_name === mname && sample1.position === position);
 					if(i == -1){
-						$http.post('https://devpartnerstraining.herokuapp.com/CandidateSet',JSON.stringify(sample1)).then(function successCallback(response){
+						// alert('ok');
+						// console.log(sample1);
+						CandidateService.postCandidate(sample1).then(function(response){
 							if(response.data){
 								alert("Posting data successful.");
 							}
-						}, function errorCallback(response){
-							alert(response.status);
 						});
+						// $http.post('https://devpartnerstraining.herokuapp.com/CandidateSet',JSON.stringify(sample1)).then(function successCallback(response){
+						// 	if(response.data){
+						// 		alert("Posting data successful.");
+						// 	}
+						// }, function errorCallback(response){
+						// 	alert(response.status);
+						// });
 						// alert('ok');
 					}else{
 						alert('you already have position.');
@@ -194,13 +287,18 @@ app.service("adminManagementFunction",["$uibModal","$http","candidateGet", funct
 			isDeleted: 0
 		}
 		console.log(sample1);
-		$http.post('https://devpartnerstraining.herokuapp.com/CandidateSet/'+idcandidate,JSON.stringify(sample1)).then(function successCallback(response){
+		CandidateService.setCandidate(idcandidate,sample1).then(function(response){
 			if(response.data){
-				alert("Update successful.");
+				alert('Update data');
 			}
-		}, function errorCallback(response){
-			alert(response.status);
-		});
+		})
+		// $http.post('https://devpartnerstraining.herokuapp.com/CandidateSet/'+idcandidate,JSON.stringify(sample1)).then(function successCallback(response){
+		// 	if(response.data){
+		// 		alert("Update successful.");
+		// 	}
+		// }, function errorCallback(response){
+		// 	alert(response.status);
+		// });
 		console.log(idcandidate);
 		console.log(fname);
 		console.log(mname);
@@ -230,6 +328,7 @@ app.service("candidateGetData",['$http',function($http){
 }]);
 
 app.service("votingService",['$http','$location','$localStorage','candidateGetData','userLogin', function($http,$location,$localStorage, candidateGetData, userLogin){
+<<<<<<< HEAD
 		var holder={};
 		var index = -1;
 		var count = 1;
@@ -279,6 +378,53 @@ app.service("votingService",['$http','$location','$localStorage','candidateGetDa
     		alert("please vote");
     	}
     	
+=======
+        var holder={};
+        var index = -1;
+        var count = 1;
+        this.hey = function(){
+        let sam = {
+            username: userLogin.user
+        }
+        $http.get('https://devpartnerstraining.herokuapp.com/VoterGet').then(function success(response){
+            holder = response.data;
+            index = holder.findIndex(sam => sam.username === userLogin.user);
+            // console.log(holder[index].id);
+        }, function failure(response){
+        });
+        
+        }
+        
+        this.submitvotes = function( press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
+            var vt = {
+                voter_id: holder[index].id,
+                candidate_id: {
+                 press: press, 
+                internalvicepress: internalvicepress, 
+                externalvicepress: externalvicepress,
+                secretary: secretary,
+                asstSec: asstSec,
+                treasurer: treasurer,
+                asstTreas: asstTreas,
+                auditor: auditor,
+                pio: pio,
+                busManager: busManager
+                }
+                
+            }
+        console.log($localStorage.votes);
+        if (press != null || internalvicepress != null || externalvicepress != null || secretary != null || asstSec != null ||
+            treasurer != null || asstTreas != null || auditor != null || pio != null || busManager != null){
+        	if(confirm("Are you sure you want to submit your votes ?"))
+        	{
+            	$localStorage.votes.push(vt);
+	            alert("successful");
+	            $location.path('/voteview');
+        	}
+        }else{
+            alert("please vote");
+        }
+        
+>>>>>>> origin/branch1
     }
-
 }]);
