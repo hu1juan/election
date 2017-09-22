@@ -7,7 +7,7 @@
             font-size: 25px;
         }
         table td, th{
-            width: 50%;
+            width: 21%;
             text-align: center;
             font-size: 15px;
         }
@@ -116,67 +116,35 @@
             </div>
             <hr>
 	<div class="form1">
-   <p class="views">Views</p>
-    <table class="table table-striped">
+     <table class="table table-striped">
     	    <thead>
               <tr>
               <th>Candidate/s</th>
     <div class="form1">
    <p class="views">Views</p>
+   <div">
+   	<h3>Thank you for voting {{ welcome }}! </h3>
+   </div>
     <table class="table table-striped">
             <thead>
               <tr>
               <th>Candidate ID</th>
+              <th>Candidate Name</th>
               <th>Position</th>
               </tr>
               </thead>
                <tbody>
         <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.press }} </td>
-            <td> President </td>  
+        	<td>{{c.candidate_id}} </td>
+            <td> {{ c.name_candidate }} </td>
+            <td> {{c.position}} </td>  
         </tr>
-        <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.internalvicepress }} </td>
-            <td> Internal Vice President </td>  
-        </tr>
-        <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.externalvicepress }} </td>
-            <td> External Vice President </td>  
-        </tr>
-        <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.secretary }} </td>
-            <td> Secretary </td>  
-        </tr>
-        <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.asstSec }} </td>
-            <td> Assistant Secretary </td>  
-        </tr>
-        <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.treasurer }} </td>
-            <td> Treasurer </td>  
-        </tr>
-        <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.asstTreas }} </td>
-            <td> Assistant Treasurer </td>  
-        </tr>
-         <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.auditor }} </td>
-            <td> Auditor </td>  
-        </tr>
-         <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.pio }} </td>
-            <td> PIO </td>  
-        </tr>
-         <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.busManager }} </td>
-            <td> Business Manager </td>  
-        </tr>
+        
 </table> 
-
 </div>
 
 </div>
-
+			
  			
 </div>
 </div>
