@@ -66,7 +66,7 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 	}
 }]);
 
-app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','voterGet','$http','adminLogin','CandidateService', function($scope,candidateGet,adminManagementFunction,voterGet,$http,adminLogin,CandidateService){
+app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','voterGet','$http','adminLogin','CandidateService','VoteService', function($scope,candidateGet,adminManagementFunction,voterGet,$http,adminLogin,CandidateService,VoteService){
 
 	adminLogin.checkToken();
 	$http({
@@ -152,3 +152,6 @@ app.controller('voteViewCtrl',['$scope', '$http', '$location','$localStorage','u
         $scope.disss = $localStorage.votes;
         console.log($scope.disss);
 }]);
+
+
+

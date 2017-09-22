@@ -206,16 +206,18 @@
 									<table class="table">
 										<thead>
 											<tr>
-												<th>Register #</th>
+												<th>Rank #</th>
 												<th>Name</th>
 												<th>Position</th>
+												<th>Votes</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr ng-repeat=" p in candidates | filter:{position: cposition}:true">
-												<td>{{p.id}}</td>
-												<td><a href="" ng-click="editadmin(p.id)">{{p.first_name}}  {{ p.middle_name }} {{p.last_name}}</a></td>
+												<td>{{$index+1}}</td>
+												<td>{{p.first_name}}  {{ p.middle_name }} {{p.last_name}}</td>
 												<td>{{p.position}}</td>
+												<td></td>
 											</tr>
 										</tbody>
 									</table>

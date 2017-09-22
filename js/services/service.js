@@ -26,6 +26,34 @@ app.factory('VoterService',[
 	}
 ]);
 
+app.factory('VoteService',[
+	'$http',
+	'$q',
+	function(
+		$http,
+		$q)
+	{
+		var baseUrl = 'https://devpartnerstraining.herokuapp.com/';
+		var factory = this;
+
+		factory.getVotes = function(id){
+			var defer = $q.defer();
+
+			$http({
+				method: 'GET',
+				url: baseUrl + 'VoteGet/' + id
+			}).then(function(response){
+				factory.data = response.data;
+				return defer.resolve(response);
+			}, function(error){
+				return defer.reject(error);
+			});
+			return defer.promise;
+		}
+		return factory;
+	}
+]);
+
 app.factory('CandidateService', [
 	'$http',
 	'$q',
@@ -332,15 +360,15 @@ app.service("votingService",['$http','$location','$localStorage','candidateGetDa
         var index = -1;
         var count = 1;
         this.hey = function(){
-        let sam = {
-            username: userLogin.user
-        }
-        $http.get('https://devpartnerstraining.herokuapp.com/VoterGet').then(function success(response){
-            holder = response.data;
-            index = holder.findIndex(sam => sam.username === userLogin.user);
-            // console.log(holder[index].id);
-        }, function failure(response){
-        });
+	        let sam = {
+	            username: userLogin.user
+	        }
+	        $http.get('https://devpartnerstraining.herokuapp.com/VoterGet').then(function success(response){
+	            holder = response.data;
+	            index = holder.findIndex(sam => sam.username === userLogin.user);
+	            // console.log(holder[index].id);
+	        }, function failure(response){
+	        });
         
         }
         
@@ -361,12 +389,13 @@ app.service("votingService",['$http','$location','$localStorage','candidateGetDa
                 }
                 
             }
+            console.log(vt);
         console.log($localStorage.votes);
         if (press != null || internalvicepress != null || externalvicepress != null || secretary != null || asstSec != null ||
             treasurer != null || asstTreas != null || auditor != null || pio != null || busManager != null){
         	if(confirm("Are you sure you want to submit your votes ?"))
         	{
-            	$localStorage.votes.push(vt);
+            	// $localStorage.votes.push(vt);
 	            alert("successful");
 	            $location.path('/voteview');
         	}
