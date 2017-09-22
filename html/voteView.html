@@ -7,7 +7,7 @@
             font-size: 25px;
         }
         table td, th{
-            width: 50%;
+            width: 21%;
             text-align: center;
             font-size: 15px;
         }
@@ -16,6 +16,40 @@
             margin-left: 5%;
         }
           .forms-body{
+			background-color: #e7e7e7;
+			border-color: #e7e7e7;
+			width: 60%;
+			height: 600px;
+			margin: auto;
+			border-radius: 5px;
+			padding: 1em;
+			margin-top: 80px;
+		  }
+		  .list-group-item {
+		  	width: 300px;
+		  }
+		  .btn{
+		  	width: 100px;
+
+		  }
+		  .list-form-view{
+		  	border: 1px solid #ddd;
+		  	width: 50%;
+		  	height: 450px;
+		  	background-color: #fff;
+		  	float: right;
+		  	margin-top: 1em;
+		  	margin-right: 18em;
+		  }
+		   .log-out{
+		    margin-top: 21px;
+		    margin-right: 39px;
+		    float: right;
+		 }
+		 a{
+		 	color: green;
+		 }
+		      .table{
             background-color: #e7e7e7;
             border-color: #e7e7e7;
             width: 60%;
@@ -58,7 +92,6 @@
          .views{
             margin-left: 43%;
          }
-        
 </style>
     <title></title>
 </head>
@@ -82,58 +115,37 @@
             <h3 class="title-admin1">ITS Election</h3>
             </div>
             <hr>
-           
+	<div class="form1">
+     <table class="table table-striped">
+    	    <thead>
+              <tr>
+              <th>Candidate/s</th>
     <div class="form1">
    <p class="views">Views</p>
+   <div">
+   	<h3>Thank you for voting {{ welcome }}! </h3>
+   </div>
     <table class="table table-striped">
             <thead>
               <tr>
               <th>Candidate ID</th>
+              <th>Candidate Name</th>
               <th>Position</th>
               </tr>
               </thead>
                <tbody>
         <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.press }} </td>
-            <td> President </td>  
+        	<td>{{c.candidate_id}} </td>
+            <td> {{ c.name_candidate }} </td>
+            <td> {{c.position}} </td>  
         </tr>
-        <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.internalvicepress }} </td>
-            <td> Internal Vice President </td>  
-        </tr>
-        <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.externalvicepress }} </td>
-            <td> External Vice President </td>  
-        </tr>
-        <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.secretary }} </td>
-            <td> Secretary </td>  
-        </tr>
-        <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.asstSec }} </td>
-            <td> Assistant Secretary </td>  
-        </tr>
-        <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.treasurer }} </td>
-            <td> Treasurer </td>  
-        </tr>
-        <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.asstTreas }} </td>
-            <td> Assistant Treasurer </td>  
-        </tr>
-         <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.auditor }} </td>
-            <td> Auditor </td>  
-        </tr>
-         <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.pio }} </td>
-            <td> PIO </td>  
-        </tr>
-         <tr ng-repeat="c in disss">
-            <td> {{ c.candidate_id.busManager }} </td>
-            <td> Business Manager </td>  
-        </tr>
+        
 </table> 
+</div>
+
+</div>
+			
+ 			
 </div>
 </div>
                  

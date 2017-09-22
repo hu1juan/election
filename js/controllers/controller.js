@@ -53,6 +53,7 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 					// console.log(obj.date);
 					$location.path('/votehome');
 					userLogin.user = $scope.loginuser;
+					$localStorage.userLogin = userLogin.user;
 				}
 			}
 		}, function errorCallback(response){
@@ -127,31 +128,59 @@ app.controller('confirmAdminCtrl',['$scope','$uibModalInstance', function($scope
 	}
 }]);
 
-app.controller('voteHomeCtrl',['$scope','$http','$localStorage','candidateGetData','votingService','userLogin' , function($scope,$http,$localStorage,candidateGetData,votingService,userLogin){
-    
+app.controller('voteHomeCtrl',['$scope','$http','$localStorage','candidateGetData','votingService','userLogin' ,'CandidateService', function($scope,$http,$localStorage,candidateGetData,votingService,userLogin,CandidateService){
+
+	// $localStorage.userLogin = "";
+	userLogin.checkToken();
+	votingService.hey();
+
     userLogin.checkToken();
     votingService.hey();
-    
+
     $('.collapse').on('show.bs.collapse', function (e) {
         $('.collapse').not(e.target).removeClass('in');
     })
     candidateGetData.candidates().then(function(data){$scope.candidatesData = data;})
+    
     //$localStorage.votes = [];
-    $scope.submitvotes = function(press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
-            votingService.submitvotes ($scope.press,$scope.internalvicepress,$scope.externalvicepress,$scope.secretary,$scope.asstSec,$scope.treasurer,
-                $scope.asstTreas,$scope.auditor,$scope.pio,$scope.busManager);
+    $scope.submitvotes = function(){
+
+    		votingService.submitvotes ();
+
     };
+
+    $scope.selectVotePress = function(id,fname,mname,lname,position){
+
+    	votingService.voteSelect(id,fname,mname,lname,position);
+
+    	
+    	// console.log(id);
+    	// console.log(fname);
+    	// console.log(mname);
+    	// console.log(lname);
+    	// console.log(position);
+    }
 }]);
+
 app.controller('voteViewCtrl',['$scope', '$http', '$location','$localStorage','userLogin','votingService', function($scope,$http,$location,$localStorage,userLogin,votingService){
     userLogin.checkToken();
     $location.path('/voteview');
     $scope.logout = function(){
         $localStorage.votes = [];
+        $localStorage.temCountVote = [];
+        $localStorage.countVotes = [];
         userLogin.logout();
     }
+<<<<<<< HEAD
         $scope.disss = $localStorage.votes;
         console.log($scope.disss);
 }]);
 
 
 
+=======
+        $scope.disss = $localStorage.countVotes;
+        $scope.welcome = $localStorage.userLogin;
+        // console.log($scope.disss);
+}]);
+>>>>>>> 2c8f9be003ad9261acc4c4366a581c8ae02f5781

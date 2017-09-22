@@ -75,6 +75,9 @@
             <h3 class="title-admin1">ITS Election</h3>
             </div>
             <hr/>
+            <div>
+     
+            </div>
 
                     <ul>
                         <li class="list-group-item row">
@@ -118,7 +121,7 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'President'}:true">
-                                        <td><input type="radio" name="pres" ng-model="$parent.press" value="{{x.id}}""></td>
+                                        <td><input type="radio" name="pres" ng-model="$parent.press" value="{{x.id}}" ng-click="selectVotePress(x.id,x.first_name,x.middle_name,x.last_name,x.position)"></td>
                                         <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
@@ -132,7 +135,7 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'Internal Vice President'}:true">
-                                        <td><input type="radio" name="ivp" ng-model="$parent.internalvicepress" value="{{x.id}}"></td>
+                                        <td><input type="radio" name="ivp" ng-model="$parent.internalvicepress" value="{{x.id}}" ng-click="selectVotePress(x.id,x.first_name,x.middle_name,x.last_name,x.position)"></td>
                                         <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
@@ -144,7 +147,7 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'External Vice President'}:true">
-                                        <td><input type="radio" name="evp" ng-model="$parent.externalvicepress" value="{{x.id}}"></td>
+                                        <td><input type="radio" name="evp" ng-model="$parent.externalvicepress" value="{{x.id}}" ng-click="selectVotePress(x.id,x.first_name,x.middle_name,x.last_name,x.position)"></td>
                                         <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
@@ -156,8 +159,8 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'Secretary'}:true">
-                                        <td><input type="radio" name="sec" ng-model="$parent.secretary" value="{{x.id}}"></td>
-                                        <td>{{x.id+' '+x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
+                                        <td><input type="radio" name="sec" ng-model="$parent.secretary" value="{{x.id}}" ng-click="selectVotePress(x.id,x.first_name,x.middle_name,x.last_name,x.position)"></td>
+                                        <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
                             </div>
@@ -168,7 +171,7 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'Assistant Secretary'}:true">
-                                        <td><input type="radio" name="pres" ng-model="$parent.asstSec" value="{{x.id}}"></td>
+                                        <td><input type="radio" name="pres" ng-model="$parent.asstSec" value="{{x.id}}" ng-click="selectVotePress(x.id,x.first_name,x.middle_name,x.last_name,x.position)"></td>
                                         <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
@@ -180,7 +183,7 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'Treasurer'}:true">
-                                        <td><input type="radio" name="treas" ng-model="$parent.treasurer" value="{{x.id}}"></td>
+                                        <td><input type="radio" name="treas" ng-model="$parent.treasurer" value="{{x.id}}" ng-click="selectVotePress(x.id,x.first_name,x.middle_name,x.last_name,x.position)"></td>
                                         <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
@@ -192,7 +195,7 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'Assistant Treasurer'}:true">
-                                        <td><input type="radio" name="atreas" ng-model="$parent.asstTreas" value="{{x.id}}"></td>
+                                        <td><input type="radio" name="atreas" ng-model="$parent.asstTreas" value="{{x.id}}" ng-click="selectVotePress(x.id,x.first_name,x.middle_name,x.last_name,x.position)"></td>
                                         <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
@@ -204,7 +207,7 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'Auditor'}:true">
-                                        <td><input type="radio" name="aud" ng-model="$parent.auditor" value="{{x.id}}"></td>
+                                        <td><input type="radio" name="aud" ng-model="$parent.auditor" value="{{x.id}}" ng-click="selectVotePress(x.id,x.first_name,x.middle_name,x.last_name,x.position)"></td>
                                         <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
@@ -216,7 +219,7 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'PIO'}:true">
-                                        <td><input type="radio" name="pio" ng-model="$parent.pio" value="{{x.id}}"></td>
+                                        <td><input type="radio" name="pio" ng-model="$parent.pio" value="{{x.id}}" ng-click="selectVotePress(x.id,x.first_name,x.middle_name,x.last_name,x.position)"></td>
                                         <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
@@ -228,7 +231,7 @@
                                         <th>Candidate/s</th>
                                     </tr>
                                     <tr ng-repeat="x in candidatesData| filter:{position:'Business Manager'}:true">
-                                        <td><input type="radio" name="bus" ng-model="$parent.busManager" value="{{x.id}}"></td>
+                                        <td><input type="radio" name="bus" ng-model="$parent.busManager" value="{{x.id}}" ng-click="selectVotePress(x.id,x.first_name,x.middle_name,x.last_name,x.position)"></td>
                                         <td>{{x.first_name+' '+x.middle_name+' '+x.last_name}}</td>
                                     </tr>
                                 </table>
@@ -237,8 +240,7 @@
                         </div>
                     </div>
                             <div class="btnSubmit">
-                                <button ng-click="submitvotes($parent.press,$parent.internalvicepress,$parent.externalvicepress,$parent.secretary,$parent.asstSec,$parent.treasurer,
-                                $parent.asstTreas,$parent.auditor,$parent.pio,$parent.busManager)" class="btn btn-success" >Submit</button>
+                                <button ng-click="submitvotes()" class="btn btn-success" >Submit</button>
                             </div>  
         </div>
     </div>
