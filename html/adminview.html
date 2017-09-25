@@ -206,16 +206,18 @@
 									<table class="table">
 										<thead>
 											<tr>
-												<th>Register #</th>
+												<th>Rank #</th>
 												<th>Name</th>
 												<th>Position</th>
+												<th>Votes</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr ng-repeat=" p in candidates | filter:{position: cposition}:true">
-												<td>{{p.id}}</td>
-												<td><a href="" ng-click="editadmin(p.id)">{{p.first_name}}  {{ p.middle_name }} {{p.last_name}}</a></td>
+											<tr ng-repeat=" p in countingVote | filter:{position: cposition}:true | orderBy:'-votes'">
+												<td>{{$index+1}}</td>
+												<td>{{p.candidate_name}}</td>
 												<td>{{p.position}}</td>
+												<td>{{p.votes}}</td>
 											</tr>
 										</tbody>
 									</table>
@@ -225,7 +227,173 @@
 						</uib-tab>
 						<uib-tab index="4" heading="Final result">
 						<div class="form1">
-							Some Tab Content
+							<div class="form-group">
+								<div class="panel panel-default">
+									<!-- Table -->
+									<table class="table">
+										<thead>
+											<tr>
+												<th>Rank #</th>
+												<th>Name</th>
+												<th>Position</th>
+												<th>Votes</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat=" p in countingVote | filter:{position: 'President'}:true | limitTo : 1">
+												<td>{{p.candidate_id}}</td>
+												<td>{{p.candidate_name}}</td>
+												<td>{{p.position}}</td>
+												<td>{{p.votes}}</td>
+											</tr>
+										</tbody>
+										<thead>
+											<tr>
+												<th>Rank #</th>
+												<th>Name</th>
+												<th>Position</th>
+												<th>Votes</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat=" p in countingVote | filter:{position: 'Internal Vice President'}:true | limitTo : 1">
+												<td>{{p.candidate_id}}</td>
+												<td>{{p.candidate_name}}</td>
+												<td>{{p.position}}</td>
+												<td>{{p.votes}}</td>
+											</tr>
+										</tbody>
+										<thead>
+											<tr>
+												<th>Rank #</th>
+												<th>Name</th>
+												<th>Position</th>
+												<th>Votes</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat=" p in countingVote | filter:{position: 'External Vice President'}:true | limitTo : 1">
+												<td>{{p.candidate_id}}</td>
+												<td>{{p.candidate_name}}</td>
+												<td>{{p.position}}</td>
+												<td>{{p.votes}}</td>
+											</tr>
+										</tbody>
+										<thead>
+											<tr>
+												<th>Rank #</th>
+												<th>Name</th>
+												<th>Position</th>
+												<th>Votes</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat=" p in countingVote | filter:{position: 'Secretary'}:true | limitTo : 1">
+												<td>{{p.candidate_id}}</td>
+												<td>{{p.candidate_name}}</td>
+												<td>{{p.position}}</td>
+												<td>{{p.votes}}</td>
+											</tr>
+										</tbody>
+										<thead>
+											<tr>
+												<th>Rank #</th>
+												<th>Name</th>
+												<th>Position</th>
+												<th>Votes</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat=" p in countingVote | filter:{position: 'Assistant Secretary'}:true | limitTo : 1">
+												<td>{{p.candidate_id}}</td>
+												<td>{{p.candidate_name}}</td>
+												<td>{{p.position}}</td>
+												<td>{{p.votes}}</td>
+											</tr>
+										</tbody>
+										<thead>
+											<tr>
+												<th>Rank #</th>
+												<th>Name</th>
+												<th>Position</th>
+												<th>Votes</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat=" p in countingVote | filter:{position: 'Treasurer'}:true | limitTo : 1">
+												<td>{{p.candidate_id}}</td>
+												<td>{{p.candidate_name}}</td>
+												<td>{{p.position}}</td>
+												<td>{{p.votes}}</td>
+											</tr>
+										</tbody>
+										<thead>
+											<tr>
+												<th>Rank #</th>
+												<th>Name</th>
+												<th>Position</th>
+												<th>Votes</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat=" p in countingVote | filter:{position: 'Assistant Treasurer'}:true | limitTo : 1">
+												<td>{{p.candidate_id}}</td>
+												<td>{{p.candidate_name}}</td>
+												<td>{{p.position}}</td>
+												<td>{{p.votes}}</td>
+											</tr>
+										</tbody>
+										<thead>
+											<tr>
+												<th>Rank #</th>
+												<th>Name</th>
+												<th>Position</th>
+												<th>Votes</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat=" p in countingVote | filter:{position: 'Auditor'}:true | limitTo : 1">
+												<td>{{p.candidate_id}}</td>
+												<td>{{p.candidate_name}}</td>
+												<td>{{p.position}}</td>
+												<td>{{p.votes}}</td>
+											</tr>
+										</tbody>
+										<thead>
+											<tr>
+												<th>Rank #</th>
+												<th>Name</th>
+												<th>Position</th>
+												<th>Votes</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat=" p in countingVote | filter:{position: 'PIO'}:true | limitTo : 1">
+												<td>{{p.candidate_id}}</td>
+												<td>{{p.candidate_name}}</td>
+												<td>{{p.position}}</td>
+												<td>{{p.votes}}</td>
+											</tr>
+										</tbody>
+										<thead>
+											<tr>
+												<th>Rank #</th>
+												<th>Name</th>
+												<th>Position</th>
+												<th>Votes</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat=" p in countingVote | filter:{position: 'Business Manager'}:true | limitTo : 1">
+												<td>{{p.candidate_id}}</td>
+												<td>{{p.candidate_name}}</td>
+												<td>{{p.position}}</td>
+												<td>{{p.votes}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
 						</div>
 						</uib-tab>
 						</uib-tabset>
