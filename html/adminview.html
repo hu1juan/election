@@ -206,7 +206,7 @@
 									<table class="table">
 										<thead>
 											<tr>
-												<th>Rank #</th>
+												<th>Candidate ID</th>
 												<th>Name</th>
 												<th>Position</th>
 												<th>Votes</th>
@@ -226,175 +226,250 @@
 						</div>
 						</uib-tab>
 						<uib-tab index="4" heading="Final result">
-						<div class="form1">
-							<div class="form-group">
-								<div class="panel panel-default">
-									<!-- Table -->
-									<table class="table">
-										<thead>
-											<tr>
-												<th>Rank #</th>
-												<th>Name</th>
-												<th>Position</th>
-												<th>Votes</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr ng-repeat=" p in countingVote | filter:{position: 'President'}:true | limitTo : 1">
-												<td>{{p.candidate_id}}</td>
-												<td>{{p.candidate_name}}</td>
-												<td>{{p.position}}</td>
-												<td>{{p.votes}}</td>
-											</tr>
-										</tbody>
-										<thead>
-											<tr>
-												<th>Rank #</th>
-												<th>Name</th>
-												<th>Position</th>
-												<th>Votes</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr ng-repeat=" p in countingVote | filter:{position: 'Internal Vice President'}:true | limitTo : 1">
-												<td>{{p.candidate_id}}</td>
-												<td>{{p.candidate_name}}</td>
-												<td>{{p.position}}</td>
-												<td>{{p.votes}}</td>
-											</tr>
-										</tbody>
-										<thead>
-											<tr>
-												<th>Rank #</th>
-												<th>Name</th>
-												<th>Position</th>
-												<th>Votes</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr ng-repeat=" p in countingVote | filter:{position: 'External Vice President'}:true | limitTo : 1">
-												<td>{{p.candidate_id}}</td>
-												<td>{{p.candidate_name}}</td>
-												<td>{{p.position}}</td>
-												<td>{{p.votes}}</td>
-											</tr>
-										</tbody>
-										<thead>
-											<tr>
-												<th>Rank #</th>
-												<th>Name</th>
-												<th>Position</th>
-												<th>Votes</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr ng-repeat=" p in countingVote | filter:{position: 'Secretary'}:true | limitTo : 1">
-												<td>{{p.candidate_id}}</td>
-												<td>{{p.candidate_name}}</td>
-												<td>{{p.position}}</td>
-												<td>{{p.votes}}</td>
-											</tr>
-										</tbody>
-										<thead>
-											<tr>
-												<th>Rank #</th>
-												<th>Name</th>
-												<th>Position</th>
-												<th>Votes</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr ng-repeat=" p in countingVote | filter:{position: 'Assistant Secretary'}:true | limitTo : 1">
-												<td>{{p.candidate_id}}</td>
-												<td>{{p.candidate_name}}</td>
-												<td>{{p.position}}</td>
-												<td>{{p.votes}}</td>
-											</tr>
-										</tbody>
-										<thead>
-											<tr>
-												<th>Rank #</th>
-												<th>Name</th>
-												<th>Position</th>
-												<th>Votes</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr ng-repeat=" p in countingVote | filter:{position: 'Treasurer'}:true | limitTo : 1">
-												<td>{{p.candidate_id}}</td>
-												<td>{{p.candidate_name}}</td>
-												<td>{{p.position}}</td>
-												<td>{{p.votes}}</td>
-											</tr>
-										</tbody>
-										<thead>
-											<tr>
-												<th>Rank #</th>
-												<th>Name</th>
-												<th>Position</th>
-												<th>Votes</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr ng-repeat=" p in countingVote | filter:{position: 'Assistant Treasurer'}:true | limitTo : 1">
-												<td>{{p.candidate_id}}</td>
-												<td>{{p.candidate_name}}</td>
-												<td>{{p.position}}</td>
-												<td>{{p.votes}}</td>
-											</tr>
-										</tbody>
-										<thead>
-											<tr>
-												<th>Rank #</th>
-												<th>Name</th>
-												<th>Position</th>
-												<th>Votes</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr ng-repeat=" p in countingVote | filter:{position: 'Auditor'}:true | limitTo : 1">
-												<td>{{p.candidate_id}}</td>
-												<td>{{p.candidate_name}}</td>
-												<td>{{p.position}}</td>
-												<td>{{p.votes}}</td>
-											</tr>
-										</tbody>
-										<thead>
-											<tr>
-												<th>Rank #</th>
-												<th>Name</th>
-												<th>Position</th>
-												<th>Votes</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr ng-repeat=" p in countingVote | filter:{position: 'PIO'}:true | limitTo : 1">
-												<td>{{p.candidate_id}}</td>
-												<td>{{p.candidate_name}}</td>
-												<td>{{p.position}}</td>
-												<td>{{p.votes}}</td>
-											</tr>
-										</tbody>
-										<thead>
-											<tr>
-												<th>Rank #</th>
-												<th>Name</th>
-												<th>Position</th>
-												<th>Votes</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr ng-repeat=" p in countingVote | filter:{position: 'Business Manager'}:true | limitTo : 1">
-												<td>{{p.candidate_id}}</td>
-												<td>{{p.candidate_name}}</td>
-												<td>{{p.position}}</td>
-												<td>{{p.votes}}</td>
-											</tr>
-										</tbody>
-									</table>
+						<div class="finalResult">
+							<div class="form1 ">
+								<div class="form-group">
+									<div class="panel panel-default">
+										 <!--Table--> 
+										<table class="table">
+											<thead>
+												<tr>
+													<th>Candidate ID</th>
+													<th>Name</th>
+													<th>Position</th>
+													<th>Votes</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat=" p in countingVote | filter:{position: 'President'}:true | limitTo : 1">
+													<td>{{p.candidate_id}}</td>
+													<td>{{p.candidate_name}}</td>
+													<td>{{p.position}}</td>
+													<td>{{p.votes}}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="form1">
+								<div class="form-group">
+									<div class="panel panel-default">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>Candidate ID</th>
+													<th>Name</th>
+													<th>Position</th>
+													<th>Votes</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat=" p in countingVote | filter:{position: 'Internal Vice President'}:true | limitTo : 1">
+													<td>{{p.candidate_id}}</td>
+													<td>{{p.candidate_name}}</td>
+													<td>{{p.position}}</td>
+													<td>{{p.votes}}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="form1">
+								<div class="form-group">
+									<div class="panel panel-default">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>Candidate ID</th>
+													<th>Name</th>
+													<th>Position</th>
+													<th>Votes</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat=" p in countingVote | filter:{position: 'External Vice President'}:true | limitTo : 1">
+													<td>{{p.candidate_id}}</td>
+													<td>{{p.candidate_name}}</td>
+													<td>{{p.position}}</td>
+													<td>{{p.votes}}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="form1">
+								<div class="form-group">
+									<div class="panel panel-default">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>Candidate ID</th>
+													<th>Name</th>
+													<th>Position</th>
+													<th>Votes</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat=" p in countingVote | filter:{position: 'Secretary'}:true | limitTo : 1">
+													<td>{{p.candidate_id}}</td>
+													<td>{{p.candidate_name}}</td>
+													<td>{{p.position}}</td>
+													<td>{{p.votes}}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="form1">
+								<div class="form-group">
+									<div class="panel panel-default">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>Candidate ID</th>
+													<th>Name</th>
+													<th>Position</th>
+													<th>Votes</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat=" p in countingVote | filter:{position: 'Assistant Secretary'}:true | limitTo : 1">
+													<td>{{p.candidate_id}}</td>
+													<td>{{p.candidate_name}}</td>
+													<td>{{p.position}}</td>
+													<td>{{p.votes}}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="form1">
+								<div class="form-group">
+									<div class="panel panel-default">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>Candidate ID</th>
+													<th>Name</th>
+													<th>Position</th>
+													<th>Votes</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat=" p in countingVote | filter:{position: 'Treasurer'}:true | limitTo : 1">
+													<td>{{p.candidate_id}}</td>
+													<td>{{p.candidate_name}}</td>
+													<td>{{p.position}}</td>
+													<td>{{p.votes}}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="form1">
+								<div class="form-group">
+									<div class="panel panel-default">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>Candidate ID</th>
+													<th>Name</th>
+													<th>Position</th>
+													<th>Votes</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat=" p in countingVote | filter:{position: 'Assistant Treasurer'}:true | limitTo : 1">
+													<td>{{p.candidate_id}}</td>
+													<td>{{p.candidate_name}}</td>
+													<td>{{p.position}}</td>
+													<td>{{p.votes}}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="form1">
+								<div class="form-group">
+									<div class="panel panel-default">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>Candidate ID</th>
+													<th>Name</th>
+													<th>Position</th>
+													<th>Votes</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat=" p in countingVote | filter:{position: 'Auditor'}:true | limitTo : 1">
+													<td>{{p.candidate_id}}</td>
+													<td>{{p.candidate_name}}</td>
+													<td>{{p.position}}</td>
+													<td>{{p.votes}}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="form1">
+								<div class="form-group">
+									<div class="panel panel-default">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>Candidate ID</th>
+													<th>Name</th>
+													<th>Position</th>
+													<th>Votes</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat=" p in countingVote | filter:{position: 'PIO'}:true | limitTo : 1">
+													<td>{{p.candidate_id}}</td>
+													<td>{{p.candidate_name}}</td>
+													<td>{{p.position}}</td>
+													<td>{{p.votes}}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="form1">
+								<div class="form-group">
+									<div class="panel panel-default">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>Candidate ID</th>
+													<th>Name</th>
+													<th>Position</th>
+													<th>Votes</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat=" p in countingVote | filter:{position: 'Business Manager'}:true | limitTo : 1">
+													<td>{{p.candidate_id}}</td>
+													<td>{{p.candidate_name}}</td>
+													<td>{{p.position}}</td>
+													<td>{{p.votes}}</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
 								</div>
 							</div>
 						</div>
+
 						</uib-tab>
 						</uib-tabset>
 						<!-- </form> -->

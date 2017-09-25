@@ -179,4 +179,6 @@ app.controller('voteViewCtrl',['$scope', '$http', '$location','$localStorage','u
     		console.log($localStorage.countVotes[i].position)
     	}
     }
+    
+    $scope.welcome = $localStorage.userLogin;
 }]);

@@ -448,7 +448,7 @@ app.service("votingService",['$http','$location','$localStorage','candidateGetDa
         		alert('naa');
         	}
         	
-        	// $location.path('/voteview');
+        	 $location.path('/voteview');
  
         }
 }]);
