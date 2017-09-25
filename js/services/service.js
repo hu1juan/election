@@ -26,16 +26,11 @@ app.factory('VoterService',[
 	}
 ]);
 
-<<<<<<< HEAD
-app.factory('VoteService',[
-=======
 app.factory('VoteService', [
->>>>>>> 2c8f9be003ad9261acc4c4366a581c8ae02f5781
 	'$http',
 	'$q',
 	function(
 		$http,
-<<<<<<< HEAD
 		$q)
 	{
 		var baseUrl = 'https://devpartnerstraining.herokuapp.com/';
@@ -50,10 +45,11 @@ app.factory('VoteService', [
 			}).then(function(response){
 				factory.data = response.data;
 				return defer.resolve(response);
-=======
-		$q){
-		var baseUrl = 'https://devpartnerstraining.herokuapp.com/';
-		var factory = this;
+			}, function(error){
+				return defer.reject(error);
+			});
+			return defer.promise;
+		}
 
 		factory.postVote = function(){
 			var defer = $q.defer();
@@ -63,7 +59,6 @@ app.factory('VoteService', [
 				url: baseUrl + 'VoteSet'
 			}).then(function(response){
 				return defer.resolve(resolve);
->>>>>>> 2c8f9be003ad9261acc4c4366a581c8ae02f5781
 			}, function(error){
 				return defer.reject(error);
 			});
@@ -71,10 +66,6 @@ app.factory('VoteService', [
 		}
 		return factory;
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> 2c8f9be003ad9261acc4c4366a581c8ae02f5781
 ]);
 
 app.factory('CandidateService', [
@@ -379,24 +370,6 @@ app.service("candidateGetData",['$http',function($http){
 
 }]);
 
-<<<<<<< HEAD
-app.service("votingService",['$http','$location','$localStorage','candidateGetData','userLogin', function($http,$location,$localStorage, candidateGetData, userLogin){
-        var holder={};
-        var index = -1;
-        var count = 1;
-        this.hey = function(){
-	        let sam = {
-	            username: userLogin.user
-	        }
-	        $http.get('https://devpartnerstraining.herokuapp.com/VoterGet').then(function success(response){
-	            holder = response.data;
-	            index = holder.findIndex(sam => sam.username === userLogin.user);
-	            // console.log(holder[index].id);
-	        }, function failure(response){
-	        });
-        
-        }
-=======
 app.service("votingService",['$http','$location','$localStorage','candidateGetData','userLogin','CandidateService', function($http,$location,$localStorage, candidateGetData, userLogin,CandidateService){
 
 		var holder={};
@@ -418,7 +391,7 @@ app.service("votingService",['$http','$location','$localStorage','candidateGetDa
 		}
 
 		this.voteSelect = function(id,fname,mname,lname,position){
-			// $localStorage.countVotes = [];
+			 // $localStorage.countVotes = [];
 
 
 			var fullname = (fname +" "+ mname+ " "+lname);
@@ -448,100 +421,34 @@ app.service("votingService",['$http','$location','$localStorage','candidateGetDa
 		}
 
 
-	    // this.submitvotes = function( press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
-	    // 	var vt = {
-	    // 		voter_id: holder[index].id,
-	    // 		candidate_id: {
-	    // 		 press: press, 
-	    // 		internalvicepress: internalvicepress, 
-	    // 		externalvicepress: externalvicepress,
-	    // 		secretary: secretary,
-	    // 		asstSec: asstSec,
-	    // 		treasurer: treasurer,
-	    // 		asstTreas: asstTreas,
-	    // 		auditor: auditor,
-	    // 		pio: pio,
-	    // 		busManager: busManager
-	    // 		}
-	  
-	    		
-	    // 	}
-
-    	// // console.log($localStorage.votes);
-    	// if (press != null || internalvicepress != null || externalvicepress != null || secretary != null || asstSec != null ||
-    	// 	treasurer != null || asstTreas != null || auditor != null || pio != null || busManager != null){
-    	// 	$localStorage.votes.push(vt);
-
-    	// 	alert("successful");
-    	// 	$location.path('/voteview');
-    	// }else{
-    	// 	alert("please vote");
-    	// }
-    	
-     //    var holder={};
-     //    var index = -1;
-     //    var count = 1;
-     //    this.hey = function(){
-     //    let sam = {
-     //        username: userLogin.user
-     //    }
-     //    $http.get('https://devpartnerstraining.herokuapp.com/VoterGet').then(function success(response){
-     //        holder = response.data;
-     //        index = holder.findIndex(sam => sam.username === userLogin.user);
-     //        // console.log(holder[index].id);
-     //    }, function failure(response){
-     //    });
->>>>>>> 2c8f9be003ad9261acc4c4366a581c8ae02f5781
-        
-     //    }
-     //    }
-
-
         this.submitvotes = function(){
-        	// $localStorage.temCountVote = [];
-        	// alert('ok');
+        	let finalvotes = {}
+        	var count = 0;
+        	if($localStorage.finalCountVote.findIndex(finalvotes => finalvotes.voteruser === $localStorage.userLogin) == -1){
+        		for(var i = 0; i < $localStorage.countVotes.length; i++){
+        			if($localStorage.finalCountVote.findIndex(finalvotes => finalvotes.candidate_id === $localStorage.countVotes[i].candidate_id && finalvotes.position === $localStorage.countVotes[i].position) == -1){
+        				finalvotes = {
+		        			voteruser: $localStorage.countVotes[i].voter_id,
+		        			candidate_id: $localStorage.countVotes[i].candidate_id,
+		        			candidate_name: $localStorage.countVotes[i].name_candidate,
+		        			position: $localStorage.countVotes[i].position,
+		        			votes: 1
+		        		}
 
-        	// $localStorage.temCountVote = [];
-        	
-        	$location.path('/voteview');
-      //       var vt = {
-      //           voter_id: holder[index].id,
-      //           candidate_id: [press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager]
-                
-<<<<<<< HEAD
-            }
-            console.log(vt);
-        console.log($localStorage.votes);
-        if (press != null || internalvicepress != null || externalvicepress != null || secretary != null || asstSec != null ||
-            treasurer != null || asstTreas != null || auditor != null || pio != null || busManager != null){
-        	if(confirm("Are you sure you want to submit your votes ?"))
-        	{
-            	// $localStorage.votes.push(vt);
-	            alert("successful");
-	            $location.path('/voteview');
+		        		$localStorage.finalCountVote.push(finalvotes);
+
+        			}else{
+        				count = $localStorage.finalCountVote[i].votes;
+        				count += 1; 
+        				$localStorage.finalCountVote[i].votes = count;
+        			}
+        			console.log(count);
+	        	}
+        	}else{
+        		alert('naa');
         	}
-        }else{
-            alert("please vote");
+        	
+        	// $location.path('/voteview');
+ 
         }
-=======
-      //       }
-      //   console.log($localStorage.votes);
-      //   if (press != null || internalvicepress != null || externalvicepress != null || secretary != null || asstSec != null ||
-      //       treasurer != null || asstTreas != null || auditor != null || pio != null || busManager != null){
-      //   	if(confirm("Are you sure you want to submit your votes ?"))
-      //   	{
-      //       	$localStorage.votes.push(vt);
-      // //       	console.log($localStorage.votes;)
-      // //       	for(var i = 0; i<$localStorage.votes[0].candidate_id.length; i++){
-    		// // 	console.log($localStorage.votes.voter_id+ " = "+$localStorage.votes.candidate_id[i]);
-    		// // } 
-	     //        alert("successful");
-	     //        $location.path('/voteview');
-      //   	}
-      //   }else{
-      //       alert("please vote");
-      //   }
->>>>>>> 2c8f9be003ad9261acc4c4366a581c8ae02f5781
-        
-    }
 }]);

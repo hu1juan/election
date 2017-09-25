@@ -67,8 +67,9 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 	}
 }]);
 
-app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','voterGet','$http','adminLogin','CandidateService','VoteService', function($scope,candidateGet,adminManagementFunction,voterGet,$http,adminLogin,CandidateService,VoteService){
+app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','voterGet','$http','adminLogin','CandidateService','VoteService','$localStorage', function($scope,candidateGet,adminManagementFunction,voterGet,$http,adminLogin,CandidateService,VoteService,$localStorage){
 
+	$scope.countingVote = $localStorage.finalCountVote;
 	adminLogin.checkToken();
 	$http({
 		method: 'GET',
@@ -144,9 +145,8 @@ app.controller('voteHomeCtrl',['$scope','$http','$localStorage','candidateGetDat
     
     //$localStorage.votes = [];
     $scope.submitvotes = function(){
-
-    		votingService.submitvotes ();
-
+    	// $localStorage.finalCountVote = [];	
+		votingService.submitvotes ();
     };
 
     $scope.selectVotePress = function(id,fname,mname,lname,position){
@@ -163,6 +163,8 @@ app.controller('voteHomeCtrl',['$scope','$http','$localStorage','candidateGetDat
 }]);
 
 app.controller('voteViewCtrl',['$scope', '$http', '$location','$localStorage','userLogin','votingService', function($scope,$http,$location,$localStorage,userLogin,votingService){
+    $scope.disss = $localStorage.countVotes;
+
     userLogin.checkToken();
     $location.path('/voteview');
     $scope.logout = function(){
@@ -171,16 +173,10 @@ app.controller('voteViewCtrl',['$scope', '$http', '$location','$localStorage','u
         $localStorage.countVotes = [];
         userLogin.logout();
     }
-<<<<<<< HEAD
-        $scope.disss = $localStorage.votes;
-        console.log($scope.disss);
+    $scope.finalsubmit = function(){
+    	for(var i = 0; i < $localStorage.countVotes.length; i++){
+    		console.log($localStorage.countVotes[i].name_candidate);
+    		console.log($localStorage.countVotes[i].position)
+    	}
+    }
 }]);
-
-
-
-=======
-        $scope.disss = $localStorage.countVotes;
-        $scope.welcome = $localStorage.userLogin;
-        // console.log($scope.disss);
-}]);
->>>>>>> 2c8f9be003ad9261acc4c4366a581c8ae02f5781
