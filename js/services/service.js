@@ -23,7 +23,111 @@ app.factory('VoterService',[
 			return defer.promise;
 		}
 		return factory;
-	}]);
+	}
+]);
+
+app.factory('VoteService', [
+	'$http',
+	'$q',
+	function(
+		$http,
+		$q)
+	{
+		var baseUrl = 'https://devpartnerstraining.herokuapp.com/';
+		var factory = this;
+
+		factory.getVotes = function(id){
+			var defer = $q.defer();
+
+			$http({
+				method: 'GET',
+				url: baseUrl + 'VoteGet/' + id
+			}).then(function(response){
+				factory.data = response.data;
+				return defer.resolve(response);
+			}, function(error){
+				return defer.reject(error);
+			});
+			return defer.promise;
+		}
+
+		factory.postVote = function(){
+			var defer = $q.defer();
+
+			$http({
+				method: 'POST',
+				url: baseUrl + 'VoteSet'
+			}).then(function(response){
+				return defer.resolve(resolve);
+			}, function(error){
+				return defer.reject(error);
+			});
+			return defer.promise;
+		}
+		return factory;
+	}
+]);
+
+app.factory('CandidateService', [
+	'$http',
+	'$q',
+	function(
+		$http,
+		$q)
+	{
+		var baseUrl = 'https://devpartnerstraining.herokuapp.com/';
+		var factory = this;
+
+		factory.getCandidate = function(){
+			var defer = $q.defer();
+
+			$http({
+				method: 'GET',
+				url: baseUrl + 'CandidateGet'
+			}).then(function(response){
+				return defer.resolve(response);
+			}, function(error){
+				return defer.reject(error);
+			});
+			return defer.promise;
+		}
+
+		factory.postCandidate = function($data){
+			var defer = $q.defer();
+
+			$http({
+				method: 'POST',
+				url: baseUrl + 'CandidateSet',
+				data: $data
+			}).then(function(response){
+				return defer.resolve(response);
+			}, function(error){
+				return defer.reject(error);
+			});
+
+			return defer.promise;
+		}
+
+		factory.setCandidate = function(id, $data){
+			var defer = $q.defer();
+
+			$http({
+				method: 'POST',
+				url: baseUrl + 'CandidateSet/' + id,
+				data: $data
+			}).then(function(response){
+				return defer.resolve(response);
+			}, function(error){
+				return defer.reject(error);
+			});
+
+			return defer.promise;
+		}
+
+		return factory;
+	}
+
+]);
 
 app.service("voterGet",["$http", function($http){
 	return {
@@ -96,6 +200,7 @@ app.service("userLogin",['$location','$localStorage',function($location,$localSt
 	this.checkToken = function(){
 		if($localStorage.userToken == true){
 			$location.path('/votehome');
+
 		}else{
 			$location.path('/');
 		}
@@ -149,7 +254,7 @@ app.service("registration",["voterGet","$http", function(voterGet,$http){
 	};
 }]);
 
-app.service("adminManagementFunction",["$uibModal","$http","candidateGet", function($uibModal,$http,candidateGet){
+app.service("adminManagementFunction",["$uibModal","$http","candidateGet","CandidateService", function($uibModal,$http,candidateGet,CandidateService){
 
 
 	this.editadminmanagement = function(id){
@@ -189,14 +294,13 @@ app.service("adminManagementFunction",["$uibModal","$http","candidateGet", funct
 				if(id == -1){
 					var i = candidatesmember.findIndex(sample1 => sample1.last_name === lname && sample1.first_name === fname && sample1.middle_name === mname && sample1.position === position);
 					if(i == -1){
-						$http.post('https://devpartnerstraining.herokuapp.com/CandidateSet',JSON.stringify(sample1)).then(function successCallback(response){
+
+						CandidateService.postCandidate(sample1).then(function(response){
 							if(response.data){
 								alert("Posting data successful.");
 							}
-						}, function errorCallback(response){
-							alert(response.status);
 						});
-						// alert('ok');
+
 					}else{
 						alert('you already have position.');
 					}
@@ -218,13 +322,18 @@ app.service("adminManagementFunction",["$uibModal","$http","candidateGet", funct
 			isDeleted: 0
 		}
 		console.log(sample1);
-		$http.post('https://devpartnerstraining.herokuapp.com/CandidateSet/'+idcandidate,JSON.stringify(sample1)).then(function successCallback(response){
+		CandidateService.setCandidate(idcandidate,sample1).then(function(response){
 			if(response.data){
-				alert("Update successful.");
+				alert('Update data');
 			}
-		}, function errorCallback(response){
-			alert(response.status);
-		});
+		})
+		// $http.post('https://devpartnerstraining.herokuapp.com/CandidateSet/'+idcandidate,JSON.stringify(sample1)).then(function successCallback(response){
+		// 	if(response.data){
+		// 		alert("Update successful.");
+		// 	}
+		// }, function errorCallback(response){
+		// 	alert(response.status);
+		// });
 		console.log(idcandidate);
 		console.log(fname);
 		console.log(mname);
@@ -253,58 +362,87 @@ app.service("candidateGetData",['$http',function($http){
 
 }]);
 
-app.service("votingService",['$http','$location','candidateGetData','userLogin', function($http,$location, candidateGetData, userLogin){
+app.service("votingService",['$http','$location','$localStorage','candidateGetData','userLogin','CandidateService', function($http,$location,$localStorage, candidateGetData, userLogin,CandidateService){
 
-		this.hey = function(){
 		var holder={};
-		let sam = {
-			username: userLogin.user
-		}
-		$http.get('https://devpartnerstraining.herokuapp.com/VoterGet').then(function success(response){
-			holder = response.data;
-			var index = holder.findIndex(sam => sam.username === userLogin.user);
-			console.log(holder[index].id);
-		}, function failure(response){
+		var index = -1;
+		var count = 1;
+		this.hey = function(){
 
-		});
+			let sam = {
+				username: userLogin.user
+			}
+			$http.get('https://devpartnerstraining.herokuapp.com/VoterGet').then(function success(response){
+				holder = response.data;
+				index = holder.findIndex(sam => sam.username === userLogin.user);
+				// console.log(holder[index].id);
+			}, function failure(response){
+
+			});
 		
 		}
 
+		this.voteSelect = function(id,fname,mname,lname,position){
+			 // $localStorage.countVotes = [];
 
 
-	    this.submitvotes = function( press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
-	    	var vt = {
-	    
-	    		press: press,
-	    		internalvicepress: internalvicepress,
-	    		externalvicepress: externalvicepress,
-	    		secretary: secretary,
-	    		asstSec: asstSec,
-	    		asstTreas: asstTreas,
-	    		auditor: auditor,
-	    		pio: pio,
-	    		busManager: busManager
+			var fullname = (fname +" "+ mname+ " "+lname);
+	    	let votes = {
+	    		candidate_id: id,
+	    		voter_id: $localStorage.userLogin,
+	    		name_candidate: fullname,	
+	    		position: position
+
 	    	}
+	    	console.log(votes);
 
-    	console.log(press);
-    	console.log(internalvicepress);
-    	console.log(externalvicepress);
-    	console.log(secretary);
-    	console.log(asstSec);
-    	console.log(treasurer);
-    	console.log(asstTreas);
-    	console.log(auditor);
-    	console.log(pio);
-    	console.log(busManager);
-    	
-    	if (press != null || internalvicepress != null || externalvicepress != null || secretary != null || asstSec != null ||
-    		treasurer != null || asstTreas != null || auditor != null || pio != null || busManager != null){
-    		alert("successful");
-    		$location.path('/voteview');
-    	}else{
-    		alert("please vote");
-    	}
-    	
-    }
+	    	var getIndex = $localStorage.countVotes.findIndex(votes => votes.voter_id === $localStorage.userLogin);
+	    	if(getIndex == -1){
+	    		$localStorage.countVotes.push(votes);
+	    	}else{
+	    		var userAndPosition = $localStorage.countVotes.findIndex(votes => votes.voter_id === $localStorage.userLogin && votes.position === position);
+	    		if(userAndPosition == -1){
+	    			$localStorage.countVotes.push(votes);
+	    		}
+	    		else{
+	    			$localStorage.countVotes[userAndPosition].candidate_id = id;
+	    			$localStorage.countVotes[userAndPosition].name_candidate = fullname;
+	    		}
+	    	}
+	    	
+		}
 
+
+        this.submitvotes = function(){
+        	let finalvotes = {}
+        	var count = 0;
+        	if($localStorage.finalCountVote.findIndex(finalvotes => finalvotes.voteruser === $localStorage.userLogin) == -1){
+        		for(var i = 0; i < $localStorage.countVotes.length; i++){
+        			if($localStorage.finalCountVote.findIndex(finalvotes => finalvotes.candidate_id === $localStorage.countVotes[i].candidate_id && finalvotes.position === $localStorage.countVotes[i].position) == -1){
+        				finalvotes = {
+		        			voteruser: $localStorage.countVotes[i].voter_id,
+		        			candidate_id: $localStorage.countVotes[i].candidate_id,
+		        			candidate_name: $localStorage.countVotes[i].name_candidate,
+		        			position: $localStorage.countVotes[i].position,
+		        			votes: 1
+		        		}
+
+		        		$localStorage.finalCountVote.push(finalvotes);
+
+        			}else{
+        				count = $localStorage.finalCountVote[i].votes;
+        				count += 1; 
+        				$localStorage.finalCountVote[i].votes = count;
+        			}
+        			console.log(count);
+	        	}
+	        	$location.path('/voteview');
+        	}else{
+        		alert('done your vote');
+        		$location.path('/voteview');
+        	}
+        	
+        	// $location.path('/voteview');
+ 
+        }
 }]);

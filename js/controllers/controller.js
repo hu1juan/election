@@ -28,7 +28,14 @@ app.controller('loginCtrl',['$scope','$uibModal','registration','userLogin', fun
 	};
 
 	$scope.reg = function(){
-		registration.register($scope.fName,$scope.mName,$scope.lName,$scope.gender,$scope.user,$scope.pass,$scope.pass2);
+		 registration.register($scope.fName,$scope.mName,$scope.lName,$scope.gender,$scope.user,$scope.pass,$scope.pass2);
+		$scope.fName = "";
+		$scope.mName = "";
+		$scope.lName = "";
+		$scope.gender = false;
+		$scope.user = "";
+		$scope.pass = "";
+		$scope.pass2 = "";
 	}
 }]);
 
@@ -45,14 +52,9 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 					alert('Invalid Login');
 				}else{
 					$localStorage.userToken = true;
-					// var hold = atob(response.data);
-					// var obj = angular.fromJson(hold);
-					// console.log(hold);
-					// console.log(obj);
-					// console.log(obj.password);
-					// console.log(obj.date);
 					$location.path('/votehome');
 					userLogin.user = $scope.loginuser;
+					$localStorage.userLogin = userLogin.user;
 				}
 			}
 		}, function errorCallback(response){
@@ -66,8 +68,9 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 	}
 }]);
 
-app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','voterGet','$http','adminLogin', function($scope,candidateGet,adminManagementFunction,voterGet,$http,adminLogin){
+app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','voterGet','$http','adminLogin','CandidateService','VoteService','$localStorage', function($scope,candidateGet,adminManagementFunction,voterGet,$http,adminLogin,CandidateService,VoteService,$localStorage){
 
+	$scope.countingVote = $localStorage.finalCountVote;
 	adminLogin.checkToken();
 	$http({
 		method: 'GET',
@@ -82,15 +85,21 @@ app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','v
 		$scope.voters = data;
 	})
 
-	candidateGet.getCandidates().then(function(data){
-		$scope.candidates = data;
-		$scope.count = data.length + 1;
+	CandidateService.getCandidate().then(function(response){
+		$scope.candidates = response.data;
+		$scope.count = response.data.length + 1;
 	})
+
 	$scope.logout = function(){
 		adminLogin.logout();
 	}
-	$scope.candidateregister = function(val1,val2,val3,val4,val5){
-		adminManagementFunction.registercandidates(val1,val2,val3,val4,val5);
+	$scope.candidateregister = function(){
+		adminManagementFunction.registercandidates($scope.adminLis.cfirstname,$scope.adminLis.cmiddlename,$scope.adminLis.clastname,$scope.adminLis.cgender,$scope.adminLis.rcposition);
+		$scope.adminLis.cfirstname = "";
+		$scope.adminLis.cmiddlename = "";
+		$scope.adminLis.clastname = "";
+		$scope.adminLis.cgender = "";
+		$scope.adminLis.rcposition = "";
 		candidateGet.getCandidates().then(function(data){$scope.count = data.length + 1;})
 	}
 
@@ -107,7 +116,7 @@ app.controller('editAdminModalCtrl',['$scope','adminManagementFunction','$uibMod
 	$scope.editcandidates = function(idcandidate,firstname,middlename,lastname,gender,position){
 		// console.log(idcandidate,firstname,middlename,lastname,gender,position);
 		adminManagementFunction.editCandidate(idcandidate,firstname,middlename,lastname,gender,position);
-		adminManagementFunction.confirmationadmin();
+		// adminManagementFunction.confirmationadmin();
 	}
 	$scope.canceladmin = function(){
 		$uibModalInstance.dismiss();
@@ -121,39 +130,54 @@ app.controller('confirmAdminCtrl',['$scope','$uibModalInstance', function($scope
 	}
 }]);
 
-app.controller('voteHomeCtrl',['$scope','$http','candidateGetData','votingService','userLogin' , function($scope,$http,candidateGetData,votingService,userLogin){
-	
+app.controller('voteHomeCtrl',['$scope','$http','$localStorage','candidateGetData','votingService','userLogin' ,'CandidateService', function($scope,$http,$localStorage,candidateGetData,votingService,userLogin,CandidateService){
+
+	// $localStorage.userLogin = "";
 	userLogin.checkToken();
 	votingService.hey();
-	
+
+    userLogin.checkToken();
+    votingService.hey();
 
     $('.collapse').on('show.bs.collapse', function (e) {
-	    $('.collapse').not(e.target).removeClass('in');
-	})
+        $('.collapse').not(e.target).removeClass('in');
+    })
     candidateGetData.candidates().then(function(data){$scope.candidatesData = data;})
-
-    $scope.submitvotes = function(press,internalvicepress,externalvicepress,secretary,asstSec,treasurer,asstTreas,auditor,pio,busManager){
-
-    		votingService.submitvotes ($scope.press,$scope.internalvicepress,$scope.externalvicepress,$scope.secretary,$scope.asstSec,$scope.treasurer,
-    			$scope.asstTreas,$scope.auditor,$scope.pio,$scope.busManager);
-
-    	// console.log($scope.press);
-    	// console.log($scope.internalvicepress);
-    	// console.log($scope.externalvicepress);
-    	// console.log($scope.secretary);
-    	// console.log($scope.asstSec);
-    	// console.log($scope.treasurer);
-    	// console.log($scope.asstTreas);
-    	// console.log($scope.auditor);
-    	// console.log($scope.pio);
-    	// console.log($scope.busManager);
+    
+    //$localStorage.votes = [];
+    $scope.submitvotes = function(){
+    	// $localStorage.finalCountVote = [];	
+		votingService.submitvotes ();
     };
+
+    $scope.selectVotePress = function(id,fname,mname,lname,position){
+
+    	votingService.voteSelect(id,fname,mname,lname,position);
+
+    	
+    	// console.log(id);
+    	// console.log(fname);
+    	// console.log(mname);
+    	// console.log(lname);
+    	// console.log(position);
+    }
 }]);
 
-app.controller('voteViewCtrl',['$scope', '$http', '$location','userLogin','votingService', function($scope,$http,$location,userLogin,votingService){
-	userLogin.checkToken();
-	$location.path('/voteview');
-	$scope.logout = function(){
-		userLogin.logout();
-	}
+app.controller('voteViewCtrl',['$scope', '$http', '$location','$localStorage','userLogin','votingService', function($scope,$http,$location,$localStorage,userLogin,votingService){
+    $scope.disss = $localStorage.countVotes;
+
+    userLogin.checkToken();
+    $location.path('/voteview');
+    $scope.logout = function(){
+        $localStorage.votes = [];
+        $localStorage.temCountVote = [];
+        $localStorage.countVotes = [];
+        userLogin.logout();
+    }
+    $scope.finalsubmit = function(){
+    	for(var i = 0; i < $localStorage.countVotes.length; i++){
+    		console.log($localStorage.countVotes[i].name_candidate);
+    		console.log($localStorage.countVotes[i].position)
+    	}
+    }
 }]);
