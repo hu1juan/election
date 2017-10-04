@@ -100,6 +100,11 @@ app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','v
 	$scope.candidateregister = function(val1,val2,val3,val4,val5){
 		adminManagementFunction.registercandidates(val1,val2,val3,val4,val5);
 		candidateGet.getCandidates().then(function(data){$scope.count = data.length + 1;})
+		$scope.cfirstname = "";
+		$scope.cmiddlename = "";
+		$scope.clastname = "";
+		$scope.cgender = "";
+		$scope.cposition = "";
 	}
 
 	$scope.editadmin = function(id){

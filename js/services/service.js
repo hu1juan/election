@@ -294,21 +294,13 @@ app.service("adminManagementFunction",["$uibModal","$http","candidateGet","Candi
 				if(id == -1){
 					var i = candidatesmember.findIndex(sample1 => sample1.last_name === lname && sample1.first_name === fname && sample1.middle_name === mname && sample1.position === position);
 					if(i == -1){
-						// alert('ok');
-						// console.log(sample1);
+
 						CandidateService.postCandidate(sample1).then(function(response){
 							if(response.data){
 								alert("Posting data successful.");
 							}
 						});
-						// $http.post('https://devpartnerstraining.herokuapp.com/CandidateSet',JSON.stringify(sample1)).then(function successCallback(response){
-						// 	if(response.data){
-						// 		alert("Posting data successful.");
-						// 	}
-						// }, function errorCallback(response){
-						// 	alert(response.status);
-						// });
-						// alert('ok');
+
 					}else{
 						alert('you already have position.');
 					}
@@ -444,8 +436,10 @@ app.service("votingService",['$http','$location','$localStorage','candidateGetDa
         			}
         			console.log(count);
 	        	}
+	        	$location.path('/voteview');
         	}else{
-        		alert('naa');
+        		alert('done your vote');
+        		$location.path('/voteview');
         	}
         	
         	// $location.path('/voteview');
