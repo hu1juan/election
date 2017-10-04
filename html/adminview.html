@@ -33,34 +33,34 @@
 							</div>
 							<hr/>
 							<!-- <ng-form name="nestedForm"> -->
-							<form name="formValidation" ng-submit="candidateregister(cfirstname,cmiddlename,clastname,cgender,rcposition)" role="form" novalidate>
+							<form name="formValidation" ng-submit="candidateregister()" role="form" novalidate>
 								<div class="form-register">
 									<div class="form-group">
 										<label>Candidate #</label>
 										<input type="text" class="form-control" value="{{count}}" readonly />
 										<label>First name</label>
-										<input type="text" class="form-control" ng-minlength="3" ng-maxlength="50" name="cfname" id="cfname" ng-model="cfirstname" placeholder="Enter First Name" required/>
+										<input type="text" class="form-control" ng-minlength="3" ng-maxlength="50" name="cfname" id="cfname" ng-model="adminLis.cfirstname" placeholder="Enter First Name" required/>
 										<div ng-messages="formValidation.cfname.$error" class="errorvalidation">
 											<div ng-message="required" ng-show="formValidation.cfname.$touched">This field is required</div>
 											<div ng-message="maxlength">Your field is too long</div>
 											<div ng-message="minlength">Your field is too short</div>
 										</div>
 										<label>Middle name</label>
-										<input type="text" class="form-control" ng-minlength="1" ng-maxlength="50" name="cmname" id="cmname" ng-model="cmiddlename" placeholder="Enter Middle Name" required/>
+										<input type="text" class="form-control" ng-minlength="1" ng-maxlength="50" name="cmname" id="cmname" ng-model="adminLis.cmiddlename" placeholder="Enter Middle Name" required/>
 										<div ng-messages="formValidation.cmname.$error" class="errorvalidation">
 											<div ng-message="required" ng-show="formValidation.cmname.$touched">This field is required</div>
 											<div ng-message="maxlength">Your field is too long</div>
 											<div ng-message="minlength">Your field is too short</div>
 										</div>
 										<label>Last name</label>
-										<input type="text" class="form-control" ng-minlength="3" ng-maxlength="50" name="clname" id="clname" ng-model="clastname" placeholder="Enter Last Name" required/>
+										<input type="text" class="form-control" ng-minlength="3" ng-maxlength="50" name="clname" id="clname" ng-model="adminLis.clastname" placeholder="Enter Last Name" required/>
 										<div ng-messages="formValidation.clname.$error" class="errorvalidation">
 											<div ng-message="required" ng-show="formValidation.clname.$touched">This field is required</div>
 											<div ng-message="maxlength">Your field is too long</div>
 											<div ng-message="minlength">Your field is too short</div>
 										</div>
 										<label>Gender</label>
-										<select class="form-control" ng-model="cgender" name="cgenders" id="cgenders" required>
+										<select class="form-control" ng-model="adminLis.cgender" name="cgenders" id="cgenders" required>
 											<option value="M">Male</option>
 											<option value="F">Female</option>
 										</select>
@@ -68,7 +68,7 @@
 											<div ng-message="required" ng-show="formValidation.clname.$touched">This field is required</div>
 										</div>
 										<label>Position</label>
-										<select class="form-control" ng-model="rcposition" name="cposition" id="cposition" required>
+										<select class="form-control" ng-model="adminLis.rcposition" name="cposition" id="cposition" required>
 											<option value="President">President</option>
 											<option value="Internal Vice President">Internal Vice President</option>
 											<option value="External Vice President">External Vice President</option>

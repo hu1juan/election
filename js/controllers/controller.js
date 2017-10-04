@@ -28,7 +28,14 @@ app.controller('loginCtrl',['$scope','$uibModal','registration','userLogin', fun
 	};
 
 	$scope.reg = function(){
-		registration.register($scope.fName,$scope.mName,$scope.lName,$scope.gender,$scope.user,$scope.pass,$scope.pass2);
+		 registration.register($scope.fName,$scope.mName,$scope.lName,$scope.gender,$scope.user,$scope.pass,$scope.pass2);
+		$scope.fName = "";
+		$scope.mName = "";
+		$scope.lName = "";
+		$scope.gender = false;
+		$scope.user = "";
+		$scope.pass = "";
+		$scope.pass2 = "";
 	}
 }]);
 
@@ -45,12 +52,6 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 					alert('Invalid Login');
 				}else{
 					$localStorage.userToken = true;
-					// var hold = atob(response.data);
-					// var obj = angular.fromJson(hold);
-					// console.log(hold);
-					// console.log(obj);
-					// console.log(obj.password);
-					// console.log(obj.date);
 					$location.path('/votehome');
 					userLogin.user = $scope.loginuser;
 					$localStorage.userLogin = userLogin.user;
@@ -89,22 +90,17 @@ app.controller('adminCtrl',['$scope','candidateGet','adminManagementFunction','v
 		$scope.count = response.data.length + 1;
 	})
 
-	// candidateGet.getCandidates().then(function(data){
-	// 	$scope.candidates = data;
-	// 	$scope.count = data.length + 1;
-	// })
-
 	$scope.logout = function(){
 		adminLogin.logout();
 	}
-	$scope.candidateregister = function(val1,val2,val3,val4,val5){
-		adminManagementFunction.registercandidates(val1,val2,val3,val4,val5);
+	$scope.candidateregister = function(){
+		adminManagementFunction.registercandidates($scope.adminLis.cfirstname,$scope.adminLis.cmiddlename,$scope.adminLis.clastname,$scope.adminLis.cgender,$scope.adminLis.rcposition);
+		$scope.adminLis.cfirstname = "";
+		$scope.adminLis.cmiddlename = "";
+		$scope.adminLis.clastname = "";
+		$scope.adminLis.cgender = "";
+		$scope.adminLis.rcposition = "";
 		candidateGet.getCandidates().then(function(data){$scope.count = data.length + 1;})
-		$scope.cfirstname = "";
-		$scope.cmiddlename = "";
-		$scope.clastname = "";
-		$scope.cgender = "";
-		$scope.cposition = "";
 	}
 
 	$scope.editadmin = function(id){
@@ -120,7 +116,7 @@ app.controller('editAdminModalCtrl',['$scope','adminManagementFunction','$uibMod
 	$scope.editcandidates = function(idcandidate,firstname,middlename,lastname,gender,position){
 		// console.log(idcandidate,firstname,middlename,lastname,gender,position);
 		adminManagementFunction.editCandidate(idcandidate,firstname,middlename,lastname,gender,position);
-		adminManagementFunction.confirmationadmin();
+		// adminManagementFunction.confirmationadmin();
 	}
 	$scope.canceladmin = function(){
 		$uibModalInstance.dismiss();

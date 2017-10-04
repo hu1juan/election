@@ -10,7 +10,7 @@ app.config(function($routeProvider){
 	})
 	.when('/admin',{
 		templateUrl: 'html/adminview.html',
-		controller: 'adminCtrl'
+		controller: 'adminCtrl as adminLis'
 	})
 	.when('/votehome',{
 		templateUrl: 'html/voteHome.html',
