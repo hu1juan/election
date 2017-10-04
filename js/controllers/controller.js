@@ -52,9 +52,17 @@ app.controller('feedbackModalCtrl',['$uibModalInstance','$scope','$location','$h
 					alert('Invalid Login');
 				}else{
 					$localStorage.userToken = true;
-					$location.path('/votehome');
 					userLogin.user = $scope.loginuser;
 					$localStorage.userLogin = userLogin.user;
+					var data = $localStorage.finalCountVote;
+					let a = {
+						voteruser: $scope.loginuser
+					}
+					if(data.findIndex(a => a.voteruser === $scope.loginuser) == -1){
+						$location.path('/votehome')
+					}else{
+						$location.path('/voteview');
+					}
 				}
 			}
 		}, function errorCallback(response){
@@ -136,8 +144,8 @@ app.controller('voteHomeCtrl',['$scope','$http','$localStorage','candidateGetDat
 	userLogin.checkToken();
 	votingService.hey();
 
-    userLogin.checkToken();
-    votingService.hey();
+    // userLogin.checkToken();
+    // votingService.hey();
 
     $('.collapse').on('show.bs.collapse', function (e) {
         $('.collapse').not(e.target).removeClass('in');
@@ -164,7 +172,8 @@ app.controller('voteHomeCtrl',['$scope','$http','$localStorage','candidateGetDat
 }]);
 
 app.controller('voteViewCtrl',['$scope', '$http', '$location','$localStorage','userLogin','votingService', function($scope,$http,$location,$localStorage,userLogin,votingService){
-    $scope.disss = $localStorage.countVotes;
+    $scope.disss = $localStorage.finalCountVote;
+    $scope.log = $localStorage.userLogin;
 
     userLogin.checkToken();
     $location.path('/voteview');
@@ -180,4 +189,7 @@ app.controller('voteViewCtrl',['$scope', '$http', '$location','$localStorage','u
     		console.log($localStorage.countVotes[i].position)
     	}
     }
+
+    $scope.welcome = $localStorage.userLogin;
+
 }]);

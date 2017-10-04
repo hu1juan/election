@@ -133,9 +133,9 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr ng-repeat="c in disss">
+                        <tr ng-repeat="c in disss | filter:{voteruser: log}: true">
                           <td>{{c.candidate_id}} </td>
-                          <td> {{ c.name_candidate }} </td>
+                          <td> {{ c.candidate_name }} </td>
                           <td> {{c.position}} </td>
                         </tr>
                       </table>

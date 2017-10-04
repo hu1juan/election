@@ -199,8 +199,15 @@ app.service("userLogin",['$location','$localStorage',function($location,$localSt
 	this.user='';
 	this.checkToken = function(){
 		if($localStorage.userToken == true){
-			$location.path('/votehome');
-
+			var data = $localStorage.finalCountVote;
+			let a = {
+				voteruser: $localStorage.userLogin
+			}
+			if(data.findIndex(a => a.voteruser === $localStorage.userLogin) == -1){
+				$location.path('/votehome');
+			}else{
+				$location.path('/voteview');
+			}
 		}else{
 			$location.path('/');
 		}
@@ -383,8 +390,14 @@ app.service("votingService",['$http','$location','$localStorage','candidateGetDa
 		}
 
 		this.voteSelect = function(id,fname,mname,lname,position){
-			 // $localStorage.countVotes = [];
-
+			 
+			
+			 if(!$localStorage.countVotes){
+			 	 $localStorage.countVotes = [];
+			 }
+			 if(!$localStorage.finalCountVote){
+			 	$localStorage.finalCountVote =[];
+			 }
 
 			var fullname = (fname +" "+ mname+ " "+lname);
 	    	let votes = {
@@ -418,7 +431,8 @@ app.service("votingService",['$http','$location','$localStorage','candidateGetDa
         	var count = 0;
         	if($localStorage.finalCountVote.findIndex(finalvotes => finalvotes.voteruser === $localStorage.userLogin) == -1){
         		for(var i = 0; i < $localStorage.countVotes.length; i++){
-        			if($localStorage.finalCountVote.findIndex(finalvotes => finalvotes.candidate_id === $localStorage.countVotes[i].candidate_id && finalvotes.position === $localStorage.countVotes[i].position) == -1){
+        			if($localStorage.finalCountVote.findIndex(finalvotes => finalvotes.candidate_id === $localStorage.countVotes[i].candidate_id &&
+        			 finalvotes.position === $localStorage.countVotes[i].position) == -1){
         				finalvotes = {
 		        			voteruser: $localStorage.countVotes[i].voter_id,
 		        			candidate_id: $localStorage.countVotes[i].candidate_id,
@@ -435,10 +449,9 @@ app.service("votingService",['$http','$location','$localStorage','candidateGetDa
         				$localStorage.finalCountVote[i].votes = count;
         			}
         			console.log(count);
-	        	}
+	        	}alert('are you sure you want to submit your vote?');
 	        	$location.path('/voteview');
         	}else{
-        		alert('done your vote');
         		$location.path('/voteview');
         	}
         	
