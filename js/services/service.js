@@ -196,6 +196,9 @@ app.service("userLogin",['$location','$localStorage',function($location,$localSt
 	if(!$localStorage.userToken){
 		$localStorage.userToken = false;
 	}
+	if(!$localStorage.finalCountVote){
+		$localStorage.finalCountVote = [];
+	}
 	this.user='';
 	this.checkToken = function(){
 		if($localStorage.userToken == true){
